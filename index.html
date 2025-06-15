@@ -37,16 +37,15 @@
                     The Socratic Exchange
                 </a>
                 <!-- Desktop Navigation -->
-                <div class="hidden lg:flex items-center space-x-10">
+                <div class="hidden lg:flex items-center space-x-8">
                     <a href="#speakers" class="nav-link text-gray-600 hover:text-indigo-500 transition-colors">Guest Speakers</a>
                     <a href="#about" class="nav-link text-gray-600 hover:text-indigo-500 transition-colors">About Us</a>
                     <a href="#course" class="nav-link text-gray-600 hover:text-indigo-500 transition-colors">Business Course</a>
                     <a href="#community" class="nav-link text-gray-600 hover:text-indigo-500 transition-colors">Community</a>
+                    <a href="mailto:contact@socraticexchange.com" class="bg-indigo-600 text-white font-semibold px-5 py-2 rounded-lg hover:bg-indigo-700 transition-transform transform hover:scale-105">
+                        Contact Us
+                    </a>
                 </div>
-                <!-- CTA Button -->
-                <a href="mailto:contact@socraticexchange.com" class="hidden lg:inline-block bg-indigo-600 text-white font-semibold px-5 py-2 rounded-lg hover:bg-indigo-700 transition-transform transform hover:scale-105 ml-8">
-                    Contact Us
-                </a>
                 <!-- Mobile Menu Button -->
                 <button id="mobile-menu-button" class="lg:hidden">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
@@ -295,8 +294,8 @@
                     }
                 });
                 
-                const desktopNavLinks = document.querySelectorAll('header .hidden a');
-                const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
+                const desktopNavLinks = document.querySelectorAll('header .hidden a.nav-link');
+                const mobileNavLinks = document.querySelectorAll('#mobile-menu a.nav-link');
 
                 desktopNavLinks.forEach(link => {
                     link.classList.remove('active');
