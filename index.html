@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Socratic Exchange</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: EB Garamond -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -29,30 +27,30 @@
         .prose {
             font-family: 'EB Garamond', serif;
         }
-
         .camel-txt {
             color: #c19a6b;
         }
-
         .camel-bg {
             background: #c19a6b;
         }
-
         .nav-link:hover {
             color: #c19a6b;
+        }
+        /* Style for modal close button */
+        #close-modal-button {
+            font-size: 2rem;
+            line-height: 1;
         }
     </style>
 </head>
 <body class="bg-stone-100 text-gray-900">
 
-    <!-- Header & Navigation -->
-    <header class="bg-stone-50/80 backdrop-blur-md sticky top-0 z-50 border-b border-stone-200">
+    <header class="bg-stone-50/80 backdrop-blur-md sticky top-0 z-40 border-b border-stone-200">
         <nav class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
                 <a href="#home" class="text-xl md:text-2xl font-bold text-black flex-shrink-0">
                     The <span class="text-red-800">Socratic</span> <span class="camel-txt">Exchange</span>
                 </a>
-                <!-- Desktop Navigation -->
                 <div class="hidden lg:flex items-center space-x-8">
                     <a href="#speakers" class="nav-link text-stone-700 transition-colors">Guest Speakers</a>
                     <a href="#about" class="nav-link text-stone-700 transition-colors">About Us</a>
@@ -62,12 +60,10 @@
                         Contact Us
                     </a>
                 </div>
-                <!-- Mobile Menu Button -->
                 <button id="mobile-menu-button" class="lg:hidden">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 </button>
             </div>
-            <!-- Mobile Menu -->
             <div id="mobile-menu" class="hidden lg:hidden mt-4 space-y-2">
                 <a href="#speakers" class="block nav-link text-stone-700 transition-colors py-2">Guest Speakers</a>
                 <a href="#about" class="block nav-link text-stone-700 transition-colors py-2">About Us</a>
@@ -80,28 +76,25 @@
         </nav>
     </header>
 
-    <!-- Main Content Area -->
     <main id="main-content">
 
-        <!-- Home Section (Apple Store Style) -->
         <section id="home" class="py-16 md:py-20">
             <div class="container mx-auto px-6 text-left">
                 <h1 class="text-4xl md:text-5xl font-bold text-black max-w-2xl">
                     The Socratic Exchange.
                 </h1>
                 <p class="mt-4 text-lg md:text-xl text-stone-700 max-w-2xl">
-                     Unfiltered conversations with the minds shaping our world.
+                    Unfiltered conversations with the minds shaping our world.
                 </p>
                 <div class="mt-8">
                     <a href="#speakers" class="font-semibold text-red-800 hover:text-red-900 text-lg group">
                         Explore the interviews
-                        <span class="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">&rarr;</span>
+                        <span class="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">→</span>
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- Guest Speakers Section -->
         <section id="speakers" class="py-20 bg-stone-50">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
@@ -110,68 +103,74 @@
                 </div>
 
                 <div class="lg:grid lg:grid-cols-3 lg:gap-8">
-                    <!-- Left Column: Interview List -->
                     <div class="lg:col-span-1">
                         <h3 class="text-xl font-semibold text-gray-900 mb-4 px-4">Interview Library</h3>
                         <div class="space-y-2">
-                            <!-- Interview Card 1: Granovetter -->
-                            <div class="interview-card cursor-pointer p-4 rounded-lg border-l-4 border-transparent transition-colors hover:bg-stone-200" 
-                                 data-name="Prof. Mark Granovetter" 
-                                 data-title="Professor of Sociology, Stanford University" 
+                            <div class="interview-card cursor-pointer p-4 rounded-lg border-l-4 border-transparent transition-colors hover:bg-stone-200"
+                                 data-name="Professor Mark Granovetter"
+                                 data-title="Professor of Sociology, Stanford University"
                                  data-description="An insightful discussion on the sociology of economic life, the strength of weak ties, and how social structures impact markets."
-                                 data-image="https://placehold.co/400x400/d6d3d1/1c1917?text=Prof.+Granovetter"
-                                 data-content="<div class='space-y-3'><a href='#' class='block text-center font-semibold bg-gray-200 text-gray-800 p-3 rounded-lg hover:bg-gray-300'>Listen to Audio</a><a href='#' class='block text-center font-semibold bg-gray-200 text-gray-800 p-3 rounded-lg hover:bg-gray-300'>Read Transcript</a></div>">
-                                <p class="font-bold text-gray-900">Prof. Mark Granovetter</p>
+                                 data-image="https://humsci.stanford.edu/sites/default/files/styles/embed_350w_xlarge_2x/public/Mark%20Granovetter%20Photo%20courtesy%20of%20BBVA%20Foundation_0.webp?itok=AIio7wDZ"
+                                 data-content="<div class='space-y-3'><button id='open-transcript-btn' class='w-full text-center font-semibold bg-gray-200 text-gray-800 p-3 rounded-lg hover:bg-gray-300'>Read Transcript</button></div>"
+                                 data-interviewers="Joshua and Leo"
+                                 data-question-developers="Club Members"
+                                 data-transcript="">
+                                <p class="font-bold text-gray-900">Professor Mark Granovetter</p>
                                 <p class="text-sm text-stone-700">Stanford University</p>
-                                <p class="text-sm font-semibold camel-txt mt-1">Audio & Transcript</p>
+                                <p class="text-sm font-semibold camel-txt mt-1">Transcript Available</p>
                             </div>
-                            <!-- Interview Card 2: CEO -->
                             <div class="interview-card cursor-pointer p-4 rounded-lg border-l-4 border-transparent transition-colors hover:bg-stone-200"
-                                 data-name="CEO of Innovate Inc."
-                                 data-title="Chief Executive Officer, Innovate Inc."
-                                 data-description="A look into scaling a tech startup from seed to series C, navigating market volatility, and building a winning company culture."
-                                 data-image="https://placehold.co/400x400/991b1b/ffffff?text=Innovate+Inc."
-                                 data-content="<div class='aspect-w-16 aspect-h-9'><iframe class='w-full h-full rounded-lg' src='https://www.youtube.com/embed/dQw4w9WgXcQ' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe></div>">
-                                <p class="font-bold text-gray-900">CEO of Innovate Inc.</p>
-                                <p class="text-sm text-stone-700">Tech & Startups</p>
-                                <p class="text-sm font-semibold camel-txt mt-1">Video Available</p>
+                                 data-name="Professor Don Moore"
+                                 data-title="Professor of Management of Organizations, UC Berkeley Haas"
+                                 data-description="An upcoming conversation on overconfidence, decision-making, and the psychology of judgment in business."
+                                 data-image="https://placehold.co/400x400/4b5563/ffffff?text=Prof.+Moore"
+                                 data-content="<div class='prose max-w-none text-stone-700'><p>This interview is scheduled for late July 2025. The transcript will be available shortly after. Stay tuned!</p></div>"
+                                 data-interviewers="To Be Determined"
+                                 data-question-developers="Club Members"
+                                 data-transcript="">
+                                <p class="font-bold text-gray-900">Professor Don Moore</p>
+                                <p class="text-sm text-stone-700">UC Berkeley</p>
+                                <p class="text-sm font-semibold camel-txt mt-1">Coming in July</p>
                             </div>
-                            <!-- Interview Card 3: Behavioral Economics -->
                             <div class="interview-card cursor-pointer p-4 rounded-lg border-l-4 border-transparent transition-colors hover:bg-stone-200"
-                                 data-name="A Professor of Behavioral Economics"
-                                 data-title="Author & Researcher"
-                                 data-description="Exploring the irrational human behaviors that drive financial markets and how to leverage them for better decision making."
-                                 data-image="https://placehold.co/400x400/b91c1c/ffffff?text=Economics"
-                                 data-content="<div><h5 class='font-bold mb-2'>Transcript</h5><div class='prose max-w-none text-stone-700'><p>The full transcript for this interview is coming soon. Check back shortly to read the complete discussion on behavioral economics and market psychology.</p></div></div>">
-                                <p class="font-bold text-gray-900">Behavioral Economics Expert</p>
-                                <p class="text-sm text-stone-700">Academia</p>
-                                <p class="text-sm font-semibold camel-txt mt-1">Transcript Only</p>
+                                 data-name="Professor Paul Adler"
+                                 data-title="Professor of Management & Organization, USC Marshall"
+                                 data-description="An upcoming discussion on organizational theory, collaborative communities, and the future of work."
+                                 data-image="https://placehold.co/400x400/9ca3af/ffffff?text=Prof.+Adler"
+                                 data-content="<div class='prose max-w-none text-stone-700'><p>This interview is scheduled for August 2025. The transcript will be available shortly after. Stay tuned!</p></div>"
+                                 data-interviewers="To Be Determined"
+                                 data-question-developers="Club Members"
+                                 data-transcript="">
+                                <p class="font-bold text-gray-900">Professor Paul Adler</p>
+                                <p class="text-sm text-stone-700">USC</p>
+                                <p class="text-sm font-semibold camel-txt mt-1">Coming in August</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Right Column: Interview Details -->
                     <div class="lg:col-span-2 mt-12 lg:mt-0">
                         <div class="bg-stone-100 rounded-2xl shadow-lg p-8">
-                             <div class="grid md:grid-cols-2 gap-8 items-start">
-                                <!-- Details Column -->
-                                <div>
-                                    <h3 id="interview-name" class="text-3xl font-bold text-black">Select an Interview</h3>
-                                    <p id="interview-title" class="mt-2 text-lg font-medium text-stone-800">Choose from the list to see the details.</p>
-                                    <p id="interview-description" class="mt-4 text-stone-700"></p>
-                                </div>
-                                <!-- Image Column -->
-                                <div>
-                                     <img id="interview-image" src="https://placehold.co/400x400/d6d3d1/1c1917?text=Select+an+Interview" alt="Select an interview" class="w-full md:max-w-sm mx-auto aspect-square object-cover rounded-lg shadow-md">
-                                </div>
+                             <div class="grid md:grid-cols-3 gap-8 items-start">
+                                 <div class="md:col-span-1">
+                                     <img id="interview-image" src="https://placehold.co/400x400/d6d3d1/1c1917?text=Select" alt="Select an interview" class="w-full aspect-square object-cover rounded-lg shadow-md">
+                                 </div>
+                                 <div class="md:col-span-2">
+                                     <h3 id="interview-name" class="text-3xl font-bold text-black">Select an Interview</h3>
+                                     <p id="interview-title" class="mt-2 text-lg font-medium text-stone-800">Choose from the list to see the details.</p>
+                                     <p id="interview-description" class="mt-4 text-stone-700"></p>
+                                    
+                                     <div class="mt-4 pt-4 border-t border-stone-200">
+                                         <h4 class="text-md font-semibold text-black">Meeting Details</h4>
+                                         <p class="mt-2 text-sm text-stone-700"><strong>Interviewers:</strong> <span id="interview-interviewers"></span></p>
+                                         <p class="mt-1 text-sm text-stone-700"><strong>Questions Developed By:</strong> <span id="interview-question-developers"></span></p>
+                                     </div>
+                                 </div>
                              </div>
-                             <!-- Interview Materials (Full Width Below) -->
                              <div class="mt-8 pt-6 border-t border-stone-200">
-                                <h4 class="text-xl font-bold text-black mb-4">Interview Materials</h4>
-                                <div id="interview-content" class="bg-stone-50 p-6 rounded-lg shadow-inner">
-                                    <!-- Content will be injected by JavaScript -->
-                                </div>
-                            </div>
+                                 <h4 class="text-xl font-bold text-black mb-4">Interview Materials</h4>
+                                 <div id="interview-content" class="bg-stone-50 p-6 rounded-lg shadow-inner min-h-[80px]">
+                                     </div>
+                             </div>
                         </div>
                     </div>
                 </div>
@@ -179,41 +178,40 @@
         </section>
 
 
-        <!-- About Us Section -->
         <section id="about" class="py-20">
             <div class="container mx-auto px-6">
-                 <!-- The Minds Behind the Exchange sub-section -->
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-black">The Minds Behind the Exchange</h2>
-                    <p class="mt-4 text-lg text-stone-700 max-w-2xl mx-auto">We are a team of passionate entrepreneurs and thinkers dedicated to elevating the discourse in business and economics.</p>
-                </div>
-                <div class="grid gap-12 md:grid-cols-3 text-center mb-20">
-                    <!-- Team Member 1 -->
+                 <div class="text-center mb-16">
+                     <h2 class="text-3xl md:text-4xl font-bold text-black">The Minds Behind the Exchange</h2>
+                     <p class="mt-4 text-lg text-stone-700 max-w-2xl mx-auto">We are a team of passionate entrepreneurs and thinkers dedicated to elevating the discourse in business and economics.</p>
+                 </div>
+                <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-4 text-center mb-20">
                     <div>
                         <img src="https://placehold.co/400x400/991b1b/ffffff?text=LC" alt="Leo Cao" class="w-32 h-32 rounded-full mx-auto shadow-lg">
                         <h4 class="mt-6 text-xl font-bold text-black">Leo Cao</h4>
-                        <p class="text-red-800 font-semibold">Founder & President</p>
+                        <p class="text-red-800 font-semibold">Co-Founder</p>
                         <p class="mt-2 text-stone-700">The visionary behind the Socratic Exchange, Leo is driven to create a platform for meaningful economic dialogue.</p>
                     </div>
-                    <!-- Team Member 2 -->
                     <div>
                         <img src="https://placehold.co/400x400/7f1d1d/ffffff?text=JT" alt="Josh Tran" class="w-32 h-32 rounded-full mx-auto shadow-lg">
                         <h4 class="mt-6 text-xl font-bold text-black">Josh Tran</h4>
-                        <p class="text-red-800 font-semibold">Vice President</p>
+                        <p class="text-red-800 font-semibold">Co-Founder</p>
                         <p class="mt-2 text-stone-700">Josh manages operations and strategy, ensuring our interviews reach and inspire a global audience.</p>
                     </div>
-                    <!-- Team Member 3 -->
                     <div>
                         <img src="https://placehold.co/400x400/b91c1c/ffffff?text=YP" alt="Yash Pattekar" class="w-32 h-32 rounded-full mx-auto shadow-lg">
                         <h4 class="mt-6 text-xl font-bold text-black">Yash Pattekar</h4>
                         <p class="text-red-800 font-semibold">Lead Programmer</p>
                         <p class="mt-2 text-stone-700">Yash is the technical architect, building the digital infrastructure that powers our platform.</p>
                     </div>
+                    <div>
+                        <img src="https://placehold.co/400x400/dc2626/ffffff?text=SA" alt="Samya Arora" class="w-32 h-32 rounded-full mx-auto shadow-lg">
+                        <h4 class="mt-6 text-xl font-bold text-black">Samya Arora</h4>
+                        <p class="text-red-800 font-semibold">Lead Intern</p>
+                        <p class="mt-2 text-stone-700">A national-award-winning writer, Samya helps shape the Exchange's narrative and written content.</p>
+                    </div>
                 </div>
 
-                <!-- About Us Description sub-section -->
                 <div class="grid md:grid-cols-2 gap-12 items-start">
-                    <!-- Text Column -->
                     <div>
                         <h2 class="text-3xl md:text-4xl font-bold text-black">About Us</h2>
                         <p class="mt-6 text-lg text-stone-700">
@@ -226,7 +224,6 @@
                             Our goal is to build a community where you can learn, share ideas, and connect with other curious minds.
                         </p>
                     </div>
-                    <!-- Image Column -->
                     <div>
                         <img src="https://placehold.co/800x600/404040/e5e5e5?text=The+Socratic+Exchange+Team" alt="The team behind The Socratic Exchange" class="rounded-lg shadow-lg w-full">
                     </div>
@@ -234,13 +231,11 @@
             </div>
         </section>
 
-        <!-- Course Section -->
         <section id="course" class="py-20 bg-stone-50 border-t border-stone-200">
             <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
                 <div>
                     <h3 class="text-3xl font-bold text-black">Our Educational Mission</h3>
-                    <p class="mt-4 text-stone-700">Our work is grounded in the foundational ideas of great economic and philosophical thinkers, from the moral sentiments of <strong class="font-semibold camel-txt">Adam Smith</strong> to the free-market principles of <strong class="font-semibold camel-txt">Milton Friedman</strong> and the ethical frameworks of <strong class="font-semibold camel-txt">Immanuel Kant</strong>. We bridge theory with practice by learning from modern titans of industry and academia.</p>
-                    <p class="mt-4 text-stone-700">Our flagship business course, now hosted in select public libraries, provides accessible, high-level business education to aspiring entrepreneurs everywhere. For inquiries about our curriculum, please feel free to email us.</p>
+                    <p class="mt-4 text-lg text-stone-700">The Socratic Exchange is a cutting edge incubator and seminar grounded in the foundational ideas of economic and philosophical thinkers. From the moral sentiments of Adam Smith to Malthus’ theory on the limits to economic growth, our seminars aim to bridge nuanced business theories and real-world applications. By engaging students with professors and entrepreneurs from Stanford, Berkeley, USC, and Cal Haas, we drive students to develop their critical thinking skills towards meaningful innovations—all in 6 weeks.</p>
                 </div>
                 <div class="bg-stone-100 p-8 rounded-lg shadow-md">
                     <h4 class="text-lg font-semibold text-black">Course Highlights:</h4>
@@ -262,7 +257,6 @@
             </div>
         </section>
 
-        <!-- Community Section -->
         <section id="community" class="py-20 bg-stone-100">
             <div class="container mx-auto px-6">
                 <div class="bg-red-800 rounded-2xl text-white p-12 text-center shadow-2xl">
@@ -279,7 +273,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-black text-white">
         <div class="container mx-auto px-6 py-12">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -306,12 +299,22 @@
                 </div>
             </div>
             <div class="mt-12 border-t border-stone-800 pt-6 text-center text-stone-500">
-                <p>&copy; 2025 The Socratic Exchange. All Rights Reserved.</p>
+                <p>© 2025 The Socratic Exchange. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
     
-    <!-- JavaScript for Mobile Menu and Interactive Interviews -->
+    <div id="transcript-modal" class="fixed inset-0 bg-black bg-opacity-75 hidden items-center justify-center p-4 z-50">
+        <div class="bg-stone-50 rounded-lg shadow-xl w-full max-w-3xl max-h-[90vh] flex flex-col">
+            <div class="flex justify-between items-center p-4 border-b border-stone-200">
+                <h3 class="text-2xl font-bold text-black">Interview Transcript</h3>
+                <button id="close-modal-button" class="text-stone-500 hover:text-black">×</button>
+            </div>
+            <div id="modal-content" class="p-6 overflow-y-auto">
+                </div>
+        </div>
+    </div>
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Mobile menu toggle
@@ -322,9 +325,7 @@
             });
 
             // Smooth scrolling and active link highlighting
-            const navLinks = document.querySelectorAll('a[href^="#"]');
             const sections = document.querySelectorAll('main section');
-
             function changeActiveLink() {
                 let currentSection = '';
                 sections.forEach(section => {
@@ -359,6 +360,65 @@
             const interviewTitle = document.getElementById('interview-title');
             const interviewDescription = document.getElementById('interview-description');
             const interviewContent = document.getElementById('interview-content');
+            const interviewInterviewers = document.getElementById('interview-interviewers');
+            const interviewQuestionDevelopers = document.getElementById('interview-question-developers');
+
+            // --- FETCH GRANOVETTER TRANSCRIPT ---
+            const granovetterCard = document.querySelector('.interview-card[data-name="Professor Mark Granovetter"]');
+            if (granovetterCard) {
+                fetch('https://raw.githubusercontent.com/rokkc/socraticexchange.github.io/main/transcripts/granovetterTranscript.txt')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.text();
+                    })
+                    .then(text => {
+                        // More robust transcript parser
+                        const lines = text.split('\n');
+                        let paragraphs = [];
+                        let currentSpeaker = null;
+                        let currentDialogue = [];
+
+                        for (const line of lines) {
+                            const trimmed = line.trim();
+                            if (!trimmed) continue;
+
+                            const colonIndex = trimmed.indexOf(':');
+
+                            // Heuristic: A new speaker line has a colon, and the part before it is shorter than a typical sentence.
+                            if (colonIndex > 0 && colonIndex < 35) {
+                                // It's likely a new speaker. Finalize the previous paragraph.
+                                if (currentSpeaker && currentDialogue.length > 0) {
+                                    paragraphs.push({ speaker: currentSpeaker, dialogue: currentDialogue.join(' ') });
+                                }
+                                // And start the new one.
+                                currentSpeaker = trimmed.substring(0, colonIndex);
+                                const dialogue = trimmed.substring(colonIndex + 1).trim();
+                                currentDialogue = dialogue ? [dialogue] : [];
+                            } else {
+                                // It's a continuation of the dialogue for the current speaker (or a line with a colon in the middle).
+                                if (currentSpeaker) {
+                                    currentDialogue.push(trimmed);
+                                }
+                            }
+                        }
+
+                        // Add the last paragraph
+                        if (currentSpeaker && currentDialogue.length > 0) {
+                            paragraphs.push({ speaker: currentSpeaker, dialogue: currentDialogue.join(' ') });
+                        }
+
+                        // Convert to HTML
+                        const formattedHtml = paragraphs.map(p => `<p><strong>${p.speaker}:</strong> ${p.dialogue}</p>`).join('');
+                        
+                        granovetterCard.dataset.transcript = `<div class='prose max-w-none text-stone-700 space-y-4'>${formattedHtml}</div>`;
+                    })
+                    .catch(error => {
+                        console.error('Error fetching transcript:', error);
+                        granovetterCard.dataset.transcript = `<div class='prose max-w-none text-stone-700 space-y-4'><p>Error loading transcript. Please try again later.</p></div>`;
+                    });
+            }
 
             function updateInterviewDetails(card) {
                 interviewCards.forEach(c => c.classList.remove('active-interview'));
@@ -370,6 +430,8 @@
                 interviewTitle.textContent = card.dataset.title;
                 interviewDescription.textContent = card.dataset.description;
                 interviewContent.innerHTML = card.dataset.content;
+                interviewInterviewers.textContent = card.dataset.interviewers;
+                interviewQuestionDevelopers.textContent = card.dataset.questionDevelopers;
             }
 
             interviewCards.forEach(card => {
@@ -379,6 +441,40 @@
             if (interviewCards.length > 0) {
                 updateInterviewDetails(interviewCards[0]);
             }
+
+            // --- MODAL LOGIC ---
+            const transcriptModal = document.getElementById('transcript-modal');
+            const closeModalButton = document.getElementById('close-modal-button');
+            const modalContent = document.getElementById('modal-content');
+
+            function openModal() {
+                transcriptModal.classList.remove('hidden');
+                transcriptModal.classList.add('flex');
+            }
+
+            function closeModal() {
+                transcriptModal.classList.add('hidden');
+                transcriptModal.classList.remove('flex');
+            }
+
+            closeModalButton.addEventListener('click', closeModal);
+
+            transcriptModal.addEventListener('click', function(event) {
+                if (event.target === transcriptModal) {
+                    closeModal();
+                }
+            });
+            
+            // Listen for clicks on the dynamically added 'Read Transcript' button
+            interviewContent.addEventListener('click', function(event) {
+                if (event.target && event.target.id === 'open-transcript-btn') {
+                    const activeCard = document.querySelector('.interview-card.active-interview');
+                    if (activeCard && activeCard.dataset.transcript) {
+                        modalContent.innerHTML = activeCard.dataset.transcript;
+                        openModal();
+                    }
+                }
+            });
         });
     </script>
 
