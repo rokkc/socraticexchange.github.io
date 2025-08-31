@@ -34,10 +34,17 @@
   <header class="bg-stone-50/80 backdrop-blur-md sticky top-0 z-40 border-b border-stone-200">
     <nav class="container mx-auto px-6 py-4">
       <div class="flex items-center justify-between">
-        <a href="#home" class="flex items-center gap-2 flex-shrink-0">
-          <!-- put your PNG at assets/elephant.png -->
-          <img src="assets/elephant.png" alt="The Socratic Exchange elephant logo" class="h-8 w-8">
-          <span class="text-xl md:text-2xl font-bold text-red-800">The Socratic Exchange</span>
+        <a href="#home" class="flex items-center gap-4 flex-shrink-0" aria-label="The Socratic Exchange home">
+          <!-- Bigger, cleanly aligned logo -->
+          <img
+            src="assets/elephant.png"
+            alt="The Socratic Exchange logo"
+            class="h-12 md:h-14 lg:h-16 w-auto object-contain shrink-0"
+          />
+          <!-- Wordmark: all red, sized to sit just under the logo height -->
+          <span class="text-2xl md:text-3xl lg:text-4xl font-bold text-red-800 leading-none tracking-wide">
+            The Socratic Exchange
+          </span>
         </a>
         <div class="hidden lg:flex items-center space-x-8">
           <a href="#speakers" class="nav-link text-stone-700 transition-colors">Guest Speakers</a>
@@ -202,59 +209,61 @@
     <!-- ABOUT -->
     <section id="about" class="py-20">
       <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
+        <div class="text-center mb-12">
           <h2 class="text-3xl md:text-4xl font-bold text-black">About Us</h2>
-          <p class="mt-4 text-lg text-stone-700 max-w-2xl mx-auto">We are a team of passionate entrepreneurs and thinkers dedicated to elevating the discourse in business and economics.</p>
+          <p class="mt-4 text-lg text-stone-700 max-w-3xl mx-auto">
+            We are a team of passionate entrepreneurs and thinkers dedicated to elevating the discourse in business and economics.
+          </p>
         </div>
-
-        <!-- ROW 1: Leo & Josh -->
-        <div class="grid gap-12 md:grid-cols-2 text-center mb-10">
+    
+        <!-- ROW 1: Leo & Josh (closer together, slightly smaller) -->
+        <div class="grid md:grid-cols-2 gap-8 md:gap-10 text-center mb-12 max-w-3xl mx-auto">
           <div>
-            <img src="https://placehold.co/400x400/991b1b/ffffff?text=LC" alt="Leo Cao" class="w-32 h-32 rounded-full mx-auto shadow-lg">
-            <h4 class="mt-6 text-xl font-bold text-black">Leo Cao</h4>
-            <p class="text-red-800 font-semibold">PRESIDENT</p>
-            <p class="mt-2 text-stone-700">Leads strategy and editorial direction for The Socratic Exchange.</p>
+            <img src="https://placehold.co/400x400/991b1b/ffffff?text=LC" alt="Leo Cao" class="w-24 h-24 rounded-full mx-auto shadow-lg">
+            <h4 class="mt-4 text-lg font-bold text-black">Leo Cao</h4>
+            <p class="text-red-800 font-semibold text-sm">PRESIDENT</p>
+            <p class="mt-1 text-stone-700 text-[0.975rem]">Leads strategy and editorial direction for The Socratic Exchange.</p>
           </div>
           <div>
-            <img src="https://placehold.co/400x400/7f1d1d/ffffff?text=JT" alt="Josh Tran" class="w-32 h-32 rounded-full mx-auto shadow-lg">
-            <h4 class="mt-6 text-xl font-bold text-black">Josh Tran</h4>
-            <p class="text-red-800 font-semibold">VICE-PRESIDENT</p>
-            <p class="mt-2 text-stone-700">Oversees partnerships and operations to amplify our conversations.</p>
-          </div>
-        </div>
-
-        <!-- ROW 2: Everyone else -->
-        <div class="grid gap-12 md:grid-cols-3 text-center mb-20">
-          <div>
-            <img src="https://placehold.co/400x400/dc2626/ffffff?text=SA" alt="Samya Arora" class="w-32 h-32 rounded-full mx-auto shadow-lg">
-            <h4 class="mt-6 text-xl font-bold text-black">Samya Arora</h4>
-            <p class="text-red-800 font-semibold">DIRECTOR OF OPERATIONS</p>
-            <p class="mt-2 text-stone-700">Coordinates production and written content.</p>
-          </div>
-          <div>
-            <img src="https://placehold.co/400x400/b91c1c/ffffff?text=YP" alt="Yash Pattekar" class="w-32 h-32 rounded-full mx-auto shadow-lg">
-            <h4 class="mt-6 text-xl font-bold text-black">Yash Pattekar</h4>
-            <p class="text-red-800 font-semibold">LEAD PROGRAMMER</p>
-            <p class="mt-2 text-stone-700">Builds and maintains the platform’s technical backbone.</p>
-          </div>
-          <div>
-            <img src="https://placehold.co/400x400/e11d48/ffffff?text=AP" alt="Ambika Patel" class="w-32 h-32 rounded-full mx-auto shadow-lg">
-            <h4 class="mt-6 text-xl font-bold text-black">Ambika Patel</h4>
-            <p class="text-red-800 font-semibold">LEAD VIDEO EDITOR</p>
-            <p class="mt-2 text-stone-700">Shapes each interview’s visual narrative from raw footage to final cut.</p>
+            <img src="https://placehold.co/400x400/7f1d1d/ffffff?text=JT" alt="Josh Tran" class="w-24 h-24 rounded-full mx-auto shadow-lg">
+            <h4 class="mt-4 text-lg font-bold text-black">Josh Tran</h4>
+            <p class="text-red-800 font-semibold text-sm">VICE-PRESIDENT</p>
+            <p class="mt-1 text-stone-700 text-[0.975rem]">Oversees partnerships and operations to amplify our conversations.</p>
           </div>
         </div>
-
-        <div class="grid md:grid-cols-2 gap-12 items-start">
+    
+        <!-- ROW 2: Everyone else (tighter, centered) -->
+        <div class="grid gap-8 md:gap-10 md:grid-cols-3 text-center mb-16 max-w-5xl mx-auto">
           <div>
-            <h3 class="text-3xl md:text-4xl font-bold text-black">About Us</h3>
-            <p class="mt-6 text-lg text-stone-700">
+            <img src="https://placehold.co/400x400/dc2626/ffffff?text=SA" alt="Samya Arora" class="w-22 h-22 md:w-24 md:h-24 rounded-full mx-auto shadow-lg">
+            <h4 class="mt-4 text-lg font-bold text-black">Samya Arora</h4>
+            <p class="text-red-800 font-semibold text-sm">DIRECTOR OF OPERATIONS</p>
+            <p class="mt-1 text-stone-700 text-[0.975rem]">Coordinates production and written content.</p>
+          </div>
+          <div>
+            <img src="https://placehold.co/400x400/b91c1c/ffffff?text=YP" alt="Yash Pattekar" class="w-22 h-22 md:w-24 md:h-24 rounded-full mx-auto shadow-lg">
+            <h4 class="mt-4 text-lg font-bold text-black">Yash Pattekar</h4>
+            <p class="text-red-800 font-semibold text-sm">LEAD PROGRAMMER</p>
+            <p class="mt-1 text-stone-700 text-[0.975rem]">Builds and maintains the platform’s technical backbone.</p>
+          </div>
+          <div>
+            <img src="https://placehold.co/400x400/e11d48/ffffff?text=AP" alt="Ambika Patel" class="w-22 h-22 md:w-24 md:h-24 rounded-full mx-auto shadow-lg">
+            <h4 class="mt-4 text-lg font-bold text-black">Ambika Patel</h4>
+            <p class="text-red-800 font-semibold text-sm">LEAD VIDEO EDITOR</p>
+            <p class="mt-1 text-stone-700 text-[0.975rem]">Shapes each interview’s visual narrative from raw footage to final cut.</p>
+          </div>
+        </div>
+    
+        <div class="grid md:grid-cols-2 gap-10 items-start max-w-5xl mx-auto">
+          <div>
+            <h3 class="text-2xl md:text-3xl font-bold text-black">About Us</h3>
+            <p class="mt-4 text-lg text-stone-700">
               The Socratic Exchange exists to elevate discourse in business and economics through candid, long-form conversations with scholars and industry leaders.
             </p>
-            <p class="mt-4 text-lg text-stone-700">
+            <p class="mt-3 text-lg text-stone-700">
               We share stories, challenges, and ideas—offering insight that goes beyond headlines.
             </p>
-            <p class="mt-4 text-lg text-stone-700">
+            <p class="mt-3 text-lg text-stone-700">
               Join a community committed to rigor, ethics, and real-world impact.
             </p>
           </div>
@@ -264,6 +273,7 @@
         </div>
       </div>
     </section>
+
 
     <!-- COURSE -->
     <section id="course" class="py-20 bg-stone-50 border-t border-stone-200">
