@@ -405,68 +405,61 @@
         </div>
       </div>
     </section>
-    <!-- ARTICLES (compact feature, tuned columns & image fill) -->
+    <!-- ARTICLES (3 clean columns, fixed layout) -->
     <section id="articles" class="py-12 bg-white border-t border-stone-200">
       <div class="container mx-auto px-6">
-        <div class="grid md:grid-cols-12 gap-8">
-          <!-- LEFT: Feature (col 1) -->
-          <div class="md:col-span-9 grid md:grid-cols-9 gap-8">
-            <div class="md:col-span-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <!-- COLUMN 1: Weak Ties feature -->
+          <article>
+            <img
+              src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/discussing-the-catch-louis-charles-moeller.jpg"
+              alt="Discussing the Catch by Louis Charles Moeller"
+              class="w-full h-56 md:h-60 object-cover rounded"
+            />
+    
+            <p class="mt-4 text-teal-700 font-semibold text-[11px] tracking-tight">Sociology</p>
+    
+            <h3 class="mt-1 text-[20px] leading-snug md:text-[22px] font-bold text-stone-900">
+              The Gentle Power of Weak Ties: Networking Tips from a Sociologist
+            </h3>
+    
+            <p class="mt-2 text-[13px] italic text-stone-600">
+              “You never know which one it’s going to be.” — Mark Granovetter
+            </p>
+    
+            <p class="mt-3 text-[15px] leading-6 text-stone-700">
+              Stanford’s Mark Granovetter explains why your looser connections often open the biggest doors —
+              and how to build them with authenticity in a hyper-digital era.
+            </p>
+    
+            <p class="mt-3 text-[12px] text-stone-600">By <strong>Leo Cao</strong></p>
+          </article>
+    
+          <!-- COLUMN 2: AI article -->
+          <article>
+            <p class="text-teal-700 font-semibold text-[11px] tracking-tight mb-1">Generative AI</p>
+            <h2 class="text-[26px] leading-snug font-bold text-stone-900">
+              Beware the AI Experimentation Trap
+            </h2>
+            <p class="mt-2 text-[15px] leading-6 text-stone-700">
+              Leaders are repeating the mistakes of the digital transformation era by funding scattered pilots
+              that don’t connect to real business value.
+            </p>
+            <p class="mt-2 text-xs text-stone-600">Nathan Furr and Andrew Shipilov</p>
+    
+            <!-- AI image (zoomed in 15%, clipped inside box) -->
+            <div class="mt-4 w-full h-52 md:h-64 lg:h-72 xl:h-80 overflow-hidden rounded">
               <img
-                src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/discussing-the-catch-louis-charles-moeller.jpg"
-                alt="Discussing the Catch by Louis Charles Moeller"
-                class="w-full h-56 md:h-60 object-cover rounded"
+                src="https://www.greece-is.com/wp-content/uploads/2016/07/Plato-and-Aristotle-BIG.jpg"
+                alt="AI abstract illustration"
+                class="w-full h-full object-cover transform scale-[1.15]"
               />
-    
-              <!-- Mini header -->
-              <p class="mt-4 text-teal-700 font-semibold text-[11px] tracking-tight">Sociology</p>
-    
-              <!-- Title -->
-              <a href="#articles"
-                 class="block mt-1 text-[20px] leading-snug md:text-[22px] font-bold text-stone-900 hover:underline">
-                The Gentle Power of Weak Ties: Networking Tips from a Sociologist
-              </a>
-    
-              <!-- Granovetter quote directly beneath title -->
-              <p class="mt-2 text-[13px] italic text-stone-600">
-                “You never know which one it’s going to be.” — Mark Granovetter
-              </p>
-    
-              <!-- Dek -->
-              <p class="mt-3 text-[15px] leading-6 text-stone-700">
-                Stanford’s Mark Granovetter explains why your looser connections often open the biggest doors —
-                and how to build them with authenticity in a hyper-digital era.
-              </p>
-    
-              <!-- Byline at the very bottom of column 1 -->
-              <p class="mt-3 text-[12px] text-stone-600">By <strong>Leo Cao</strong></p>
             </div>
+          </article>
     
-            <!-- RIGHT of col 1: Adjacent story (col 2) -->
-            <article class="md:col-span-5">
-              <p class="text-teal-700 font-semibold text-[11px] tracking-tight mb-1">Generative AI</p>
-              <h2 class="text-[26px] leading-snug font-bold text-stone-900">
-                Beware the AI Experimentation Trap
-              </h2>
-              <p class="mt-2 text-[15px] leading-6 text-stone-700">
-                Leaders are repeating the mistakes of the digital transformation era by funding scattered pilots
-                that don’t connect to real business value.
-              </p>
-              <p class="mt-2 text-xs text-stone-600">Nathan Furr and Andrew Shipilov</p>
-    
-              <div class="mt-4 w-full h-52 md:h-64 lg:h-72 xl:h-80 overflow-hidden rounded">
-                <img
-                  src="https://www.greece-is.com/wp-content/uploads/2016/07/Plato-and-Aristotle-BIG.jpg"
-                  alt="AI abstract illustration"
-                  class="w-full h-full object-cover transform scale-[1.15]"
-                />
-              </div>
-
-              
-
-    
-          <!-- RIGHT RAIL: The Latest (unchanged) -->
-          <aside class="md:col-span-3 space-y-4">
+          <!-- COLUMN 3: The Latest -->
+          <aside class="space-y-4">
             <h3 class="text-[15px] font-bold text-stone-900">The Latest</h3>
     
             <a class="block group" href="#">
@@ -501,11 +494,10 @@
               <a href="#" class="mt-2 inline-flex items-center font-semibold text-stone-900 underline underline-offset-2">Sign Up →</a>
             </div>
           </aside>
+    
         </div>
       </div>
     </section>
-
-
 
     <!-- ARTICLE VIEWER (New-Yorker-style page) -->
     <section id="article-view" class="py-12 md:py-16 hidden">
