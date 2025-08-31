@@ -4,60 +4,93 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Socratic Exchange</title>
+
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <!-- EB Garamond for body; Cormorant Garamond (lighter) for the stacked wordmark -->
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
   <style>
+    :root{
+      --brand-red:#991b1b;
+      --camel:#c19a6b;
+    }
     body{font-family:'EB Garamond',serif;}
-    .nav-link.active{color:#991b1b;font-weight:600;}
-    .interview-card.active-interview{background-color:#fee2e2;border-left-color:#991b1b;}
     .prose{font-family:'EB Garamond',serif;}
-    .camel-txt{color:#c19a6b;}
-    .camel-bg{background:#c19a6b;}
-    .nav-link:hover{color:#c19a6b;}
+    .nav-link.active{color:var(--brand-red);font-weight:600;}
+    .nav-link:hover{color:var(--camel);}
+    .interview-card.active-interview{background:#fee2e2;border-left-color:var(--brand-red);}
+    .camel-txt{color:var(--camel);}
+    .camel-bg{background:var(--camel);}
     #close-modal-button{font-size:2rem;line-height:1}
-    /* New Yorker-ish article styling */
-    .ny-article{max-width:70ch}
+
+    /* Wordmark (thin & stacked) */
+    .wordmark{
+      font-family:'Cormorant Garamond',serif;
+      font-weight:300; /* thin/sexy */
+      letter-spacing:.08em;
+    }
+
+    /* New-Yorker style article page */
+    .ny-article{
+      max-width:70ch;
+    }
     .ny-article h1{letter-spacing:.2px}
     .ny-dropcap:first-letter{
-      float:left;font-size:4.25rem;line-height:.8;padding:.2rem .5rem .1rem 0;font-weight:700;color:#1f2937;
+      float:left;
+      font-size:4.25rem;
+      line-height:.8;
+      padding:.2rem .5rem .1rem 0;
+      font-weight:700;
+      color:#1f2937;
     }
     .ny-kicker{letter-spacing:.08em;text-transform:uppercase}
     .ny-rule{height:1px;background:rgba(0,0,0,.1)}
     .ny-byline{font-style:italic}
-    .link-like{color:#991b1b;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
+    .link-like{color:var(--brand-red); text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:2px}
+
+    /* HBR-like Articles hub */
+    .article-card:hover .article-title{ text-decoration:underline; }
+    .shadow-soft{ box-shadow:0 10px 25px rgba(0,0,0,.06); }
   </style>
 </head>
 <body class="bg-stone-100 text-gray-900">
 
+  <!-- HEADER -->
   <header class="bg-stone-50/80 backdrop-blur-md sticky top-0 z-40 border-b border-stone-200">
     <nav class="container mx-auto px-6 py-4">
       <div class="flex items-center justify-between">
+        <!-- Brand: logo + stacked thin wordmark (to the right of the logo) -->
         <a href="#home" class="flex items-center gap-4 flex-shrink-0" aria-label="The Socratic Exchange home">
-          <!-- Bigger, cleanly aligned logo -->
-          <img
-            src="assets/elephant.png"
-            alt="The Socratic Exchange logo"
-            class="h-12 md:h-14 lg:h-16 w-auto object-contain shrink-0"
-          />
-          <!-- Wordmark: all red, sized to sit just under the logo height -->
-          <span class="text-2xl md:text-3xl lg:text-4xl font-bold text-red-800 leading-none tracking-wide">
-            The Socratic Exchange
-          </span>
+          <img src="assets/elephant.png" alt="The Socratic Exchange logo"
+               class="h-14 md:h-16 w-auto object-contain shrink-0"/>
+          <div class="leading-[0.95] wordmark text-red-800">
+            <span class="block text-2xl md:text-3xl lg:text-4xl uppercase tracking-[0.1em]">Socratic</span>
+            <span class="block text-2xl md:text-3xl lg:text-4xl uppercase tracking-[0.1em]">Exchange</span>
+          </div>
         </a>
+
         <div class="hidden lg:flex items-center space-x-8">
           <a href="#speakers" class="nav-link text-stone-700 transition-colors">Guest Speakers</a>
           <a href="#about" class="nav-link text-stone-700 transition-colors">About Us</a>
           <a href="#course" class="nav-link text-stone-700 transition-colors">Business Course</a>
           <a href="#articles" class="nav-link text-stone-700 transition-colors">Articles</a>
           <a href="#community" class="nav-link text-stone-700 transition-colors">Community</a>
-          <a href="mailto:contact@socraticexchange.com" class="bg-red-800 text-white font-semibold px-5 py-2 rounded-lg hover:bg-red-900 transition-transform transform hover:scale-105">Contact Us</a>
+          <a href="mailto:contact@socraticexchange.com"
+             class="bg-red-800 text-white font-semibold px-5 py-2 rounded-lg hover:bg-red-900 transition-transform transform hover:scale-105">
+            Contact Us
+          </a>
         </div>
+
         <button id="mobile-menu-button" class="lg:hidden" aria-label="Open menu">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
         </button>
       </div>
+
       <div id="mobile-menu" class="hidden lg:hidden mt-4 space-y-2">
         <a href="#speakers" class="block nav-link text-stone-700 transition-colors py-2">Guest Speakers</a>
         <a href="#about" class="block nav-link text-stone-700 transition-colors py-2">About Us</a>
@@ -84,7 +117,7 @@
       </div>
     </section>
 
-    <!-- SPEAKERS (unchanged content from your version) -->
+    <!-- SPEAKERS -->
     <section id="speakers" class="py-20 bg-stone-50">
       <div class="container mx-auto px-6">
         <div class="text-center mb-16">
@@ -97,66 +130,32 @@
           <div class="lg:col-span-1">
             <h3 class="text-xl font-semibold text-gray-900 mb-4 px-4">Interview Library</h3>
             <div class="space-y-2">
-              <!-- GRANOVETTER -->
-              <div class="interview-card cursor-pointer p-4 rounded-lg border-l-4 border-transparent transition-colors hover:bg-stone-200"
-                   data-name="Professor Mark Granovetter"
-                   data-title="Professor of Sociology, Stanford University"
-                   data-description="Mark Granovetter is a world-renowned Stanford sociologist best known for his groundbreaking theory, The Strength of Weak Ties, which transformed how we understand social networks. Read the article here to explore the sociology of economic life and the evolving role of connections in the digital age."
-                   data-image="https://humsci.stanford.edu/sites/default/files/styles/embed_350w_xlarge_2x/public/Mark%20Granovetter%20Photo%20courtesy%20of%20BBVA%20Foundation_0.webp?itok=AIio7wDZ"
-                   data-article-anchor="#granovetter-article"
-                   data-content="<div class='space-y-3'><button id='open-transcript-btn' class='w-full text-center font-semibold bg-gray-200 text-gray-800 p-3 rounded-lg hover:bg-gray-300'>Read Transcript</button><a href='#granovetter-article' class='block text-center font-semibold text-red-800 underline underline-offset-4'>Read the Article</a></div>"
-                   data-interviewers="Joshua and Leo"
-                   data-question-developers="Club Members"
-                   data-transcript="">
-                <p class="font-bold text-gray-900">Professor Mark Granovetter</p>
-                <p class="text-sm text-stone-700">Stanford University</p>
-                <p class="text-sm font-semibold camel-txt mt-1">Transcript Available</p>
-              </div>
 
-              <!-- ESCAPA -->
+              <!-- OLIVER HART -->
               <div class="interview-card cursor-pointer p-4 rounded-lg border-l-4 border-transparent transition-colors hover:bg-stone-200"
-                   data-name="Carlos Escapa"
-                   data-title="Tech CEO; Former Amazon Leader"
-                   data-description="Carlos Escapa is a tech CEO and Amazon leader known for internationalizing FAANG and founding multiple AI startups. Watch the interview to explore leadership, innovation, and ethical strategy in today’s fast-moving business landscape."
-                   data-image="https://exec-ed.berkeley.edu/wp-content/uploads/2025/05/Carlos-Escapa.png"
+                   data-name="Sir Oliver Hart"
+                   data-title="Nobel Prize Economist — Harvard University"
+                   data-description="British-American economist and 2016 Nobel laureate (with Holmström) for contributions to contract theory. Currently the Lewis P. and Linda L. Geyser University Professor at Harvard."
+                   data-image="https://news.harvard.edu/wp-content/uploads/2016/10/101016_hart_podium.jpg"
                    data-videourl=""
-                   data-content="<div class='prose max-w-none text-stone-700'><p><strong>Video:</strong> Coming soon. Check back shortly.</p></div>"
-                   data-interviewers="To Be Determined"
-                   data-question-developers="Club Members"
-                   data-transcript="">
-                <p class="font-bold text-gray-900">Carlos Escapa</p>
-                <p class="text-sm text-stone-700">UC Berkeley / Industry</p>
+                   data-interviewers="Leo Cao, Josh Tran"
+                   data-content="<div class='prose max-w-none text-stone-700'><p><strong>Status:</strong> Conversation planned for <em>November</em>. Subscribe for updates.</p></div>">
+                <p class="font-bold text-gray-900">Sir Oliver Hart</p>
+                <p class="text-sm text-stone-700">Nobel Prize Economist</p>
                 <p class="text-sm font-semibold camel-txt mt-1">Coming Soon</p>
               </div>
 
-              <!-- DON MOORE -->
+              <!-- MICHAEL SPENCE -->
               <div class="interview-card cursor-pointer p-4 rounded-lg border-l-4 border-transparent transition-colors hover:bg-stone-200"
-                   data-name="Professor Don Moore"
-                   data-title="Professor, Management of Organizations, UC Berkeley Haas"
-                   data-description="Don Moore is a UC Berkeley professor and former Associate Dean at the Haas School of Business, best known for his research on overconfidence, decision-making, and negotiation. Watch the interview to explore how psychology shapes strategy, leadership, and rational thinking in business."
-                   data-image="https://placehold.co/400x400/4b5563/ffffff?text=Prof.+Moore"
+                   data-name="Michael Spence"
+                   data-title="Nobel Prize Economist — NYU Stern / Stanford GSB (Emeritus)"
+                   data-description="Canadian-American economist and 2001 Nobel laureate (with Akerlof & Stiglitz) for analyses of markets with asymmetric information."
+                   data-image="https://news.stanford.edu/__data/assets/image/0031/82849/Zz980407_spence.jpeg"
                    data-videourl=""
-                   data-content="<div class='prose max-w-none text-stone-700'><p><strong>Video:</strong> Coming soon. Check back shortly.</p></div>"
-                   data-interviewers="To Be Determined"
-                   data-question-developers="Club Members"
-                   data-transcript="">
-                <p class="font-bold text-gray-900">Professor Don Moore</p>
-                <p class="text-sm text-stone-700">UC Berkeley Haas</p>
-                <p class="text-sm font-semibold camel-txt mt-1">Coming Soon</p>
-              </div>
-
-              <!-- PAUL ADLER -->
-              <div class="interview-card cursor-pointer p-4 rounded-lg border-l-4 border-transparent transition-colors hover:bg-stone-200"
-                   data-name="Professor Paul Adler"
-                   data-title="Professor of Management & Organization, USC Marshall"
-                   data-description="Paul Adler is a professor at the USC Marshall School of Business whose work explores the intersection of ethics, organizational design, and capitalism. A conversation is planned for August. Join the newsletter for updates and to explore how business systems can be reimagined for purpose, equity, and long-term value."
-                   data-image="https://placehold.co/400x400/9ca3af/ffffff?text=Prof.+Adler"
-                   data-content="<div class='prose max-w-none text-stone-700'><p>Conversation planned for August. Subscribe for updates.</p></div>"
-                   data-interviewers="To Be Determined"
-                   data-question-developers="Club Members"
-                   data-transcript="">
-                <p class="font-bold text-gray-900">Professor Paul Adler</p>
-                <p class="text-sm text-stone-700">USC Marshall</p>
+                   data-interviewers="Leo Cao, Josh Tran"
+                   data-content="<div class='prose max-w-none text-stone-700'><p><strong>Status:</strong> Conversation planned for <em>September</em>. Stay tuned.</p></div>">
+                <p class="font-bold text-gray-900">Michael Spence</p>
+                <p class="text-sm text-stone-700">Nobel Prize Economist</p>
                 <p class="text-sm font-semibold camel-txt mt-1">Coming Soon</p>
               </div>
 
@@ -164,16 +163,88 @@
               <div class="interview-card cursor-pointer p-4 rounded-lg border-l-4 border-transparent transition-colors hover:bg-stone-200"
                    data-name="Skye Perryman"
                    data-title="CEO, Democracy Forward"
-                   data-description="One of Time’s 100 Most Influential People, Skye Perryman is the CEO of Democracy Forward, a legal business that led high-profile cases against the Trump administration to protect civil rights and democratic institutions. A conversation is planned for August. Join the newsletter for updates and to explore how law, leadership, and activism can shape the future of business and democracy as a whole."
+                   data-description="TIME100 honoree leading impact litigation that safeguards democratic institutions and civil rights."
                    data-image="https://media.licdn.com/dms/image/v2/D5622AQGtG2jkX8l48g/feedshare-shrink_800/feedshare-shrink_800/0/1714769580931?e=2147483647&v=beta&t=5hqTP98A3vvxABfwXuYEjDE3wYmIRwAxeRPOoCvY0gs"
-                   data-content="<div class='prose max-w-none text-stone-700'><p>Conversation planned for August. Subscribe for updates.</p></div>"
-                   data-interviewers="To Be Determined"
-                   data-question-developers="Club Members"
-                   data-transcript="">
+                   data-videourl=""
+                   data-interviewers="Leo Cao, Josh Tran"
+                   data-content="<div class='prose max-w-none text-stone-700'><p>Conversation planned. Subscribe for updates.</p></div>">
                 <p class="font-bold text-gray-900">Skye Perryman</p>
-                <p class="text-sm text-stone-700">Democracy Forward</p>
+                <p class="text-sm text-stone-700">TIME100 Honoree</p>
                 <p class="text-sm font-semibold camel-txt mt-1">Coming Soon</p>
               </div>
+
+              <!-- GRANOVETTER -->
+              <div class="interview-card cursor-pointer p-4 rounded-lg border-l-4 border-transparent transition-colors hover:bg-stone-200"
+                   data-name="Professor Mark Granovetter"
+                   data-title="Professor of Sociology, Stanford University"
+                   data-description="World-renowned sociologist behind “The Strength of Weak Ties.” Read our New-Yorker-style article from the conversation."
+                   data-image="https://humsci.stanford.edu/sites/default/files/styles/embed_350w_xlarge_2x/public/Mark%20Granovetter%20Photo%20courtesy%20of%20BBVA%20Foundation_0.webp?itok=AIio7wDZ"
+                   data-interviewers="Leo Cao, Josh Tran"
+                   data-content="<div class='space-y-3'>
+                     <button id='open-transcript-btn' class='w-full text-center font-semibold bg-gray-200 text-gray-800 p-3 rounded-lg hover:bg-gray-300'>Read Transcript</button>
+                     <a href='#articles' class='block text-center font-semibold text-red-800 underline underline-offset-4'>Read the Article</a>
+                   </div>">
+                <p class="font-bold text-gray-900">Professor Mark Granovetter</p>
+                <p class="text-sm text-stone-700">Stanford University</p>
+                <p class="text-sm font-semibold camel-txt mt-1">Transcript Available</p>
+              </div>
+
+              <!-- DON MOORE (interview done; video live) -->
+              <div class="interview-card cursor-pointer p-4 rounded-lg border-l-4 border-transparent transition-colors hover:bg-stone-200"
+                   data-name="Professor Don Moore"
+                   data-title="Professor, Management of Organizations — UC Berkeley Haas"
+                   data-description="A lively conversation on overconfidence, decision-making, and negotiation — and how they shape strategy and leadership."
+                   data-image="https://haas.berkeley.edu/wp-content/uploads/Professor-Don-Moore_Berkeley-Haas-600x600.jpg"
+                   data-videourl="https://youtu.be/gJPF1zvok2I"
+                   data-interviewers="Leo Cao, Josh Tran"
+                   data-content="<div class='prose max-w-none text-stone-700'><p>Watch the full interview or skim highlights on practical judgment.</p></div>">
+                <p class="font-bold text-gray-900">Professor Don Moore</p>
+                <p class="text-sm text-stone-700">UC Berkeley Haas</p>
+                <p class="text-sm font-semibold text-green-700 mt-1">Watch Now</p>
+              </div>
+
+              <!-- PAUL ADLER (interview done; video date) -->
+              <div class="interview-card cursor-pointer p-4 rounded-lg border-l-4 border-transparent transition-colors hover:bg-stone-200"
+                   data-name="Professor Paul Adler"
+                   data-title="Professor of Management & Organization — USC Marshall"
+                   data-description="An engaging discussion on ethics, organizational design, and re-imagining capitalism for long-term value."
+                   data-image="https://uscmarshallweb.s3-us-west-2.amazonaws.com/assets/uploads/s1/per_por/paul_adler_hcahmuwup6.jpg"
+                   data-videourl=""
+                   data-interviewers="Leo Cao, Josh Tran, Samya Arora"
+                   data-content="<div class='prose max-w-none text-stone-700'><p>Interview recorded; video publishes <strong>9/12/2025</strong>. Join the newsletter for the drop.</p></div>">
+                <p class="font-bold text-gray-900">Professor Paul Adler</p>
+                <p class="text-sm text-stone-700">USC Marshall</p>
+                <p class="text-sm font-semibold camel-txt mt-1">Video 9/12/2025</p>
+              </div>
+
+              <!-- CARLOS ESCAPA (interview done; video live) -->
+              <div class="interview-card cursor-pointer p-4 rounded-lg border-l-4 border-transparent transition-colors hover:bg-stone-200"
+                   data-name="Carlos Escapa"
+                   data-title="Tech CEO; Former Amazon Leader"
+                   data-description="A fast-paced conversation on internationalizing FAANG, founding AI startups, and ethical strategy in practice."
+                   data-image="https://exec-ed.berkeley.edu/wp-content/uploads/2025/05/Carlos-Escapa.png"
+                   data-videourl="https://www.youtube.com/watch?v=dL7SZY4dyhs"
+                   data-interviewers="Leo Cao, Josh Tran"
+                   data-content="<div class='prose max-w-none text-stone-700'><p>Watch the full interview on leadership, innovation, and scaling responsibly.</p></div>">
+                <p class="font-bold text-gray-900">Carlos Escapa</p>
+                <p class="text-sm text-stone-700">UC Berkeley / Industry</p>
+                <p class="text-sm font-semibold text-green-700 mt-1">Watch Now</p>
+              </div>
+
+              <!-- EUGENE CARUSO -->
+              <div class="interview-card cursor-pointer p-4 rounded-lg border-l-4 border-transparent transition-colors hover:bg-stone-200"
+                   data-name="Professor Eugene M. Caruso"
+                   data-title="Professor of Management & Organizations — UCLA Anderson"
+                   data-description="Behavioral decision-making scholar; co-director of the Inclusive Ethics Initiative. “Think like behavioral scientists, rigorously learn from data.”"
+                   data-image="https://www.anderson.ucla.edu/sites/default/files/styles/biography_card/public/image/2024-11/eugene-caruso-2024-square.jpg?itok=6zlhkEN6"
+                   data-videourl=""
+                   data-interviewers="Samya Arora"
+                   data-content="<div class='prose max-w-none text-stone-700'><p>Conversation planned. Focus: ethics, bias, and smarter organizational decisions.</p></div>">
+                <p class="font-bold text-gray-900">Professor Eugene M. Caruso</p>
+                <p class="text-sm text-stone-700">UCLA Anderson</p>
+                <p class="text-sm font-semibold camel-txt mt-1">Coming Soon</p>
+              </div>
+
             </div>
           </div>
 
@@ -191,11 +262,13 @@
 
                   <div class="mt-4 pt-4 border-t border-stone-200">
                     <h4 class="text-md font-semibold text-black">Meeting Details</h4>
-                    <p class="mt-2 text-sm text-stone-700"><strong>Interviewers:</strong> <span id="interview-interviewers"></span></p>
-                    <p class="mt-1 text-sm text-stone-700"><strong>Questions Developed By:</strong> <span id="interview-question-developers"></span></p>
+                    <p class="mt-2 text-sm text-stone-700">
+                      <strong>Interviewers:</strong> <span id="interview-interviewers"></span>
+                    </p>
                   </div>
                 </div>
               </div>
+
               <div class="mt-8 pt-6 border-t border-stone-200">
                 <h4 class="text-xl font-bold text-black mb-4">Interview Materials</h4>
                 <div id="interview-content" class="bg-stone-50 p-6 rounded-lg shadow-inner min-h-[80px]"></div>
@@ -206,7 +279,7 @@
       </div>
     </section>
 
-    <!-- ABOUT -->
+    <!-- ABOUT (tighter layout you liked) -->
     <section id="about" class="py-20">
       <div class="container mx-auto px-6">
         <div class="text-center mb-12">
@@ -215,8 +288,8 @@
             We are a team of passionate entrepreneurs and thinkers dedicated to elevating the discourse in business and economics.
           </p>
         </div>
-    
-        <!-- ROW 1: Leo & Josh (closer together, slightly smaller) -->
+
+        <!-- Row 1 -->
         <div class="grid md:grid-cols-2 gap-8 md:gap-10 text-center mb-12 max-w-3xl mx-auto">
           <div>
             <img src="https://placehold.co/400x400/991b1b/ffffff?text=LC" alt="Leo Cao" class="w-24 h-24 rounded-full mx-auto shadow-lg">
@@ -231,8 +304,8 @@
             <p class="mt-1 text-stone-700 text-[0.975rem]">Oversees partnerships and operations to amplify our conversations.</p>
           </div>
         </div>
-    
-        <!-- ROW 2: Everyone else (tighter, centered) -->
+
+        <!-- Row 2 -->
         <div class="grid gap-8 md:gap-10 md:grid-cols-3 text-center mb-16 max-w-5xl mx-auto">
           <div>
             <img src="https://placehold.co/400x400/dc2626/ffffff?text=SA" alt="Samya Arora" class="w-22 h-22 md:w-24 md:h-24 rounded-full mx-auto shadow-lg">
@@ -253,7 +326,7 @@
             <p class="mt-1 text-stone-700 text-[0.975rem]">Shapes each interview’s visual narrative from raw footage to final cut.</p>
           </div>
         </div>
-    
+
         <div class="grid md:grid-cols-2 gap-10 items-start max-w-5xl mx-auto">
           <div>
             <h3 class="text-2xl md:text-3xl font-bold text-black">About Us</h3>
@@ -274,7 +347,6 @@
       </div>
     </section>
 
-
     <!-- COURSE -->
     <section id="course" class="py-20 bg-stone-50 border-t border-stone-200">
       <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
@@ -286,15 +358,15 @@
           <h4 class="text-lg font-semibold text-black">Course Highlights:</h4>
           <ul class="mt-4 space-y-3 text-stone-700">
             <li class="flex items-start">
-              <svg class="w-5 h-5 mr-3 text-red-700 flex-shrink-0 mt-1" fill="#c19a6b" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              <svg class="w-5 h-5 mr-3 flex-shrink-0 mt-1" fill="#c19a6b" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
               <span><strong class="text-gray-900">Core Economic Principles:</strong> From macro to micro.</span>
             </li>
             <li class="flex items-start">
-              <svg class="w-5 h-5 mr-3 text-red-700 flex-shrink-0 mt-1" fill="#c19a6b" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              <svg class="w-5 h-5 mr-3 flex-shrink-0 mt-1" fill="#c19a6b" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
               <span><strong class="text-gray-900">Entrepreneurial Strategy:</strong> Market analysis and validation.</span>
             </li>
             <li class="flex items-start">
-              <svg class="w-5 h-5 mr-3 text-red-700 flex-shrink-0 mt-1" fill="#c19a6b" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              <svg class="w-5 h-5 mr-3 flex-shrink-0 mt-1" fill="#c19a6b" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
               <span><strong class="text-gray-900">Leadership & Ethics:</strong> Building sustainable and responsible ventures.</span>
             </li>
           </ul>
@@ -302,27 +374,64 @@
       </div>
     </section>
 
-    <!-- ARTICLES -->
+    <!-- ARTICLES HUB (HBR-like) -->
     <section id="articles" class="py-20 bg-stone-50 border-t border-stone-200">
       <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
+        <div class="flex items-end justify-between mb-8">
           <h2 class="text-3xl md:text-4xl font-bold text-black">Articles</h2>
+          <a href="#articles" class="text-sm font-semibold text-red-800 hover:text-red-900">View all</a>
         </div>
 
-        <article id="granovetter-article" class="ny-article mx-auto bg-stone-50">
-          <p class="ny-kicker text-sm text-stone-600">Social Networks & Economic Life</p>
-          <h1 class="text-3xl md:text-4xl font-bold text-black">The Gentle Power of Weak Ties: Lessons from a Conversation with Mark Granovetter</h1>
-          <p class="ny-byline mt-2 text-stone-700">By <strong>Leo Cao</strong></p>
-          <div class="my-6 ny-rule"></div>
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Big hero card (left) -->
+          <article class="md:col-span-2 bg-white rounded-xl overflow-hidden shadow-soft article-card cursor-pointer"
+                   data-article-id="granovetter">
+            <img src="https://placehold.co/840x520/fef3c7/7c2d12?text=Weak+Ties" alt="Weak ties hero" class="w-full h-64 md:h-[22rem] object-cover">
+            <div class="p-6 md:p-8">
+              <p class="text-xs uppercase tracking-widest text-stone-600 mb-2">Social Networks &amp; Economic Life</p>
+              <h3 class="article-title text-2xl md:text-3xl font-bold text-black">
+                The Gentle Power of Weak Ties — Lessons from a Conversation with Mark Granovetter
+              </h3>
+              <p class="mt-3 text-stone-700">Why your looser connections often change your life — and what that means for careers, startups, and community.</p>
+              <p class="mt-4 text-stone-500 text-sm">By <strong>Leo Cao</strong></p>
+            </div>
+          </article>
 
-          <p class="text-xl text-stone-800 italic">“You never know which one it’s going to be.” — Mark Granovetter, on the weak tie that might change your life</p>
-
-          <div class="prose prose-stone max-w-none leading-8 text-[1.075rem] md:text-[1.125rem]">
-            <p class="ny-dropcap">In 1973, Stanford sociologist Mark Granovetter published a paper with a title that sounds deceptively simple: <em>The Strength of Weak Ties</em>...</p>
-            <!-- keep the rest of your article body as in your last version -->
-            <p>This July, we sat down with Dr. Granovetter — ...</p>
-            <!-- (omitted for brevity; your existing article content remains here unchanged) -->
+          <!-- Right column list -->
+          <div class="space-y-6">
+            <article class="bg-white rounded-xl p-5 shadow-soft article-card cursor-pointer" data-article-id="ethics">
+              <p class="text-[11px] uppercase tracking-widest text-stone-600">Leadership &amp; Ethics</p>
+              <h4 class="article-title text-xl font-bold text-black">Building Organizations People Trust</h4>
+              <p class="mt-2 text-stone-700">What scholars and founders taught us about purpose, fairness, and long-term value.</p>
+            </article>
+            <article class="bg-white rounded-xl p-5 shadow-soft article-card cursor-pointer" data-article-id="decision">
+              <p class="text-[11px] uppercase tracking-widest text-stone-600">Decision Science</p>
+              <h4 class="article-title text-xl font-bold text-black">Overconfidence, Calibrated</h4>
+              <p class="mt-2 text-stone-700">Notes from our conversation with Don Moore on judgment, forecasting, and better bets.</p>
+            </article>
+            <article class="bg-white rounded-xl p-5 shadow-soft article-card cursor-pointer" data-article-id="design">
+              <p class="text-[11px] uppercase tracking-widest text-stone-600">Organization Design</p>
+              <h4 class="article-title text-xl font-bold text-black">Rethinking the Firm</h4>
+              <p class="mt-2 text-stone-700">Paul Adler on systems that align ethics with performance.</p>
+            </article>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARTICLE VIEWER (New-Yorker-style page) -->
+    <section id="article-view" class="py-12 md:py-16 hidden">
+      <div class="container mx-auto px-6">
+        <button id="article-back" class="mb-8 inline-flex items-center text-sm font-semibold text-red-800 hover:text-red-900">
+          ← Back to Articles
+        </button>
+
+        <article class="ny-article mx-auto bg-stone-50 p-0">
+          <p id="av-kicker" class="ny-kicker text-sm text-stone-600"></p>
+          <h1 id="av-title" class="text-3xl md:text-4xl font-bold text-black"></h1>
+          <p id="av-byline" class="ny-byline mt-2 text-stone-700"></p>
+          <div class="my-6 ny-rule"></div>
+          <div id="av-body" class="prose prose-stone max-w-none leading-8 text-[1.075rem] md:text-[1.125rem]"></div>
         </article>
       </div>
     </section>
@@ -342,6 +451,7 @@
     </section>
   </main>
 
+  <!-- FOOTER -->
   <footer class="bg-black text-white">
     <div class="container mx-auto px-6 py-12">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -387,12 +497,12 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Mobile menu toggle
+      /* Mobile menu */
       const mobileMenuButton = document.getElementById('mobile-menu-button');
       const mobileMenu = document.getElementById('mobile-menu');
       mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
 
-      // Smooth scrolling + active link highlighting
+      /* Active nav link */
       const sections = document.querySelectorAll('main section');
       function changeActiveLink() {
         let currentSection = '';
@@ -409,10 +519,10 @@
       window.addEventListener('scroll', changeActiveLink);
       changeActiveLink();
 
-      // Close mobile menu on link click
+      /* Close mobile menu on click */
       document.querySelectorAll('#mobile-menu a').forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
 
-      // INTERVIEW SELECTION LOGIC
+      /* INTERVIEW SELECTION */
       const interviewCards = document.querySelectorAll('.interview-card');
       const interviewImage = document.getElementById('interview-image');
       const interviewName = document.getElementById('interview-name');
@@ -420,36 +530,36 @@
       const interviewDescription = document.getElementById('interview-description');
       const interviewContent = document.getElementById('interview-content');
       const interviewInterviewers = document.getElementById('interview-interviewers');
-      const interviewQuestionDevelopers = document.getElementById('interview-question-developers');
 
       function updateInterviewDetails(card) {
         interviewCards.forEach(c => c.classList.remove('active-interview'));
         card.classList.add('active-interview');
-        interviewImage.src = card.dataset.image;
-        interviewImage.alt = card.dataset.name;
-        interviewName.textContent = card.dataset.name;
-        interviewTitle.textContent = card.dataset.title;
-        interviewDescription.textContent = card.dataset.description;
+
+        interviewImage.src = card.dataset.image || '';
+        interviewImage.alt = card.dataset.name || '';
+        interviewName.textContent = card.dataset.name || '';
+        interviewTitle.textContent = card.dataset.title || '';
+        interviewDescription.textContent = card.dataset.description || '';
         interviewContent.innerHTML = card.dataset.content || '';
         interviewInterviewers.textContent = card.dataset.interviewers || '';
-        interviewQuestionDevelopers.textContent = card.dataset.questionDevelopers || '';
 
-        if (card.dataset.videourl) {
-          const url = card.dataset.videourl.trim();
-          if (url.length > 0) {
-            const btn = document.createElement('a');
-            btn.href = url; btn.target = "_blank"; btn.rel = "noopener noreferrer";
-            btn.className = "inline-block mt-3 bg-red-800 text-white px-4 py-2 rounded-lg hover:bg-red-900 font-semibold";
-            btn.textContent = "Watch Interview";
-            interviewContent.appendChild(btn);
-          }
+        /* Add a Watch button if video URL present */
+        const url = (card.dataset.videourl || '').trim();
+        if (url.length > 0) {
+          const btn = document.createElement('a');
+          btn.href = url;
+          btn.target = "_blank";
+          btn.rel = "noopener noreferrer";
+          btn.className = "inline-block mt-3 bg-red-800 text-white px-4 py-2 rounded-lg hover:bg-red-900 font-semibold";
+          btn.textContent = "Watch Interview";
+          interviewContent.appendChild(btn);
         }
       }
 
       interviewCards.forEach(card => card.addEventListener('click', () => updateInterviewDetails(card)));
-      if (interviewCards.length > 0) updateInterviewDetails(interviewCards[0]);
+      if (interviewCards.length > 0) updateInterviewDetails(interviewCards[0]); // default to first (Oliver Hart)
 
-      // GRANOVETTER TRANSCRIPT (Google Doc export -> txt)
+      /* GRANOVETTER TRANSCRIPT (Google Doc export -> txt) */
       const granovetterCard = document.querySelector('.interview-card[data-name="Professor Mark Granovetter"]');
       if (granovetterCard) {
         const gdocId = "1RfePI1_6hau7ZCXRTGebBvfjY-82wtfcVSWiSgXsW7g";
@@ -482,17 +592,15 @@
           });
       }
 
-      // MODAL
+      /* Transcript modal */
       const transcriptModal = document.getElementById('transcript-modal');
       const closeModalButton = document.getElementById('close-modal-button');
       const modalContent = document.getElementById('modal-content');
-
       function openModal(){ transcriptModal.classList.remove('hidden'); transcriptModal.classList.add('flex'); closeModalButton.focus(); }
       function closeModal(){ transcriptModal.classList.add('hidden'); transcriptModal.classList.remove('flex'); }
       closeModalButton.addEventListener('click', closeModal);
       transcriptModal.addEventListener('click', (e) => { if (e.target === transcriptModal) closeModal(); });
       document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
-
       interviewContent.addEventListener('click', function(event) {
         if (event.target && event.target.id === 'open-transcript-btn') {
           const activeCard = document.querySelector('.interview-card.active-interview');
@@ -501,6 +609,104 @@
             openModal();
           }
         }
+      });
+
+      /* ARTICLES: HBR-like hub -> New-Yorker reader */
+      const articleData = {
+        granovetter: {
+          kicker: 'Social Networks & Economic Life',
+          title: 'The Gentle Power of Weak Ties: Lessons from a Conversation with Mark Granovetter',
+          byline: 'By <strong>Leo Cao</strong>',
+          body: `
+            <p class="ny-dropcap">
+              In 1973, Stanford sociologist Mark Granovetter published a paper with a title that sounds deceptively simple:
+              <em>The Strength of Weak Ties</em>. Fifty years and tens of thousands of citations later, the idea still reframes how we find jobs, launch ideas, and move through the world.
+            </p>
+            <p>
+              Weak ties—acquaintances who live in other circles—often bridge us to opportunities our closest friends can’t see.
+              In our conversation, Granovetter told us those ties are more urgent in the age of social platforms, not less.
+            </p>
+            <h3 class="font-bold text-black mt-10">Be Human First</h3>
+            <p>
+              “I don’t think I ever tried to <em>network</em>,” he said. “Find people you actually connect with.” It’s deceptively
+              simple advice that cuts through our transactional era.
+            </p>
+            <h3 class="font-bold text-black mt-10">AI, Trust, and the Social Fabric</h3>
+            <p>
+              Algorithms intermediate more of our choices. What does that do to trust? The answer isn’t to reject technology,
+              but to stay anchored in relationships—those weak ties that become strong paths.
+            </p>
+          `
+        },
+        ethics: {
+          kicker: 'Leadership & Ethics',
+          title: 'Building Organizations People Trust',
+          byline: 'By <strong>The Socratic Exchange</strong>',
+          body: `
+            <p class="ny-dropcap">
+              Trust is an operating system. When it runs well, organizations move faster with fewer meetings and less politics.
+            </p>
+            <p>
+              From CEOs to scholars, our guests keep returning to a theme: clarity of purpose and fairness in process compound into reputations you can’t buy later.
+            </p>
+          `
+        },
+        decision: {
+          kicker: 'Decision Science',
+          title: 'Overconfidence, Calibrated',
+          byline: 'Notes from a conversation with <strong>Don Moore</strong>',
+          body: `
+            <p class="ny-dropcap">
+              We’re not bad at guessing—we’re bad at admitting what we don’t know.
+            </p>
+            <p>
+              Moore’s research shows how calibration training, base rates, and premortems make leaders less wrong, more often. Confidence is a tool; calibration is the skill.
+            </p>
+          `
+        },
+        design: {
+          kicker: 'Organization Design',
+          title: 'Rethinking the Firm',
+          byline: 'Insights with <strong>Paul Adler</strong>',
+          body: `
+            <p class="ny-dropcap">
+              What if the systems we build could align ethics with performance by design?
+            </p>
+            <p>
+              Adler argues for structures that reward learning, cooperation, and long-term value creation—ideas as practical as they are principled.
+            </p>
+          `
+        }
+      };
+
+      const hub = document.getElementById('articles');
+      const viewer = document.getElementById('article-view');
+      const backBtn = document.getElementById('article-back');
+      const avKicker = document.getElementById('av-kicker');
+      const avTitle = document.getElementById('av-title');
+      const avByline = document.getElementById('av-byline');
+      const avBody = document.getElementById('av-body');
+
+      function openArticle(id){
+        const a = articleData[id];
+        if(!a) return;
+        avKicker.textContent = a.kicker || '';
+        avTitle.innerHTML = a.title || '';
+        avByline.innerHTML = a.byline || '';
+        avBody.innerHTML = a.body || '';
+        hub.classList.add('hidden');
+        viewer.classList.remove('hidden');
+        document.getElementById('article-view').scrollIntoView({behavior:'smooth'});
+      }
+      function backToHub(){
+        viewer.classList.add('hidden');
+        hub.classList.remove('hidden');
+        document.getElementById('articles').scrollIntoView({behavior:'smooth'});
+      }
+      backBtn.addEventListener('click', backToHub);
+
+      document.querySelectorAll('.article-card').forEach(card=>{
+        card.addEventListener('click', ()=> openArticle(card.dataset.articleId));
       });
     });
   </script>
