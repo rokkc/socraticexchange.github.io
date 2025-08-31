@@ -1,455 +1,146 @@
-Joshua and Leo:
-Hello, Dr. Grenovator. Is it Grenovator or Grenovator? 
+Joshua and Leo: Hello, Dr. Granovetter. Is it Granovetter or Granovetter?
+Granovetter: Granovetter.
+Leo: Okay. Thank you so much for meeting today. It's an honor and recently we've been learning about social networks, sociology, how it relates to business, specifically the strength of weak ties and we were curious about its relationship to technology and business if it's okay for us to ask a few questions about that. Yeah. Thank you. Also we wanted to ask is it okay if we have audio recording of this? So we can listen to it again?
+Granovetter: Yeah, for club use, but it's okay if not. I prefer not to not to be recorded. Yeah, that's totally fine. Okay. So you want to go first? 
+Leo: Yeah. Is it okay if we introduce ourselves a little bit before we ask you some questions so to get to know you and me?
+Granovetter: Yeah.
+Leo: So my name is Leo and we're both the rising seniors at our local high school. We have 10 questions that we prepared for you and some follow-ups if that's all right to ask and also some questions from our club members I wanted to ask stuff about your theory.
+Josh: Oh, and I’m Josh.
+Granovetter: Mm-hmm. Well, but 10 questions is that if I answer them then my answers might raise more questions.
+Leo: Haha, yeah. Well to begin off the first thing that we were really interested in knowing is what got you interested in sociology before or if you were interested in anything before that.
+Granovetter: Well in college I made this in history. Yeah. I majored in two areas: American history and modern European history and I really enjoyed studying history. It was great, but as I got to be a junior and certainly a senior I realized that well let me back up and say I really enjoyed being in college. Yeah. Yeah. I was a Princeton undergraduate. It's a remarkable place. And at some point I thought to myself it's too bad I can't be in college forever. And then I realized that there is a scheme that actually allows you to do that. That is, go to graduate school and get a PhD and become a professor. Yeah. So that's what I did. But when I thought about going to graduate school, if you go to graduate school in history, then you probably have to become an historian of 18th century France or 19th century Russia or 20th century Germany or something specific like that. And that's not what I wanted. I was of course very interested to ask why is there a French revolution and why is there a Russian revolution? But I was really more interested in the question: why are there revolutions, period? And the more I looked into it, the more I realized that the field that asks questions like that about why are there revolutions in general rather than why in this particular time and place that was sociology. So that's why I got interested in sociology. And even though in my four years as an undergraduate I took only one sociology course-it turned out it wasn't a very good one-but you know, you can't get them all right. So even though I had only one sociology course, I decided to go to graduate school in sociology. And I did. I applied actually only to two places: Harvard and Berkeley. And I guess I figured I would get into one of those at least. And as it turned out, I got into both. And I went to Harvard. The reason I went to Harvard is because at that time (but no longer) they still had something-instead of having a sociology department-they had something called the Department of Social Relations. This is a long time ago, but that department had five wings, as they said. It was sociology, social psychology, social anthropology, developmental psychology, and clinical psychology. Each of those had broken off from some other department that was doing the work-you know, psychology departments that did rats and pigeons experiments and so on. The social psychologists didn't want to deal with that. So they broke off and joined this Department of Social Relations. So I thought that was really neat, that I could study all those fields. But it only lasted until the time that I got my degree. Yeah, because by that time-so the department lasted for like 20 years or 22 years-but by the end of that period, the faculty were not that interested anymore in having this complicated department. They just wanted to go back to their old departments. And so the sociologists in the Department of Social Relations broke off and formed the Department of Sociology. But I was gone by that time-I mean, I had finished. So I had my education in this department that was so interdisciplinary. It was just a lot of fun.
+Leo: So it sounds like a lot of your interest in sociology goes back to human nature, if I'm correct.
+Granovetter: I don't know if I'd say human nature. "Human nature" is not a term people use much anymore because it kind of assumes that everything is determined by biology, which is probably not the case.
+Joshua: Yeah, or I mean like psychology, right?
+Granovetter: Well, psychology-even psychology, I think some sociologists have reservations about that term. Because "human nature" implies biology determines everything. And I don't think most sociologists would go along with that. So sociology is the field that more than any other talks about how humans interact with each other. Those interactions collect into networks and institutions and whole countries-and countries interact with one another. So sociologists are interested in all of this. And sociologists really would be interested in questions like why are there revolutions-not just why is there a revolution here or there but why is there such a thing as revolution.
+Joshua: So you said the idea of revolutions is why you got into sociology. And we kind of want to know, besides that, were there any other intellectual people or authors that got you into the field that you work on right now? Because we're kind of interested in who else we should read about or listen to.
+Granovetter: Well, of course, it's a long time ago. But I was very impressed by the work of the Gandhi and Seymour Martin Lipset-L-I-P-S-E-T. He has a book called Political Man, which is a collection of his essays. And I just thought they were so interesting. So I read those while I was still a history major. So he is one of the people that really got me interested. And I guess there must have been others, but it wasn't so much that I wanted to read specific people, but that I wanted this approach-the approach that you had to figure out how society worked, why there were revolutions, why government looks the way it does. I mean, so many things. I got interested in social networks, as you know. And that I got interested in while I was in graduate school, because there were a lot of people in my department-other graduate students-who were very interested in social networks. And the faculty member who was kind of the leader of this group was a guy named Harrison White. Sorry, John White was quite a character. He was the one that really brought the sociology department at Harvard into the area of social networks. And it was something that had not really made its appearance in the department before. And he was an interesting guy. He first got a PhD in theoretical physics at MIT. And then he decided that that was interesting, but he'd like to do something really difficult. And so he went on to get another PhD in sociology. So that's kind of his history. Very, very brilliant man. And you can read about him. And some of his-well, you certainly believe me. I'm not sure whether I would recommend that you go out and read all of the things he wrote, because he was really a pretty atrocious writer.
+Leo: So you would say that his writing isn't that accessible?
+Granovetter: No. I would say that's the understatement of the century.
+Leo: Haha I see. Yeah. Well, when we were reading, yeah, most of it is not accessible. The one book he wrote that is accessible, although it requires some math-I don't know if you guys have had the probability theory in your courses. Yeah, I had like, oh, I took a calculus course. And there's like a little bit of probability at the end. And about a decent history.
+Granovetter: Yeah, yeah. But of course, you could take a little course in it. And I don't know if you've ever heard of Markov chains.
+Joshua and Leo: Markov chains? Yeah. No, not exactly. No, sorry.
+Granovetter: Well, you can find out about it. There's a whole book by-I think, in chemistry and now called Finite Mathematics that I think has a chapter on that. This is a book that goes back, yeah, to like 1968 or something. Anyway, yeah. The book by White that is probably the most accessible-but it does require that you do something about Markov chains is called Chains of Opportunity. Chains of Opportunity. Yeah. Yeah. Yeah. So that's one of the more accessible works of his. I would say that's probably the most accessible, although it does have this mathematics in it. But it's written quite clearly. And the question he poses is: how do we understand the fact that for someone to have an opportunity to fill a position, that position has to be vacant? So how do positions become vacant? And how does one vacancy lead to another and then to another? So he said something like: vacancies appear in chains. Yeah. That's what the book is about-Chains of Opportunity. So he says, suppose somebody-he looked at people who are pastors of, I think, Episcopal churches. And he noticed that when somebody would retire, let's say, from being a pastor at some Episcopal church, that produced a vacancy. Right. And then someone would move from another church to fill that vacancy. But that would leave a vacancy in the church that that person left. Yeah. There's a chain of vacancies. Yeah. It only ends when somebody enters the system from outside, like they get to take like someone who gets his, whatever degree you get to be an Episcopal pastor. I don't think they say pastor. I don't remember what they say. But maybe that's funny. So each chain has a length. And the thing is that the people in the chain are filling vacancies. And they don't really have any idea what the whole chain looks like. Yeah. So the book is about understanding how these chains work and how you can handle them. And that's where some probability theory comes in handy-Markov chains, in particular. You get any book on finite mathematics. And there'll be a chapter on Markov chains. And the concept is not that difficult. But you do have to know a little bit of matrix algebra to follow what's going on.
+Leo: Yeah. It's interesting that someone that inspired you or that you took some of his work to heart that his work is less accessible than your writing. Because when me and Josh and the rest of our club was reading your work, we noticed that compared to a lot of other academic writing, it was actually like you could actually understand it. I think that most academic writing, like, they use really big words. I only had to Google a few ones. And The Strength of Weak Ties-it was like "dyadic" or something like that. And we were wondering-
+Granovetter: Mostly it's written in English. I do have a lot of evidence that we still worry about that. No, most of the writing is terrible. There's no question about that. It's hard to understand. Oh, yeah. Well, it's harder to understand than it should be if people just wrote in plain English. But on the scale of terrible writing, Harrison White is right up there at the top. It's very hard to understand what he's saying.
+Joshua: Yeah. So that was definitely-
+Granovetter: Yeah. But it would never be the place I would recommend to start. Definitely not a beginner's club.
+Leo: Yeah. No, you'd be discouraged so quickly.
+Granovetter: Yeah.
+Leo: So that was definitely a deliberate choice of yours to make it accessible?
+Granovetter: Oh, no, I always had that goal. And I think being a history major in college-you know, in the field of history, people are much more concerned about writing, and writing in decent prose. Yeah. So I got used to the idea: you're supposed to write in a way that people can understand. Just obvious. And so I've always tried to do that. And I've tried to train my students to do that. And I think I did pretty well. I think most of my former students, who are now scattered around the country teaching at different places-I think they write mostly pretty well, partly because I tell them they had to. Yeah. And I push them and push them. And I think it worked.
+Joshua: Yeah. Yeah. Oh, so our club read your theory of the strength of weak ties. And I was going to ask something kind of personalized to myself, if that's all right. I wanted to know-personally, I want to know how entrepreneurs or business people can use your sociology or use sociology as a tool to help scale businesses or just to help in their business. Because, for my own business, I'm a barber. And I kind of interact a lot with people. And I kind of find it hard to try to entice them to bring more people so I can cut their hair and expand my business. You know what I mean? So this is what you do as a hobby or you actually have your own shop? So my parents own a shop and I work inside of it. And I just help them run it. And then they taught me how to cut hair. And then I branched off to do it on my own. But it's more of a hobby because I want to study more economics and finance in the future. But it's just something I do on the side.
+Joshua: So I just want to know, have your students ever asked or, have you ever been asked how sociology or your theory on economic sociology could be used, business-wise?
+Granovetter: Well, it comes up in different forms. I mean, certainly economic sociology and ideas about social networks are very important for people in business because they have to figure out who they should interact with, what are the firms they have to deal with, who they should hire. Everyone who is successful in business knows about social networks. They don't necessarily know the term, but the ones that are successful are the ones that know that you have to have a lot of contacts, and you have to have people that you deal with that you trust. And that you need to be able to hire people based on recommendations, which is the way most people hire.
+Joshua: Yeah, yeah. So it's just something that good businessmen or women-they should have an intuitive understanding of. Yeah, definitely. On trust, you've written that economic life is always embedded in social life, correct? And that also comes with a lot of trust. But today we live in a digitized society where trust is kind of outsourced to code or, for example, Uber or Amazon often replaces human relationships with algorithms. Do you think that we're losing something essential when we're replacing trust in other people with machines?
+Granovetter: I mean, that was how it started, but now it's mostly AI. And I think a lot of the reviews on Amazon are probably written by AI. So I think you should be a little bit wary of them. Yeah. But we obviously lose something. I mean, this is another big subject, which is, do you want to have Al as a friend? You know, people are always reading stories about how, especially older people who are lonely there are services that will connect them to an Al chatbot. And they have a conversation, it makes them feel much better. Well, I mean, I think it's good that they feel better, but it's a little bit para-social, I think. Yeah, it's a little weird. And you just wonder if that can be the same as an actual human relationship. But I guess if that's the best they can do, then it's better than nothing. So, you know, Al is really changing the world. And I am glad that, you know, if I were still teaching-I think I mentioned that I had retired-if I were still teaching, I'd be concerned about whether the papers my students are writing are papers they actually wrote, or the hand of some chatbot.
+Leo: Yeah, definitely. Just based on what I've heard from other professors, in the last five, ten years, especially because of how much social media or different social behaviors are changing students, the quality of students is declining dramatically. On that note, when did you stop teaching? Or are you still teaching?
+Granovetter: Yeah. January 7th.
+Leo: Oh, wow. That's pretty recent. But, you know, yeah, but in the last few years, like, or maybe decade, among the youth-like, perhaps your students who've been affected by social media-have you noticed any changes in their behaviors in the last 50 years or so? And do you think a lot of that is attributed to new technologies? Especially, like, the social behavior.
+Granovetter: Yeah. So if you teach at a place like Stanford-which is, as you know, pretty ridiculously hard to get into so we have to assume that they have got some of the brightest kids. I mean, they admit, I think, like 3% of applicants, something like that. Yeah. So the quality's pretty good. Yeah, the top places are 3 to 4%-Stanford, Harvard, Princeton, whatever. And when you're dealing with a population like that, I do not notice that they've changed dramatically over the period that I've been teaching. I have had the pleasure of teaching only really smart students, and that has not changed. And the ways in which they're smart, I don't think, have changed that much. I mean, they may be using resources of course, when I first started teaching, we didn't even have computers, you know, period. There was no such thing. And when you wrote a paper, you had to you guys even know what a typewriter is?
+Leo: A typewriter? Oh, I mean, oh, I know. We know what a typewriter is, but I don't think we've ever had to use it. You see them in movies.
+Granovetter: Like museums or movies, museums, shows. You had to write a paper on a typewriter. I actually took a class in typing in high school. And then you would, in order to revise it, you had to actually literally cut and paste it-cut a piece out and paste another piece in, or tape another piece in. Yeah. It was, I mean, it was so different. So computers didn't come along until about 1985. I think that was the year I got my first computer. And then it was amazing. It had a hard drive. Before that, computers didn't have hard drives just floppy drives. You probably don't even know what those are. Floppy drives. Yeah, floppy drives. Actually, here, I can show you how long it's a floppy drive. 
+[Granovetter proceeds to display digital pictures of floppy drives.]
+Josh: I've never seen that.
+Granovetter: Yeah. Like for CDs. Yeah. That belongs to you as much as much for capacity. And this, this would go to a slot, which is called a drive. And it has data. And you know, it could put it. But the first computers that had hard drives started to make these floppy disks obsolete not quite. And I remember my first computer had a hard drive. And it had so much storage space we didn't think anybody could ever fill it. So, you know how much space it had?
+Leo: Like, a hundred gigabytes?
+Granovetter: No-ten megabytes.
+Leo: Oh my god.
+Granovetter: And I thought that was a lot. And that just seemed so huge. Yeah, you know. And now, you know, what do we have?
+Joshua: Gigabytes. Terabytes.
+Granovetter: Terabytes. Something like that. Actually, this computer that I'm looking at you on does have a terabyte of storage. My other computer only has 512 gigabytes, but that's probably enough for almost anybody. So, I think I'm rambling. You were asking me about something like, yeah, how business changed over the year.
+Leo: Yeah. We saw that your paper–actually, theory, on weak ties was written in 1973, and analyzed sociology at that time. And that was right before the social media boom. And I wanted to know if that had a profound effect on the dot-com boom or the advent of technology.
+Granovetter: Well, I was long before the social media boom. The social media boom didn't start till around 2000.
+Leo: Yeah. Dot-com boom, I think, was around, like, 80s or something like that. I'm not sure.
+Granovetter: The dot-com? Yeah. Quite a bit later, I think.
+Leo: Yeah. But I think Apple began becoming more active in the late 60s or early 70s with Steve Jobs.
+Granovetter: Yeah. Right. You know, there's a lot of interesting stories you can read about that. Yeah. This is a Mac computer I'm looking at.
+Joshua: You said that your quality of students remained about the same throughout all your years of teaching. We wanted to know more about that. 
+Granovetter: I mean, they're always and I've taught at five different places, actually. But I've always-I feel like I've always had really smart students. They did things differently, of course. You know, in the later years they used computers to write their papers and so on. And the last, maybe eight or ten years that I taught, exams in the old days, the students used to write them in longhand in something called blue books.
+Leo: I've never seen a blue book. Oh, that's like-we kind of, we heard of blue book, but I think that's a different company. It's a software.
+Granovetter: Yeah. Not like-well, it's not software. It's just a book with pages in it, a blue cover. Okay. We had to write your answers in it. But as I said, in the last ten years or so, I had students bringing their laptops to class, and the exam would be available to them on the laptop, and they had to compose their answers there. If it was a closed-book exam, they had to certify that they hadn't looked at any other books on the computer. So anyway, that worked fine.
+Leo: Yeah. So that's the upper echelon though, you know. Yeah. If you've ever used Instagram or Twitter or any social media, you see that weak ties are very, very easy to make. And I'm wondering, how do you think weak ties affect our lives in the digital age? Because you can-I'm not sure if this constitutes a weak tie-but you can just follow any random person and get to know them, or message a thousand people at once if you really wanted to.
+Granovetter: Right. Right. No, I think that one of the things that results from social media is that weak ties actually become more important because it's so easy to make them. You know, in the time when I-so, I wrote a book on how people find jobs. I talked about that a little bit in the weak ties paper. So, in those days, the way people would find a job would be they would contact someone that they remembered from two or three jobs back, and they would try to figure out where they were or they would contact the person. It was difficult. You couldn't keep up with people very easily. Maybe you'd see people once or twice a year at some professional meeting or something. And now it's just completely different. Now you can maintain weak ties on LinkedIn or on Instagram or any of these social media, and you can have so many more weak ties than you used to. So yeah, it means they've actually become more important rather than less important. I think that's one reason why people keep reading my paper.
+Leo: Yes, we can feel it becoming more and more popular. That's what we saw it had like 70,000- No, that paper- 70,000 citations, right?
+Granovetter: Oh, you know about citations.
+Leo: Yeah. It's like 76,000-something and it just keeps increasing.
+Granovetter: Yeah. Yeah. The sad thing is that unlike musicians-you know, if you're a musician and you write a song, every time it plays on the radio or some other place, you get royalties. I don't get anything when people cite my paper.
+Leo: You don't get any what? The royalties?
+Granovetter: You don't get paid. You don't get paid for it.
+Leo: You don't get paid anything? But if you did, you'd be rich.
+Granovetter: Well, I’d be richer. It doesn't matter if you have seven citations or 76,000-maybe people will know your name. But you can't cash that in so easily. And now that you're talking about how much more important weak ties are for networking and getting to know people, and how you can access thousands of people and talk to people without having to see them like once or twice a year.
+Josh: We want to know: for young people or young entrepreneurs trying to network, what should we keep in mind to make one that's beneficial to us?
+Granovetter: Well, I think they have to keep in mind where they've been over the last 10 or 15 years, and who they've known in that period, and try to keep up those ties. Because you never know the thing about weak ties is that maybe people find their jobs through weak ties, but you never know which one it's going to be. So your wise policy is just to keep up as many of them as you can. And now it's easy because you can do it on social media. You can do it on LinkedIn.
+Leo: Yeah. So we should do it.
+Granovetter: Now, there used to be-I don't know if there still are these things called networking events.
+Joshua and Leo: Oh yeah. I think people still do that.
+Granovetter: You know about that. Yeah. Where people would just get together and exchange business cards and try to meet as many people as they could. I went to one of those. Boy, I hated it.
+Joshua: It seems like-yeah-it seems kind of awkward.
+Granovetter: I hated it. It was so artificial. People would just like seldom really talk to people. I mean, they would look around to try to find someone else to talk to. I'd be surprised if the ties people make at those kinds of events turn out to be useful-but I've never seen a study of it, so I don't know. But what I do know is that I was invited to one and that's the last one I'm going to.
+Leo: Yeah, it wasn't that they didn't make a good impression on you.
+Granovetter: Yeah. Oh, I just thought it was grotesque.
+Leo: Yeah. I feel like people at those network-specific events all put on a facade, I guess, to try to help themselves. I like it when you meet someone and you see the real person. You know, you're seeing whatever they're trying to show you.
+Granovetter: Yeah.
+Leo: I think it's very similar to social media today. It’s very fake. Do you think that makes some ties made online less valuable, similar to what you were saying about networking events?
+Granovetter: Well, most of the ties that people are contacting online are people they already know from real life-IRL.
+Joshua: IRL. Yeah, IRL.
+Granovetter: Occasionally, people actually meet new people online. And there are some kinds of media-like, there's something called Twitch. I don't know if you know about it.
+Joshua: Oh yeah, Twitch. Yeah.
+Granovetter: You know about Twitch. Yeah. So I've read studies that show that some people meet other people on Twitch for the first time, and they become best friends. But I think that's very unusual. I think most of the ties people are contacting online are people that they already knew in real life.
+Joshua: Yeah, yeah. Yeah. That would be fantastic. But to keep up the tie-like, going online.
+Granovetter: Yeah.
+Leo: So it's better to meet people in person, then.
+Granovetter: Yeah. I think different people have different amounts of skill in pretending that they actually want to get to know you, when all they want is to make a valuable contact. Some people are pretty good at that. They hide it pretty well. Other people-it's really obvious. You just want to run in the other direction as fast as you can. So I think people just have different levels of skill about that.
+Leo: Yeah. You can really see it. That reminds me. I watched this interview that you did a few years back, and you were talking about how weak ties are often manipulated by bad actors, but you didn't explain it further. And I was wondering, how do you think or how have you seen these ties be manufactured for exploitation?
+Granovetter: Well, I haven't seen it myself personally, but there are lots of sad stories about people who make it their business to become friendly with someone so that they can sell them something, or market to them. It's a problem, especially with older people.
+Joshua: Oh yeah. Yeah, definitely. That's like scamming-phone scamming.
+Granovetter: Pretend they really like you and they want to spend time with you. And pretty soon they're getting your money, and they want you to help them out with this and that. So that's those are really bad actors. I think they call it elder fraud or something like that. It's a big business, sadly.
+Leo: Yeah. So kind of faking friendship to gain trust.
+Granovetter: That's exactly right.
+Joshua and Leo: Probably for something else.
+Granovetter: Well, some people go as far as to marry somebody just so they can inherit whatever they've got.
+Joshua and Leo: Yeah. Yeah. It's really sad.
+Granovetter: Yeah.
+Joshua and Leo: Well, thank you.
+Granovetter: Okay. And then you guys are rising seniors?
+Leo: Oh, rising seniors. Yeah. Rising seniors.
+Granovetter: Okay. So it means that you have to think about what you're going to do after high school.
+Joshua: Yeah. Well, no idea. But I mean, we're reading your stuff. I mean, I like sociology. And I also like the finance and business field. So that's what I'm thinking about pursuing. We want to know-like, from someone like yourself-do you recommend any books or any readings? We want to know-do you recommend any books to help us, like, network and help us?
+Granovetter: Oh yes.
+Joshua and Leo: I mean, books about networking that would be beneficial. Well, like any books that you recommend.
+Granovetter: Do I recommend what?
+Joshua and Leo: Oh, we were wondering, like, if you so we were talking about social networking and the artificial ties and putting on this front. And I wanted to know do you recommend any readings? Because I just want to like, any books that are similar to that topic. So yeah, do you know about social-right?
+Granovetter: Right. Well, I did send Leo a couple of reading lists.
+Joshua and Leo: Oh yeah.
+Granovetter: Oh yeah?
+Joshua and Leo: I can I can't forward that.
+Granovetter: You already shared them with you?
+Joshua and Leo: Oh no, I haven't. But I will. I will.
+Granovetter: Yeah.
+Joshua and Leo: I haven't, like, just yet.
+Granovetter: Give them to Joshua. So those are from one is from a freshman seminar that I taught on social networks. I taught that for like seven or eight years. And the other one is from a course in economic sociology, which I taught for a long time. And so all those readings and there's an anthology that's on the reading list the economic sociology reading list.
+Joshua and Leo: Anthology?
+Granovetter: It's an anthology. It's a big thick thing. Let me see do I have a copy? Oh, I don't see one. But it's called The Sociology of Economic Life that I edited with my Swedish colleague, Richard Swedberg. And it's the the latest edition is the third edition from 2011. And it collects a lot of classic economic sociology articles in one place. So, you know, it would certainly give you a good starting point.
+Joshua and Leo: Yeah.
+Granovetter: All right. So one of the advantages that you have if you're in college-you probably don't get this in high school-but you can go online and download pretty much any article from any scholarly journal.
+Joshua and Leo: Do you guys get to do that? Find anything or not? I don't think so. Like, I don't think our high school gives us any research that's similar to that.
+Granovetter: But it does sound like Stanford does it. Like, it's really helpful for the students.
+Joshua and Leo: Yeah, Stanford does it.
+Granovetter: I mean, a lot of colleges do that. The library coordinates it. And so, you know, I have canceled all of my subscriptions to journals because I don't need to they're all online. And I can download actually an electronic copy. I don't have a hard copy anymore.
+Joshua and Leo: Yeah. I don't have room for it.
+Granovetter: So, you have a lot of books in the library.
+Joshua and Leo: I don't think I've done
+Granovetter: And this is my own office. It's just well, I've read a lot of books because I've moved to a different office. But yeah, when you get to college, your program will have that option. You can probably pay for it, but it might be expensive. I don't even know what it costs to do that. But yeah. So that's why the anthology is useful, because it just collects all those articles in one place. It would be complicated to get them online.
+Joshua and Leo: Thank you so much. Yeah, that's pretty much like-it's like all the things that we could think about and that our members wanted to ask. So, yeah, thank you. We have written down- Yeah, we have one more curveball question. We're calling it a slider. We just like wrote down a few questions. This is the last one. So, as an academic and sociologist-
+Joshua and Leo: What's a piece of networking advice that you would give to both the younger generation and yourself, maybe 50 years ago, looking to network, especially in academia?
+Granovetter: You know, I don't think I ever actually tried to network. I think the advice I would give you is: figure out who you're really compatible with. And you think it's a really good person-and keep up with those people. Try to prove it's someone you really want to keep up with. Just keep up with the people that you think are valuable. Contacts that are not contacts in the sense of people you can use-
+Joshua and Leo: Yeah. So something more authentic.
+Granovetter: Yeah. Than something-people you actually vibe with. And those kinds of people will be very-I mean, that's not why you're doing it but they will be very useful to you in the future.
+Joshua and Leo: Yeah, definitely. And you know, you never know when.
+Granovetter: Yeah.
+Joshua and Leo: Yeah, definitely. I feel like, in today's-sorry, I don't know your thoughts about this but I feel like something is kind of making empathy decline a little bit. So that and authenticity, I think, are very important in today's world.
+Granovetter: Wouldn't you say?
+Joshua and Leo: Yeah, definitely. Definitely. Yeah, that's a good thing to remember. Those are all the questions we have. So thank you for this meeting, Dr. Granovetter.
+Granovetter: Yeah.
+Joshua and Leo: Yeah. I'm like-look, guys stay in touch if you think of anything else. I'd be happy to answer. Yeah. Yeah. It's nice meeting both of you. Yeah. Thank you so much for this meeting. I was kind of going to say, like, I'm glad that we were able to talk to you and that you gave us a meeting today.
 
-Granovetter:
-Grenovator. 
-
-Joshua and Leo:
-Okay. Thank you so much for meeting today. It's an honor and recently we've been learning about social networks, sociology, how it relates to business, specifically the strength of weak ties and we were curious about its relationship to technology and business if it's okay for us to ask a few questions about that.  Yeah. Thank you. Also we wanted to ask is it okay if we have like audio recording of this? So we can like listen to it again? 
-
-Granovetter:
-Yeah, for club use, but it's okay if not. 
-
-Joshua and Leo:
-I prefer not to not to be recording.  Yeah, that's totally fine. Okay. So you want to go first?  Yeah. Is it okay if we like introduce ourselves a little bit before we ask you some questions so to get to know you and me? 
-
-Granovetter:
-Yeah. 
-
-Joshua and Leo:
-So my name is Leo and we're both like right now we're both the rising seniors at our local high school and and we have like 10 questions that we prepared for you and some follow-ups if that's all right to ask and also some questions from like our club members I wanted to ask stuff about your theory. 
-
-Granovetter:
-Mm-hmm. 
-
-Joshua and Leo:
-So you want to go first. The first problem is yeah. 
-
-Grannovetter:
-Well, but 10 questions is that if I answer them then my answers might raise more questions. 
-
-Joshua and Leo:
-Well to begin off like the first thing that we were really interested in knowing is like what got you interested in sociology like before or if you were interested in anything before that. 
-
-Granovetter:
-Well in college I made this in history. Yeah. I majored in two areas: American history and modern European history and I really enjoyed studying history. It was great, but as I got to be a junior and certainly a senior I realized that well let me back up and say I really enjoyed being in college.  Yeah. Yeah. I was a Princeton undergraduate. It's a remarkable place. And at some point I thought to myself it's too bad I can't be in college forever. And then I realized that there is a scheme that actually allows you to do that.  That is, go to graduate school and get a PhD and become a professor. Yeah. So that's what I did. But when I thought about going to graduate school, if you go to graduate school in history, then you probably have to become an historian of 18th century France or 19th century Russia or 20th century Germany or something specific like that.  And that's not what I wanted. I was of course very interested to ask why is there a French revolution and why is there a Russian revolution? But I was really more interested in the question: why are there revolutions, period? And the more I looked into it, the more I realized that the field that asks questions like that about why are there revolutions in general rather than why in this particular time and place that was sociology.  So that's why I got interested in sociology. And even though in my four years as an undergraduate I took only one sociology course-it turned out it wasn't a very good one-but you know, you can't get them all right. So even though I had only one sociology course, I decided to go to graduate school in sociology.  And I did. I applied actually only to two places: Harvard and Berkeley. And I guess I figured I would get into one of those at least. And as it turned out, I got into both.  And I went to Harvard. The reason I went to Harvard is because at that time (but no longer) they still had something-instead of having a sociology department-they had something called the Department of Social Relations. This is a long time ago, but that department had five wings, as they said. It was sociology, social psychology, social anthropology, developmental psychology, and clinical psychology. Each of those had broken off from some other department that was doing the work-you know, psychology departments that did rats and pigeons experiments and so on. The social psychologists didn't want to deal with that. So they broke off and joined this Department of Social Relations. So I thought that was really neat, that I could study all those fields. But it only lasted until the time that I got my degree. Yeah, because by that time-so the department lasted for like 20 years or 22 years-but by the end of that period, the faculty were not that interested anymore in having this complicated department. They just wanted to go back to their old departments. And so the sociologists in the Department of Social Relations broke off and formed the Department of Sociology. But I was gone by that time-I mean, I had finished.  So I had my education in this department that was so interdisciplinary. It was just a lot of fun. 
-
-Joshua and Leo:
-So it sounds like a lot of your interest in sociology goes back to human nature, if I'm correct. 
-
-Granovetter:
-I don't know if I'd say human nature. "Human nature" is not a term people use much anymore because it kind of assumes that everything is determined by biology, which is probably not the case. 
-
-Joshua and Leo:
-Yeah, or I mean like psychology, right? 
-
-Granovetter:
-Well, psychology-even psychology, I think some sociologists have reservations about that term. Because "human nature" implies biology determines everything. And I don't think most sociologists would go along with that. So sociology is the field that more than any other talks about how humans interact with each other. Those interactions collect into networks and institutions and whole countries-and countries interact with one another. So sociologists are interested in all of this. And sociologists really would be interested in questions like why are there revolutions-not just why is there a revolution here or there but why is there such a thing as revolution. 
-
-Joshua and Leo:
-So you said the idea of revolutions is why you got into sociology. And we kind of want to know, besides that, were there any other intellectual people or authors that got you into the field that you work on right now? Because we're kind of interested in who else we should read about or listen to. 
-
-Granovetter:
-Well, of course, it's a long time ago. But I was very impressed by the work of the Gandhi and Seymour Martin Lipset-L-I-P-S-E-T. He has a book called Political Man, which is a collection of his essays. And I just thought they were so interesting. So I read those while I was still a history major. So he is one of the people that really got me interested. And I guess there must have been others, but it wasn't so much that I wanted to read specific people, but that I wanted this approach-the approach that you had to figure out how society worked, why there were revolutions, why government looks the way it does. I mean, so many things.  I got interested in social networks, as you know. And that I got interested in while I was in graduate school, because there were a lot of people in my department-other graduate students-who were very interested in social networks. And the faculty member who was kind of the leader of this group was a guy named Harrison White.  Sorry, John White was quite a character. He was the one that really brought the sociology department at Harvard into the area of social networks. And it was something that had not really made its appearance in the department before.  And he was an interesting guy. He first got a PhD in theoretical physics at MIT. And then he decided that that was interesting, but he'd like to do something really difficult. And so he went on to get another PhD in sociology.  So that's kind of his history. Very, very brilliant man. And you can read about him.  And some of his-well, you certainly believe me. I'm not sure whether I would recommend that you go out and read all of the things he wrote, because he was really a pretty atrocious writer. 
-
-Joshua and Leo:
-So you would say that his writing isn't that accessible? 
-
-Granovetter:
-No. I would say that's the understatement of the century. 
-
-Joshua and Leo:
-Yeah. Well, when we were reading, yeah, most of it is not accessible. The one book he wrote that is accessible, although it requires some math-I don't know if you guys have had the probability theory in your courses. Yeah, I had like, oh, I took a calculus course.  And there's like a little bit of probability at the end. And about a decent history. 
-
-Granovetter:
-Yeah, yeah. But of course, you could take a little course in it. And I don't know if you've ever heard of Markov chains. 
-
-Joshua and Leo:
-Markov chains? Yeah.  No, not exactly. No, sorry. 
-
-Granovetter:
-Well, you can find out about it. There's a whole book by-I think, in chemistry and now called Finite Mathematics that I think has a chapter on that. This is a book that goes back, yeah, to like 1968 or something.  Anyway, yeah. The book by White that is probably the most accessible-but it does require that you do something about Markov chains is called Chains of Opportunity. Chains of Opportunity.  Yeah. Yeah. Yeah. So that's one of the more accessible works of his. I would say that's probably the most accessible, although it does have this mathematics in it. But it's written quite clearly. And the question he poses is: how do we understand the fact that for someone to have an opportunity to fill a position, that position has to be vacant?  So how do positions become vacant? And how does one vacancy lead to another and then to another?  So he said something like: vacancies appear in chains. Yeah. That's what the book is about-Chains of Opportunity. So he says, suppose somebody-he looked at people who are pastors of, I think, Episcopal churches. And he noticed that when somebody would retire, let's say, from being a pastor at some Episcopal church, that produced a vacancy.  Right. And then someone would move from another church to fill that vacancy. But that would leave a vacancy in the church that that person left.  Yeah. There's a chain of vacancies. Yeah. It only ends when somebody enters the system from outside, like they get to take like someone who gets his, whatever degree you get to be an Episcopal pastor.  I don't think they say pastor. I don't remember what they say. But maybe that's funny.  So each chain has a length. And the thing is that the people in the chain are filling vacancies. And they don't really have any idea what the whole chain looks like. Yeah. So the book is about understanding how these chains work and how you can handle them. And that's where some probability theory comes in handy-Markov chains, in particular.  You get any book on finite mathematics. And there'll be a chapter on Markov chains.  And the concept is not that difficult. But you do have to know a little bit of matrix algebra to follow what's going on. 
-
-Joshua and Leo:
-Yeah. It's interesting that someone that inspired you or that you took some of his work to heart that his work is less accessible than your writing. Because when me and Josh and the rest of our club was reading your work, we noticed that compared to a lot of other academic writing, it was actually like you could actually understand it.  I think that most academic writing, like, they use really big words. I only had to Google a few ones.  And The Strength of Weak Ties-it was like "dyadic" or something like that. And we were wondering- 
-
-Granovetter:
-Mostly it's written in English. I do have a lot of evidence that we still worry about that.  No, most of the writing is terrible. There's no question about that. It's hard to understand.  Oh, yeah. Well, it's harder to understand than it should be if people just wrote in plain English. But on the scale of terrible writing, Harrison White is right up there at the top. It's very hard to understand what he's saying. 
-
-Joshua and Leo:
-Yeah. So that was definitely- 
-
-Granovetter:
-Yeah. But it would never be the place I would recommend to start. Definitely not a beginner's club. 
-
-Joshua and Leo:
-Yeah. No, you'd be discouraged so quickly. 
-
-Granovetter:
-Yeah. 
-
-Joshua and Leo:
-So that was definitely a deliberate choice of yours to make it accessible? 
-
-Granovetter:
-Oh, no, I always had that goal. And I think being a history major in college-you know, in the field of history, people are much more concerned about writing, and writing in decent prose. Yeah.  So I got used to the idea: you're supposed to write in a way that people can understand. Just obvious.  And so I've always tried to do that. And I've tried to train my students to do that.  And I think I did pretty well. I think most of my former students, who are now scattered around the country teaching at different places-I think they write mostly pretty well, partly because I tell them they had to.  Yeah. And I push them and push them. And I think it worked. 
-
-Joshua and Leo:
-Yeah. Yeah. Oh, so our club read your theory of the strength of weak ties.  And I was going to ask something kind of personalized to myself, if that's all right. I wanted to know-personally, I want to know how entrepreneurs or business people can use your sociology or use sociology as a tool to help scale businesses or just to help in their business.  Because like, for my own business, I'm a barber. And I kind of interact a lot with people. And I kind of find it hard to like try to entice them to bring more people so I can cut their hair and like expand my business. You know what I mean? So this is what you do as a hobby or you actually have your own shop?  So my parents own a shop and I work inside of it. And I just help them run it.  And then they taught me how to cut hair. And then I branched off to do it on my own. But it's more of a hobby because I want to study more like economics and like finance in the future. But it's just something I do on the side. 
-
-Joshua and Leo:
-So I just want to know, like, have your students ever asked or like, have you ever been asked how sociology or your theory on economic sociology could be used, like, business-wise? 
-
-Granovetter:
-Well, it comes up in different forms. I mean, certainly economic sociology and ideas about social networks are very important for people in business because they have to figure out who they should interact with, what are the firms they have to deal with, who they should hire. Everyone who is successful in business knows about social networks. They don't necessarily know the term, but the ones that are successful are the ones that know that you have to have a lot of contacts, and you have to have people that you deal with that you trust. And that you need to be able to hire people based on recommendations, which is the way most people hire. 
-
-Joshua and Leo:
-Yeah, yeah. So it's just something that good businessmen or women-they should have an intuitive understanding of.  Yeah, definitely. On trust, you've written that economic life is always embedded in social life, correct? And that also comes with a lot of trust. But today we live in kind of like a digitized society where trust is kind of outsourced to code or like, for example, Uber or Amazon often replaces human relationships with algorithms. Do you think that we're losing something essential when we're replacing trust in other people with machines? I mean, you're saying algorithms. 
-
-Granovetter:
-I mean, that was how it started, but now it's mostly AI. And I think a lot of the reviews on Amazon are probably written by AI. So I think you should be a little bit wary of them.  Yeah. But we obviously lose something. I mean, this is another big subject, which is, do you want to have Al as a friend? You know, people are always reading stories about how, especially older people who are lonely there are services that will connect them to an Al chatbot. And they have a conversation, it makes them feel much better. Well, I mean, I think it's good that they feel better, but it's a little bit para-social, I think.  Yeah, it's a little weird. And you just wonder if that can be the same as an actual human relationship. But I guess if that's the best they can do, then it's better than nothing.  So, you know, Al is really changing the world. And I am glad that, you know, if I were still teaching-I think I mentioned that I had retired-if I were still teaching, I'd be concerned about whether the papers my students are writing are papers they actually wrote, or the hand of some chatbot. 
-
-Joshua and Leo:
-Yeah, definitely. I think in, like, just based on what I've heard from other professors, that in the last five, ten years especially because of how much social media or like different social behaviors are changing students the quality of students is declining dramatically.  So among the youth, like, when did you stop teaching? Or are you still teaching? 
-
-Granovetter:
-Yeah. January 7th. 
-
-Joshua and Leo:
-Oh, you're starting with this year? 
-
-Granovetter:
-Oh, wow. That's pretty recent. But, you know, yeah, but in the last few years, like, or maybe decade, among the youth-like, perhaps your students who've been affected by social media-have you noticed any changes in their behaviors in the last 50 years or so?  And do you think a lot of that is attributed to new technologies? Especially, like, the social behavior. 
-
-Granovetter:
-Yeah. So if you teach at a place like Stanford-which is, as you know, pretty ridiculously hard to get into so we have to assume that they have got some of the brightest kids. I mean, they admit, I think, like 3% of applicants, something like that.  Yeah. So the quality's pretty good. Yeah, the top places are 3 to 4%-Stanford, Harvard, Princeton, whatever. And when you're dealing with a population like that, I do not notice that they've changed dramatically over the period that I've been teaching. I have had the pleasure of teaching only really smart students, and that has not changed. And the ways in which they're smart, I don't think, have changed that much. I mean, they may be using resources of course, when I first started teaching, we didn't even have computers, you know, period.  There was no such thing. And when you wrote a paper, you had to you guys even know what a typewriter is? 
-
-Joshua and Leo:
-A typewriter? Oh, I mean, oh, I know. We know what a typewriter is, but I think I don't think we've ever had to use it, just like last time. You see them in movies. 
-
-Granovetter:
-Like museums or movies, museums, shows. You had to write a paper on a typewriter. I actually took a class in typing in high school. And then you would, in order to revise it, you had to actually literally cut and paste it-cut a piece out and paste another piece in, or tape another piece in.  Yeah. It was, I mean, it was so different. So computers didn't come along until about 1985. I think that was the year I got my first computer.  And then it was amazing. It had a hard drive. Before that, computers didn't have hard drives just floppy drives. You probably don't even know what those are. 
-
-Joshua and Leo:
-Floppy drives. Yeah, floppy drives. Actually, here, I can show you how long it's a floppy drive.  I've never seen that. Oh, I didn't see those before. 
-
-Granovetter:
-Yeah. Like for CDs. Yeah. That belongs to you as much as much for capacity.  And this, this would go to a slot, which is called a drive. And it has data. And you know, it could put it. But the first computers that had hard drives started to make these floppy disks obsolete not quite. And I remember my first computer had a hard drive. And it had so much storage space we didn't think anybody could ever fill it. So, you know how much space it had? 
-
-Joshua and Leo:
-Like, like, like, a hundred gigabytes? 
-
-Granovetter:
-No-ten megabytes. 
-
-Joshua and Leo:
-Oh my god. 
-
-Granovetter:
-And I thought that was a lot. And that just seemed so huge.  Yeah, you know. And now, you know, what do we have? 
-
-Joshua and Leo:
-Gigabytes. Terabytes. 
-
-Granovetter:
-Terabytes. Something like that. Actually, this computer that I'm looking at you on does have a terabyte of storage. My other computer only has 512 gigabytes, but that's probably enough for almost anybody.  So, I think I'm rambling. You were asking me about something like, yeah, how business changed over the year. 
-
-Joshua and Leo:
-Yeah. Because we know, we saw that your paper-your theory on weak ties was written in 1973, and analyzed sociology at that time. And that was right before, like, the social media boom. And I wanted to know if that had a profound effect on, like, the dot-com boom. 
-
-Granovetter:
-Yeah. 
-
-Joshua and Leo:
-On your studies. 
-
-Granovetter:
-Well, I was long before the social media boom. The social media boom didn't start till around 2000. 
-
-Joshua and Leo:
-Yeah. Dot-com boom, I think, was around, like, 80s or something like that. I'm not sure. 
-
-Granovetter:
-The dot-com? Yeah. 
-
-Joshua and Leo:
-Or something like that. 
-
-Granovetter:
-Quite a bit later, I think. 
-
-Joshua and Leo:
-Yeah. But I think Apple began becoming, like, most active, like, late 60s or early 70s with Steve Jobs. 
-
-Granovetter:
-Yeah. Right. You know, there's a lot of interesting stories you can read about that.  Yeah. This is a Mac computer I'm looking at. 
-
-Joshua and Leo:
-Yeah. Yeah. And that's what I have as well. I have one PC. Yeah. Sorry.  Yeah. But we also we kind of wanted to ask-like, oh no, that was my dad. I'm sorry. He came in asking if I had, like, a vacuum or something.  But we well, you said that your quality of students remained about the same throughout all your years of teaching. And what do you think- I mean, they're always and I've taught at five different places, actually. 
-
-Granovetter:
-Yeah. But I've always-I feel like I've always had really smart students. They did things differently, of course. You know, in the later years they used computers to write their papers and so on. And the last, maybe eight or ten years that I taught, exams in the old days, the students used to write them in longhand in something called blue books. 
-
-Joshua and Leo:
-I've never seen a blue book. Oh, that's like-we kind of, we heard of blue book, but I think that's like a different company. It's like a different, like, software. 
-
-Granovetter:
-Yeah. Not like-well, it's not software. It's just a book with pages in it, a blue cover. Okay. We had to write your answers in it. But as I said, in the last ten years or so, I had students bringing their laptops to class, and the exam would be available to them on the laptop, and they had to compose their answers there. If it was a closed-book exam, they had to certify that they hadn't looked at any other books on the computer. So anyway, that worked fine. 
-
-Joshua and Leo:
-Yeah. So that's like the upper echelon though, you know, like, I think-  Yeah. Yeah. We want to know, like, for the average person- I was wondering-can I go first?  Yeah. For because we were thinking about your paper in today's terms, right? Because if you've ever used Instagram or Twitter or like any social media, you see that weak ties are very, very easy to make. And I'm wondering, how do you think weak ties affect our lives in the digital age? Because you can-I'm not sure if this constitutes a weak tie-but you can just follow any random person and get to know them, or like, message a thousand people at once if you really wanted to. 
-
-Granovetter:
-Right. Right. No, I think that one of the things that results from social media is that weak ties actually become more important because it's so easy to make them. You know, in the time when I-so, I wrote a book on how people find jobs. I talked about that a little bit in the weak ties paper. So, in those days, the way people would find a job would be they would contact someone that they remembered from two or three jobs back, and they would try to figure out where they were or they would contact the person. It was difficult.  You couldn't keep up with people very easily. Maybe you'd see people once or twice a year at some professional meeting or something.  And now it's just completely different. Now you can maintain weak ties on LinkedIn or on Instagram or any of these social media, and you can have so many more weak ties than you used to. So yeah, it means they've actually become more important rather than less important. I think that's one reason why people keep reading my paper. 
-
-Joshua and Leo:
-Yes, we can feel it becoming more and more popular. That's what we saw it had like 70,000- No, that paper- 70,000 citations, right? 
-
-Granovetter:
-Oh, you know about citations. 
-
-Joshua and Leo:
-Yeah. It's like 76,000-something and it just keeps increasing. 
-
-Granovetter:
-Yeah. Yeah. The sad thing is that unlike musicians-you know, if you're a musician and you write a song, every time it plays on the radio or some other place, you get royalties. I don't get anything when people cite my paper. 
-
-Joshua and Leo:
-You don't get any what? The royalties? 
-
-Granovetter:
-You don't get paid. You don't get paid for it. 
-
-Joshua and Leo:
-You don't get paid anything? 
-
-Granovetter:
-But if you did, you'd be like rich. 
-
-Joshua and Leo:
-Well, you'd be richer. It doesn't matter if you have seven citations or 76,000-maybe people will know your name. But you can't cash that in so easily. And now that you're talking about how much more important weak ties are for networking and getting to know people, and how you can access thousands of people and talk to people without having to see them like once or twice a year- We want to know: for young people or young entrepreneurs trying to network, what should we keep in mind to make one that's beneficial to us? 
-
-Granovetter:
-Well, I think they have to keep in mind where they've been over the last 10 or 15 years, and who they've known in that period, and try to keep up those ties. Because you never know the thing about weak ties is that maybe people find their jobs through weak ties, but you never know which one it's going to be. So your wise policy is just to keep up as many of them as you can.  And now it's easy because you can do it on social media. You can do it on LinkedIn. 
-
-Joshua and Leo:
-Yeah. So we should do it. 
-
-Granovetter:
-Now, there used to be-I don't know if there still are these things called networking events. 
-
-Joshua and Leo:
-Oh yeah. I think people still do that. 
-
-Granovetter:
-You know about that. Yeah. Where people would just get together and exchange business cards and try to meet as many people as they could.  I went to one of those. Boy, I hated it. 
-
-Joshua and Leo:
-It seems like-yeah-it seems kind of awkward. 
-
-Granovetter:
-I hated it. It was so artificial. People would just like seldom really talk to people. I mean, they would look around to try to find someone else to talk to. I'd be surprised if the ties people make at those kinds of events turn out to be useful-but I've never seen a study of it, so I don't know. But what I do know is that I was invited to one and that's the last one I'm going to. 
-
-Joshua and Leo:
-Yeah, it wasn't they didn't make a good impression on you. 
-
-Granovetter:
-Yeah. Oh, I just thought it was grotesque. 
-
-Joshua and Leo:
-Yeah. I feel like people at those network-specific events they all like put on a facade, I guess, to try to help themselves. I like it when you meet someone and you see the real person. You know, you're seeing whatever they're trying to show you. 
-
-Granovetter:
-Yeah. 
-
-Joshua and Leo:
-I think it's very similar to social media today. Because, like, I don't know about you, but I feel like a lot of people try and create unrealistic expectations, and they only show the best parts of themselves. Does that make sense? And I feel like when you have so many people doing the same thing of creating artificial impressions-like, I would say, artificial weak ties in a way-do you think that makes some ties made online less valuable, similar to what you were saying about networking events? 
-
-Granovetter:
-Well, most of the ties that people are contacting online are people they already know from real life-IRL. 
-
-Joshua and Leo:
-IRL. Yeah, IRL. 
-
-Granovetter:
-Occasionally, people actually meet new people online. And there are some kinds of media-like, there's something called Twitch. I don't know if you know about it. 
-
-Joshua and Leo:
-Oh yeah, Twitch. Yeah. 
-
-Granovetter:
-You know about Twitch. Yeah. So I've read studies that show that some people meet other people on Twitch for the first time, and they become best friends.  But I think that's very unusual. I think most of the ties people are contacting online are people that they already knew in real life. 
-
-Joshua and Leo:
-Yeah, yeah. Yeah. That would be fantastic. But to keep up the tie-like, going online. 
-
-Granovetter:
-Yeah. 
-
-Joshua and Leo:
-So it's better to meet people in person, then. 
-
-Granovetter:
-Yeah. 
-
-Joshua and Leo:
-Or, like, than online. I do Twitch, something like that. Yeah. And like-not-when you were saying about artificial facades, or the way people show themselves-like, is it really easy to tell who's faking it and who's actually trying to get to know you? And does that contribute toward your weak ties-if they actually help you get a job or not? 
-
-Granovetter:
-I think different people have different amounts of skill in pretending that they actually want to get to know you, when all they want is to make a valuable contact.  Some people are pretty good at that. They hide it pretty well. Other people-it's really obvious. You just want to run in the other direction as fast as you can. So I think people just have different levels of skill about that. 
-
-Joshua and Leo:
-Yeah. You can really see it.  That reminds me. I watched this interview that you did a few years back, and you were talking about how weak ties are often manipulated by bad actors, but you didn't explain it further. And I was wondering, how do you think or how have you seen these ties be manufactured for exploitation? 
-
-Granovetter:
-Well, I haven't seen it myself personally, but there are lots of sad stories about people who make it their business to become friendly with someone so that they can sell them something, or market to them. It's a problem, especially with older people. 
-
-Joshua and Leo:
-Oh yeah. Yeah, definitely. That's like scamming-phone scamming. 
-
-Granovetter:
-Pretend they really like you and they want to spend time with you. And pretty soon they're getting your money, and they want you to help them out with this and that.  So that's those are really bad actors. I think they call it elder fraud or something like that. It's a big business, sadly. 
-
-Joshua and Leo:
-Yeah. So kind of faking friendship to gain trust. 
-
-Granovetter:
-That's exactly right. 
-
-Joshua and Leo:
-Probably for something else. 
-
-Granovetter:
-Well, some people go as far as to marry somebody just so they can inherit whatever they've got. 
-
-Joshua and Leo:
-Yeah. Yeah. It's really sad. 
-
-Granovetter:
-Yeah. 
-
-Joshua and Leo:
-Well, thank you. 
-
-Granovetter:
-Okay. And then you guys are rising seniors? 
-
-Joshua and Leo:
-Oh, rising seniors. Yeah. Rising seniors. 
-
-Granovetter:
-Okay. So it means that you have to think about what you're going to do after high school. 
-
-Joshua and Leo:
-Yeah.  Well, no idea. But I mean, we're reading your stuff. I mean, I like sociology. And I also like the finance and business field. So that's what I'm thinking about pursuing. And like, we want to know-like, from someone like yourself-do you recommend any books or any readings? We want to know-do you recommend any books to help us, like, network and help us? 
-
-Granovetter:
-Oh yes. 
-
-Joshua and Leo:
-I mean, books about networking that would be beneficial. Well, like any books that you recommend. 
-
-Granovetter:
-Do I recommend what? 
-
-Joshua and Leo:
-Oh, we were wondering, like, if you so we were talking about social networking and the artificial ties and putting on this front. And I wanted to know do you recommend any readings? Because I just want to like, any books that are similar to that topic. So yeah, do you know about social-right? 
-
-Granovetter:
-Right. Well, I did send Leo a couple of reading lists. 
-
-Joshua and Leo:
-Oh yeah. 
-
-Granovetter:
-Oh yeah? 
-
-Joshua and Leo:
-I can I can't forward that. 
-
-Granovetter:
-You already shared them with you? 
-
-Joshua and Leo:
-Oh no, I haven't. But I will. I will. 
-
-Granovetter:
-Yeah. 
-
-Joshua and Leo:
-I haven't, like, just yet. 
-
-Granovetter:
-Give them to Joshua. So those are from one is from a freshman seminar that I taught on social networks. I taught that for like seven or eight years. And the other one is from a course in economic sociology, which I taught for a long time. And so all those readings and there's an anthology that's on the reading list the economic sociology reading list. 
-
-Joshua and Leo:
-Anthology? 
-
-Granovetter:
-It's an anthology. It's a big thick thing. Let me see do I have a copy?  Oh, I don't see one. But it's called The Sociology of Economic Life that I edited with my Swedish colleague, Richard Swedberg. And it's the the latest edition is the third edition from 2011. And it collects a lot of classic economic sociology articles in one place. So, you know, it would certainly give you a good starting point. 
-
-Joshua and Leo:
-Yeah. 
-
-Granovetter:
-All right. So one of the advantages that you have if you're in college-you probably don't get this in high school-but you can go online and download pretty much any article from any scholarly journal. 
-
-Joshua and Leo:
-Do you guys get to do that? Find anything or not?  I don't think so. Like, I don't think our high school gives us any research that's similar to that. 
-
-Granovetter:
-But it does sound like Stanford does it. Like, it's really helpful for the students. 
-
-Joshua and Leo:
-Yeah, Stanford does it. 
-
-Granovetter:
-I mean, a lot of colleges do that. The library coordinates it. And so, you know, I have canceled all of my subscriptions to journals because I don't need to they're all online.  And I can download actually an electronic copy. I don't have a hard copy anymore. 
-
-Joshua and Leo:
-Yeah. I don't have room for it. 
-
-Granovetter:
-So, you have a lot of books in the library. 
-
-Joshua and Leo:
-I don't think I've done 
-
-Granovetter:
-And this is my own office. It's just well, I've read a lot of books because I've moved to a different office.  But yeah, when you get to college, your program will have that option. You can probably pay for it, but it might be expensive. I don't even know what it costs to do that.  But yeah. So that's why the anthology is useful, because it just collects all those articles in one place. It would be complicated to get them online. 
-
-Joshua and Leo:
-Thank you so much. Yeah, that's pretty much like-it's like all the things that we could think about and that our members wanted to ask. So, yeah, thank you. We have written down- Yeah, we have one more curveball question. We're calling it a slider.  We just like wrote down a few questions. This is the last one. So, as an academic and sociologist- 
-
-Joshua and Leo:
-What's a piece of networking advice that you would give to both the younger generation and yourself, maybe 50 years ago, looking to network, especially in academia? 
-
-Granovetter:
-You know, I don't think I ever actually tried to network.  I think the advice I would give you is: figure out who you're really compatible with. And you think it's a really good person-and keep up with those people. Try to prove it's someone you really want to keep up with. Just keep up with the people that you think are valuable. Contacts that are not contacts in the sense of people you can use- 
-
-Joshua and Leo:
-Yeah. So something more authentic. 
-
-Granovetter:
-Yeah.  Than something-people you actually vibe with. And those kinds of people will be very-I mean, that's not why you're doing it but they will be very useful to you in the future. 
-
-Joshua and Leo:
-Yeah, definitely. And you know, you never know when. 
-
-Granovetter:
-Yeah. 
-
-Joshua and Leo:
-Yeah, definitely. I feel like, in today's-sorry, I don't know your thoughts about this but I feel like something is kind of making empathy decline a little bit. So that and authenticity, I think, are very important in today's world. 
-
-Granovetter:
-Wouldn't you say? 
-
-Joshua and Leo:
-Yeah, definitely. Definitely. Yeah, that's a good thing to remember. Those are all the questions we have. So thank you for this meeting, Dr. Granovetter. 
-
-Granovetter:
-Yeah. 
-
-Joshua and Leo:
-Yeah. I'm like-look, guys stay in touch if you think of anything else. I'd be happy to answer. Yeah. Yeah. It's nice meeting both of you.  Yeah. Thank you so much for this meeting. I was kind of going to say, like, I'm glad that we were able to talk to you and that you gave us a meeting today. 
