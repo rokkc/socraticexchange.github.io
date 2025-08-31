@@ -405,110 +405,108 @@
         </div>
       </div>
     </section>
-
-    <!-- ARTICLES (HBR-style) -->
-    <section id="articles" class="py-20 bg-white border-t border-stone-200">
+    <!-- ARTICLES (HBR-style compact) -->
+    <section id="articles" class="py-16 bg-white border-t border-stone-200">
       <div class="container mx-auto px-6">
-        <div class="grid md:grid-cols-3 gap-10">
+        <div class="grid md:grid-cols-3 gap-8">
           <!-- LEFT: Feature -->
-          <article class="md:col-span-2 grid md:grid-cols-2 gap-8 items-start article-card cursor-pointer"
+          <article class="md:col-span-2 grid md:grid-cols-2 gap-6 items-start article-card cursor-pointer"
                    data-article-id="granovetter">
-            <!-- Feature image -->
-            <img src="https://placehold.co/900x760/f3c51f/fefefe?text=Feature+Art"
-                 alt="Feature art" class="w-full h-[22rem] md:h-[28rem] object-cover md:col-span-1">
+            <!-- Feature image (shorter) -->
+            <img src="https://placehold.co/600x400/f3c51f/fefefe?text=Feature+Art"
+                 alt="Feature art" class="w-full h-48 md:h-56 object-cover md:col-span-1 rounded">
             <!-- Feature text -->
             <div class="md:col-span-1">
-              <p class="text-teal-700 font-semibold text-sm tracking-tight mb-2">Generative AI</p>
-              <h2 class="text-4xl md:text-[2.75rem] leading-tight font-bold text-stone-900 underline decoration-[3px] underline-offset-[6px]">
+              <p class="text-teal-700 font-semibold text-xs tracking-tight mb-1">Generative AI</p>
+              <h2 class="text-2xl md:text-3xl leading-snug font-bold text-stone-900 hover:underline">
                 Beware the AI Experimentation Trap
               </h2>
-              <p class="mt-4 text-lg text-stone-700 max-w-prose">
+              <p class="mt-2 text-base text-stone-700">
                 Leaders are repeating the mistakes of the digital transformation era by funding scattered pilots that don’t connect to
                 real business value.
               </p>
-              <p class="mt-4 text-stone-600">Nathan Furr and Andrew Shipilov</p>
+              <p class="mt-2 text-sm text-stone-600">Nathan Furr and Andrew Shipilov</p>
             </div>
           </article>
     
           <!-- RIGHT: The Latest -->
-          <aside class="space-y-6">
-            <h3 class="text-xl font-bold text-stone-900">The Latest</h3>
+          <aside class="space-y-4">
+            <h3 class="text-lg font-bold text-stone-900">The Latest</h3>
     
-            <a class="block group" href="#" aria-label="My AI Investments Haven’t Paid Off">
-              <h4 class="text-2xl leading-snug text-stone-900 group-hover:underline">
+            <a class="block group" href="#">
+              <h4 class="text-lg leading-snug text-stone-900 group-hover:underline">
                 My AI Investments Haven’t Paid Off. Should I Tap the Brakes?
               </h4>
-              <p class="text-sm text-stone-600 mt-2">Adi Ignatius</p>
-              <div class="h-px bg-stone-200 mt-4"></div>
+              <p class="text-xs text-stone-600 mt-1">Adi Ignatius</p>
+              <div class="h-px bg-stone-200 mt-3"></div>
             </a>
     
             <a class="block group" href="#">
-              <h4 class="text-2xl leading-snug text-stone-900 group-hover:underline">
+              <h4 class="text-lg leading-snug text-stone-900 group-hover:underline">
                 You Need to Be Bored. Here’s Why.
               </h4>
-              <p class="text-sm text-stone-600 mt-2">Arthur C. Brooks</p>
-              <div class="h-px bg-stone-200 mt-4"></div>
+              <p class="text-xs text-stone-600 mt-1">Arthur C. Brooks</p>
+              <div class="h-px bg-stone-200 mt-3"></div>
             </a>
     
             <a class="block group" href="#">
-              <h4 class="text-2xl leading-snug text-stone-900 group-hover:underline">
+              <h4 class="text-lg leading-snug text-stone-900 group-hover:underline">
                 Why You Need Systems Thinking Now
               </h4>
-              <p class="text-sm text-stone-600 mt-2">Tima Bansal and Julian Birkinshaw</p>
-              <div class="h-px bg-stone-200 mt-4"></div>
+              <p class="text-xs text-stone-600 mt-1">Tima Bansal and Julian Birkinshaw</p>
+              <div class="h-px bg-stone-200 mt-3"></div>
             </a>
     
-            <!-- promo box -->
-            <div class="border border-stone-200 p-5">
-              <p class="text-sm text-stone-800">
+            <div class="border border-stone-200 p-4 text-sm">
+              <p>
                 Sign up for <span class="font-bold">HBR Executive Agenda</span> – for insights you need to steer your business now.
                 Only available to subscribers.
               </p>
-              <a href="#" class="mt-3 inline-flex items-center font-semibold text-stone-900 underline underline-offset-4">
-                Sign Up
-                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              <a href="#" class="mt-2 inline-flex items-center font-semibold text-stone-900 underline underline-offset-2">
+                Sign Up →
               </a>
             </div>
           </aside>
         </div>
     
-        <!-- Middle column stack (sits under the feature on tablet/desktop) -->
-        <div class="grid md:grid-cols-3 gap-10 mt-10">
-          <div class="md:col-start-2 md:col-span-1 space-y-10">
+        <!-- Middle column stack (tighter) -->
+        <div class="grid md:grid-cols-3 gap-8 mt-8">
+          <div class="md:col-start-2 md:col-span-1 space-y-8">
             <!-- Story w/ image -->
             <article class="article-card cursor-pointer" data-article-id="leadership1">
-              <img src="https://placehold.co/760x420/1f2937/fefefe?text=Lion"
-                   alt="Lion" class="w-full h-48 object-cover">
-              <p class="mt-4 text-teal-700 font-semibold text-sm tracking-tight">Leadership</p>
-              <h4 class="mt-1 text-3xl leading-tight font-bold text-stone-900 hover:underline">
+              <img src="https://placehold.co/600x350/1f2937/fefefe?text=Lion"
+                   alt="Lion" class="w-full h-40 object-cover rounded">
+              <p class="mt-3 text-teal-700 font-semibold text-xs tracking-tight">Leadership</p>
+              <h4 class="mt-1 text-xl leading-snug font-bold text-stone-900 hover:underline">
                 Now Is the Time for Courage
               </h4>
-              <p class="mt-3 text-stone-700">
+              <p class="mt-2 text-sm text-stone-700">
                 Five strategies to drive bold action amid uncertainty.
               </p>
-              <p class="mt-3 text-stone-600 text-sm">Ranjay Gulati</p>
-              <div class="h-px bg-stone-200 mt-5"></div>
+              <p class="mt-2 text-xs text-stone-600">Ranjay Gulati</p>
+              <div class="h-px bg-stone-200 mt-4"></div>
             </article>
     
             <!-- Text-only story -->
             <article class="article-card cursor-pointer" data-article-id="softskills">
-              <p class="text-teal-700 font-semibold text-sm tracking-tight">Managing Uncertainty</p>
-              <h4 class="mt-1 text-3xl leading-tight font-bold text-stone-900 hover:underline">
+              <p class="text-teal-700 font-semibold text-xs tracking-tight">Managing Uncertainty</p>
+              <h4 class="mt-1 text-xl leading-snug font-bold text-stone-900 hover:underline">
                 Soft Skills Matter Now More Than Ever, According to New Research
               </h4>
-              <p class="mt-3 text-stone-700">
+              <p class="mt-2 text-sm text-stone-700">
                 A study of more than 1,000 occupations found that foundational skills like communication and critical thinking determine
                 how far workers can go in their careers.
               </p>
-              <p class="mt-3 text-stone-600 text-sm">
+              <p class="mt-2 text-xs text-stone-600">
                 Moh Hosseinioun, Frank Neffke, Hyejin Youn and Letian (LT) Zhang
               </p>
-              <div class="h-px bg-stone-200 mt-5"></div>
+              <div class="h-px bg-stone-200 mt-4"></div>
             </article>
           </div>
         </div>
       </div>
     </section>
+
 
     <!-- ARTICLE VIEWER (New-Yorker-style page) -->
     <section id="article-view" class="py-12 md:py-16 hidden">
