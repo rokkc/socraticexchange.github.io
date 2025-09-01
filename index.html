@@ -632,9 +632,7 @@
       /* GRANOVETTER TRANSCRIPT (Google Doc export -> txt) */
       const granovetterCard = document.querySelector('.interview-card[data-name="Professor Mark Granovetter"]');
       if (granovetterCard) {
-        const gdocId = "1RfePI1_6hau7ZCXRTGebBvfjY-82wtfcVSWiSgXsW7g";
-        const exportTxt = `https://docs.google.com/document/d/${gdocId}/export?format=txt`;
-        fetch(exportTxt, {mode:'cors'})
+        fetch("transcripts/granovetterTranscript.txt")
           .then(r => { if (!r.ok) throw new Error('Network response was not ok'); return r.text(); })
           .then(text => {
             const lines = text.split('\n');
