@@ -187,7 +187,10 @@
                    data-interviewers="Leo Cao, Josh Tran"
                    data-content="<div class='space-y-3'>
                      <button id='open-transcript-btn' class='w-full text-center font-semibold bg-gray-200 text-gray-800 p-3 rounded-lg hover:bg-gray-300'>Read Transcript</button>
-                     <a href='#articles' class='block text-center font-semibold text-red-800 underline underline-offset-4'>Read the Article</a>
+                    <a href="#articles" 
+                       class="block text-center font-semibold text-red-800 underline underline-offset-4 granovetter-article-link">
+                       Read the Article
+                    </a>
                    </div>">
                 <p class="font-bold text-gray-900">Professor Mark Granovetter</p>
                 <p class="text-sm text-stone-700">Stanford University</p>
@@ -757,8 +760,27 @@
       el.addEventListener('click', () => openReader(el.dataset.articleId));
     });
     closeBtn.addEventListener('click', closeReader);
-    overlay.addEventListener('click', (e) => { if (e.target === overlay) closeReader(); });
+    overlay.addEventListener('click', (e) => {
+      if (!card.contains(e.target)) closeReader();
+    });
     document.addEventListener('keydown', (e) => { if (e.key==='Escape' && !overlay.classList.contains('hidden')) closeReader(); });
+    // Special case: Granovetter "Read the Article" button in Interview Library
+    const granovetterLink = document.querySelector('.granovetter-article-link');
+    if (granovetterLink) {
+      granovetterLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        // scroll down to Articles section
+        document.getElementById('articles').scrollIntoView({ behavior: 'smooth' });
+        // open overlay after short delay
+        setTimeout(() => openReader('granovetter'), 600);
+      });
+    }
+
+    // Allow clicking anywhere outside the article card to close overlay
+    overlay.addEventListener('click', (e) => {
+      if (!card.contains(e.target)) closeReader();
+    });
+
   });
   </script>
 
