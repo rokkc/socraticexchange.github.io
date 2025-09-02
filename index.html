@@ -187,7 +187,7 @@
                    data-interviewers="Leo Cao, Josh Tran"
                    data-content="<div class='space-y-3'>
                      <button id='open-transcript-btn' class='w-full text-center font-semibold bg-gray-200 text-gray-800 p-3 rounded-lg hover:bg-gray-300'>Read Transcript</button>
-                     <a href='#articles' class='block text-center font-semibold text-red-800 underline underline-offset-4'>Read the Article</a>
+                     <a href='#'     class='block text-center font-semibold text-red-800 underline underline-offset-4 granovetter-article-link'>   Read the Article </a>
                    </div>">
                 <p class="font-bold text-gray-900">Professor Mark Granovetter</p>
                 <p class="text-sm text-stone-700">Stanford University</p>
@@ -743,21 +743,32 @@
       closeBtn.focus();
     }
   
-    function closeReader() {
-      card.classList.add('opacity-0','translate-y-4');
-      card.classList.remove('opacity-100','translate-y-0');
-      setTimeout(() => {
-        overlay.classList.add('hidden');
-        bodyEl.scrollTop = 0;
-        lockBodyScroll(false);
-      }, 180);
-    }
+function closeReader() {
+  // Animate fade/slide out
+  card.classList.add('opacity-0','translate-y-4');
+  card.classList.remove('opacity-100','translate-y-0');
+
+  // After animation, fully hide
+  setTimeout(() => {
+    overlay.classList.add('hidden');
+    bodyEl.scrollTop = 0;
+    lockBodyScroll(false);
+  }, 200); // match Tailwind duration-200
+}
+
+// Close when clicking outside the white article card
+overlay.addEventListener('click', (e) => {
+  if (!card.contains(e.target)) {
+    closeReader();
+  }
+});
+
   
     document.querySelectorAll('.article-card').forEach(el => {
       el.addEventListener('click', () => openReader(el.dataset.articleId));
     });
     closeBtn.addEventListener('click', closeReader);
-    overlay.addEventListener('click', (e) => { if (e.target === overlay) closeReader(); });
+    // Close if clicking backdrop (not the article card) overlay.addEventListener('click', (e) => {   const readerCard = document.getElementById('reader-card');   if (!readerCard.contains(e.target)) {     closeReader();   } });
     document.addEventListener('keydown', (e) => { if (e.key==='Escape' && !overlay.classList.contains('hidden')) closeReader(); });
   });
   </script>
