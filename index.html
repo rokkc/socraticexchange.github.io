@@ -343,7 +343,7 @@
           <aside class="space-y-4">
             <h3 class="text-[15px] font-bold text-stone-900">The Latest</h3>
     
-            <a class="block group article-card cursor-pointer" data-article-id="decision" href="#">
+            <a class="block group article-card cursor-pointer" data-article-id="decision" role="button">
               <h4 class="text-[17px] leading-snug text-stone-900 group-hover:underline">
                 My AI Investments Haven’t Paid Off. Should I Tap the Brakes?
               </h4>
@@ -351,7 +351,7 @@
               <div class="h-px bg-stone-200 mt-3"></div>
             </a>
     
-            <a class="block group article-card cursor-pointer" data-article-id="design" href="#">
+            <a class="block group article-card cursor-pointer" data-article-id="design" role="button">
               <h4 class="text-[17px] leading-snug text-stone-900 group-hover:underline">
                 You Need to Be Bored. Here’s Why.
               </h4>
@@ -359,7 +359,7 @@
               <div class="h-px bg-stone-200 mt-3"></div>
             </a>
     
-            <a class="block group article-card cursor-pointer" data-article-id="design" href="#">
+            <a class="block group article-card cursor-pointer" data-article-id="design" role="button">
               <h4 class="text-[17px] leading-snug text-stone-900 group-hover:underline">
                 Why You Need Systems Thinking Now
               </h4>
@@ -784,6 +784,12 @@ overlay.addEventListener('click', (e) => {
     closeBtn.addEventListener('click', closeReader);
     // Close if clicking backdrop (not the article card) overlay.addEventListener('click', (e) => {   const readerCard = document.getElementById('reader-card');   if (!readerCard.contains(e.target)) {     closeReader();   } });
     document.addEventListener('keydown', (e) => { if (e.key==='Escape' && !overlay.classList.contains('hidden')) closeReader(); });
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('granovetter-article-link')) {
+        e.preventDefault();
+        openReader('granovetter');
+      }
+    });
   });
   </script>
 
