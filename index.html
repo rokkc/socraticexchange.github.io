@@ -542,7 +542,7 @@
   </footer>
 
   <!-- TRANSCRIPT MODAL -->
-  <div id="transcript-modal" class="fixed inset-0 bg-black bg-opacity-75 hidden items-center justify-center p-4 z-50" aria-modal="true" role="dialog">
+<div id="transcript-modal"      class="fixed inset-0 bg-black bg-opacity-75 hidden items-center justify-center p-4 z-50 opacity-0 transition-opacity duration-200"      aria-modal="true" role="dialog">
     <div class="bg-stone-50 rounded-lg shadow-xl w-full max-w-3xl max-h-[90vh] flex flex-col">
       <div class="flex justify-between items-center p-4 border-b border-stone-200">
         <h3 class="text-2xl font-bold text-black">Interview Transcript</h3>
@@ -651,8 +651,23 @@
       const transcriptModal = document.getElementById('transcript-modal');
       const closeModalButton = document.getElementById('close-modal-button');
       const modalContent = document.getElementById('modal-content');
-      function openModal(){ transcriptModal.classList.remove('hidden'); transcriptModal.classList.add('flex'); closeModalButton.focus(); }
-      function closeModal(){ transcriptModal.classList.add('hidden'); transcriptModal.classList.remove('flex'); }
+      function openModal(){
+        transcriptModal.classList.remove('hidden');
+        transcriptModal.classList.add('flex');
+        transcriptModal.classList.remove('opacity-0');
+        transcriptModal.classList.add('opacity-100');
+        closeModalButton.focus();
+      }
+      
+      function closeModal(){
+        // fade out
+        transcriptModal.classList.remove('opacity-100');
+        transcriptModal.classList.add('opacity-0');
+        setTimeout(() => {
+          transcriptModal.classList.add('hidden');
+          transcriptModal.classList.remove('flex');
+        }, 200); // match Tailwind duration
+      }
       closeModalButton.addEventListener('click', closeModal);
       transcriptModal.addEventListener('click', (e) => { if (e.target === transcriptModal) closeModal(); });
       document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
@@ -751,7 +766,6 @@ function closeReader() {
   // After animation, fully hide
   setTimeout(() => {
     overlay.classList.add('hidden');
-    bodyEl.scrollTop = 0;
     lockBodyScroll(false);
   }, 200); // match Tailwind duration-200
 }
