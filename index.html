@@ -139,7 +139,7 @@
               <!-- OLIVER HART -->
               <div class="interview-card cursor-pointer p-4 rounded-lg border-l-4 border-transparent transition-colors hover:bg-stone-200"
                    data-name="Sir Oliver Hart"
-                   data-title="Nobel Prize Economist, Harvard University"
+                   data-title="Nobel Prize Economist — Harvard University"
                    data-description="British-American economist and 2016 Nobel laureate (with Holmström) for contributions to contract theory. Currently the Lewis P. and Linda L. Geyser University Professor at Harvard."
                    data-image="https://news.harvard.edu/wp-content/uploads/2016/10/101016_hart_podium.jpg"
                    data-videourl=""
@@ -153,7 +153,7 @@
               <!-- MICHAEL SPENCE -->
               <div class="interview-card cursor-pointer p-4 rounded-lg border-l-4 border-transparent transition-colors hover:bg-stone-200"
                    data-name="Michael Spence"
-                   data-title="Nobel Prize Economist, NYU Stern / Stanford GSB (Emeritus)"
+                   data-title="Nobel Prize Economist — NYU Stern / Stanford GSB (Emeritus)"
                    data-description="Canadian-American economist and 2001 Nobel laureate (with Akerlof & Stiglitz) for analyses of markets with asymmetric information."
                    data-image="https://news.stanford.edu/__data/assets/image/0031/82849/Zz980407_spence.jpeg"
                    data-videourl=""
@@ -197,8 +197,8 @@
               <!-- DON MOORE (interview done; video live) -->
               <div class="interview-card cursor-pointer p-4 rounded-lg border-l-4 border-transparent transition-colors hover:bg-stone-200"
                    data-name="Professor Don Moore"
-                   data-title="Professor, Management of Organizations, UC Berkeley Haas"
-                   data-description="A lively conversation on overconfidence, decision-making, and negotiation - and how they shape strategy and leadership."
+                   data-title="Professor, Management of Organizations — UC Berkeley Haas"
+                   data-description="A lively conversation on overconfidence, decision-making, and negotiation — and how they shape strategy and leadership."
                    data-image="https://haas.berkeley.edu/wp-content/uploads/Professor-Don-Moore_Berkeley-Haas-600x600.jpg"
                    data-videourl="https://youtu.be/gJPF1zvok2I"
                    data-interviewers="Leo Cao, Josh Tran"
@@ -211,7 +211,7 @@
               <!-- PAUL ADLER (interview done; video date) -->
               <div class="interview-card cursor-pointer p-4 rounded-lg border-l-4 border-transparent transition-colors hover:bg-stone-200"
                    data-name="Professor Paul Adler"
-                   data-title="Professor of Management & Organization, USC Marshall"
+                   data-title="Professor of Management & Organization — USC Marshall"
                    data-description="An engaging discussion on ethics, organizational design, and re-imagining capitalism for long-term value."
                    data-image="https://uscmarshallweb.s3-us-west-2.amazonaws.com/assets/uploads/s1/per_por/paul_adler_hcahmuwup6.jpg"
                    data-videourl=""
@@ -239,7 +239,7 @@
               <!-- EUGENE CARUSO -->
               <div class="interview-card cursor-pointer p-4 rounded-lg border-l-4 border-transparent transition-colors hover:bg-stone-200"
                    data-name="Professor Eugene M. Caruso"
-                   data-title="Professor of Management & Organizations, UCLA Anderson"
+                   data-title="Professor of Management & Organizations — UCLA Anderson"
                    data-description="Behavioral decision-making scholar; co-director of the Inclusive Ethics Initiative. “Think like behavioral scientists, rigorously learn from data.”"
                    data-image="https://www.anderson.ucla.edu/sites/default/files/styles/biography_card/public/image/2024-11/eugene-caruso-2024-square.jpg?itok=6zlhkEN6"
                    data-videourl=""
@@ -304,7 +304,7 @@
             </h3>
     
             <p class="mt-2 text-[13px] italic text-stone-600">
-              “You never know which one it’s going to be.” - Mark Granovetter
+              “You never know which one it’s going to be.” — Mark Granovetter
             </p>
     
             <p class="mt-3 text-[15px] leading-6 text-stone-700">
@@ -625,25 +625,16 @@
             const lines = text.split('\n');
             const paras = [];
             let speaker = null, buf = [];
-            function flush(){ if (buf.length){ paras.push({speaker, text: buf.join('<br/>')}); buf = []; } }
+            function flush(){ if (buf.length){ paras.push({speaker, text: buf.join(' ')}); buf = []; } }
             for (const raw of lines){
               const line = raw.trim();
               if (!line) { flush(); speaker=null; continue; }
-                const idx = line.indexOf(':');
-                if (idx>0 && idx<40){
-                  flush();
-                  speaker = line.slice(0,idx).trim();
-                  const rest = line.slice(idx+1).trim();
-                  if (rest) buf.push(rest);
-                } else {
-                  // check if it's a "subheader" (all caps, no colon)
-                  if (/^[A-Z\s]+$/.test(line) && line.length > 3) {
-                    buf.push(`<strong>${line}</strong>`);
-                  } else {
-                    buf.push(line);
-                  }
-                }
-
+              const idx = line.indexOf(':');
+              if (idx>0 && idx<40){
+                flush(); speaker = line.slice(0,idx).trim();
+                const rest = line.slice(idx+1).trim(); if (rest) buf.push(rest);
+              } else { buf.push(line); }
+            }
             flush();
             const html = paras.map(p => p.speaker
               ? `<p><strong>${p.speaker}:</strong> ${p.text}</p>`
@@ -701,7 +692,7 @@
         byline: 'By <strong>Leo Cao</strong>',
         body: `
           <p class="ny-dropcap">“You never know which one it’s going to be.”</p>
-          <p class="italic">- Mark Granovetter, on the weak tie that might change your life</p>
+          <p class="italic">— Mark Granovetter, on the weak tie that might change your life</p>
       
           <p>In 1973, Stanford sociologist Mark Granovetter published a paper with a title that sounds deceptively simple: <em>The Strength of Weak Ties</em>. Fifty years and over 76,000 citations later, that phrase has become something of a sacred koan in the social sciences. It’s been repeated in classrooms, startup accelerators, and policy think tanks alike. But what does it really mean?</p>
       
