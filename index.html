@@ -56,9 +56,6 @@
     /* HBR-like Articles hub */
     .article-card:hover .article-title{ text-decoration:underline; }
     .shadow-soft{ box-shadow:0 10px 25px rgba(0,0,0,.06); }
-        p {
-      margin-bottom: 1.5em; /* adds spacing between paragraphs */
-    }
   </style>
 </head>
 <body class="bg-stone-100 text-gray-900">
@@ -628,16 +625,25 @@
             const lines = text.split('\n');
             const paras = [];
             let speaker = null, buf = [];
-            function flush(){ if (buf.length){ paras.push({speaker, text: buf.join(' ')}); buf = []; } }
+            function flush(){ if (buf.length){ paras.push({speaker, text: buf.join('<br/>')}); buf = []; } }
             for (const raw of lines){
               const line = raw.trim();
               if (!line) { flush(); speaker=null; continue; }
-              const idx = line.indexOf(':');
-              if (idx>0 && idx<40){
-                flush(); speaker = line.slice(0,idx).trim();
-                const rest = line.slice(idx+1).trim(); if (rest) buf.push(rest);
-              } else { buf.push(line); }
-            }
+                const idx = line.indexOf(':');
+                if (idx>0 && idx<40){
+                  flush();
+                  speaker = line.slice(0,idx).trim();
+                  const rest = line.slice(idx+1).trim();
+                  if (rest) buf.push(rest);
+                } else {
+                  // check if it's a "subheader" (all caps, no colon)
+                  if (/^[A-Z\s]+$/.test(line) && line.length > 3) {
+                    buf.push(`<strong>${line}</strong>`);
+                  } else {
+                    buf.push(line);
+                  }
+                }
+
             flush();
             const html = paras.map(p => p.speaker
               ? `<p><strong>${p.speaker}:</strong> ${p.text}</p>`
