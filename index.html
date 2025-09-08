@@ -554,6 +554,12 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // ✅ Preload all interview images so they're cached
+      document.querySelectorAll('.interview-card').forEach(card => {
+        const img = new Image();
+        img.src = card.dataset.image;
+      });
+
       /* Mobile menu */
       const mobileMenuButton = document.getElementById('mobile-menu-button');
       const mobileMenu = document.getElementById('mobile-menu');
@@ -592,8 +598,15 @@
         interviewCards.forEach(c => c.classList.remove('active-interview'));
         card.classList.add('active-interview');
 
-        interviewImage.src = card.dataset.image || '';
-        interviewImage.alt = card.dataset.name || '';
+        // ✅ Only swap when the new image is ready
+        const newImg = new Image();
+        newImg.src = card.dataset.image || '';
+        newImg.alt = card.dataset.name || '';
+        newImg.onload = () => {
+          interviewImage.src = newImg.src;
+          interviewImage.alt = newImg.alt;
+        };
+
         interviewName.textContent = card.dataset.name || '';
         interviewTitle.textContent = card.dataset.title || '';
         interviewDescription.textContent = card.dataset.description || '';
