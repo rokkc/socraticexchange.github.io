@@ -156,16 +156,11 @@
                    data-title="Nobel Prize Economist — NYU Stern / Stanford GSB (Emeritus)"
                    data-description="Canadian-American economist and 2001 Nobel laureate (with Akerlof & Stiglitz) for analyses of markets with asymmetric information."
                    data-image="https://news.stanford.edu/__data/assets/image/0031/82849/Zz980407_spence.jpeg"
-                   data-videourl=""
+                   data-videourl="https://youtu.be/KUWyUH1G1PM"
                    data-interviewers="Leo Cao, Josh Tran"
                    data-content="<div class='space-y-3'>
-                     <a href='https://youtu.be/KUWyUH1G1PM' target='_blank' rel='noopener noreferrer'
-                        class='w-full text-center font-semibold bg-gray-200 text-gray-800 p-3 rounded-lg hover:bg-gray-300'>
-                       Watch Interview
-                     </a>
-                     <a href='#' class='block text-center font-semibold text-red-800 underline underline-offset-4 spence-article-link'>
-                       Read the Article
-                     </a>
+                     <button id='open-transcript-btn' class='w-full text-center font-semibold bg-gray-200 text-gray-800 p-3 rounded-lg hover:bg-gray-300'>Read Transcript</button>
+                     <a href='#' class='block text-center font-semibold text-red-800 underline underline-offset-4 spence-article-link'>Read the Article</a>
                    </div>">
                 <p class="font-bold text-gray-900">Michael Spence</p>
                 <p class="text-sm text-stone-700">Nobel Prize Economist</p>
@@ -710,7 +705,7 @@
   <script>
   document.addEventListener('DOMContentLoaded', function () {
     /* Your articles’ text lives here */
-    const  = {
+    const articleData = {
       granovetter: {
         kicker: 'Social Networks & Economic Life',
         title: 'The Gentle Power of Weak Ties: Networking Tips from a Sociologist',
