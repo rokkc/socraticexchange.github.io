@@ -135,29 +135,27 @@
           <div class="lg:col-span-1">
             <h3 class="text-xl font-semibold text-gray-900 mb-4 px-4">Interview Library</h3>
             <div class="space-y-2 max-h-[32rem] overflow-y-auto pr-2">
-
-              <!-- MICHAEL SPENCE (✅ interview done; video + article live) -->
+              
+              <!-- MICHAEL SPENCE (✅ interview done; video live; transcript placeholder) -->
               <div class="interview-card cursor-pointer p-4 rounded-lg border-l-4 border-transparent transition-colors hover:bg-stone-200"
                    data-name="Michael Spence"
                    data-title="Nobel Prize Economist — NYU Stern / Stanford GSB (Emeritus)"
                    data-description="Canadian-American economist and 2001 Nobel laureate (with Akerlof & Stiglitz) for analyses of markets with asymmetric information."
                    data-image="https://news.stanford.edu/__data/assets/image/0031/82849/Zz980407_spence.jpeg"
-                   data-videourl=""  <!-- leave empty so JS doesn't auto-append a duplicate Watch button -->
+                   data-videourl="" 
                    data-interviewers="Leo Cao, Josh Tran"
-                   data-transcript="<div class='prose max-w-none text-stone-700 space-y-4'><p>Transcript coming soon.</p></div>">
+                   data-transcript='<div class="prose max-w-none text-stone-700 space-y-4"><p>Transcript coming soon.</p></div>'
+                   data-content='<div class="space-y-3">
+                     <a href="https://youtu.be/KUWyUH1G1PM" target="_blank" rel="noopener noreferrer"
+                        class="block text-center font-semibold bg-red-800 text-white p-3 rounded-lg hover:bg-red-900">Watch Interview</a>
+                     <button id="open-transcript-btn"
+                             class="w-full text-center font-semibold bg-gray-200 text-gray-800 p-3 rounded-lg hover:bg-gray-300">
+                       Read Transcript
+                     </button>
+                   </div>'>
                 <p class="font-bold text-gray-900">Michael Spence</p>
                 <p class="text-sm text-stone-700">Nobel Prize Economist</p>
                 <p class="text-sm font-semibold text-green-700 mt-1">Watch &amp; Read</p>
-              
-                <!-- exact spot/formatting where 'Read Transcript' used to be: now a red Watch button -->
-                <div class="mt-3 space-y-3">
-                  <a href="https://youtu.be/KUWyUH1G1PM" target="_blank" rel="noopener noreferrer"
-                     class="w-full text-center font-semibold bg-red-800 text-white p-3 rounded-lg hover:bg-red-900">Watch Interview</a>
-                  <button id="open-transcript-btn"
-                          class="w-full text-center font-semibold bg-gray-200 text-gray-800 p-3 rounded-lg hover:bg-gray-300">
-                    Read Transcript
-                  </button>
-                </div>
               </div>
 
               <!-- OLIVER HART -->
