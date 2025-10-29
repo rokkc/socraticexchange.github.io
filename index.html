@@ -23,9 +23,9 @@
     .prose{font-family:'EB Garamond',serif;}
     .nav-link.active{color:var(--brand-red);font-weight:600;}
     .nav-link:hover{color:var(--camel);}
-    .interview-card.active-interview{background:#fee2e2;border-left-color:var(--brand-red);}
-    .camel-txt{color:var(--camel);}
-    .camel-bg{background:var(--camel);}
+    .interview-card.active-interview{background:#fee2e2;border-left-color:var(--brand-red);} 
+    .camel-txt{color:var(--camel);} 
+    .camel-bg{background:var(--camel);} 
     #close-modal-button{font-size:2rem;line-height:1}
 
     /* Wordmark (thin & stacked) */
@@ -150,18 +150,18 @@
                 <p class="text-sm font-semibold camel-txt mt-1">Coming Soon</p>
               </div>
 
-              <!-- MICHAEL SPENCE (interview done; video/article upcoming) -->
+              <!-- MICHAEL SPENCE (✅ interview done; video + article live) -->
               <div class="interview-card cursor-pointer p-4 rounded-lg border-l-4 border-transparent transition-colors hover:bg-stone-200"
                    data-name="Michael Spence"
                    data-title="Nobel Prize Economist — NYU Stern / Stanford GSB (Emeritus)"
                    data-description="Canadian-American economist and 2001 Nobel laureate (with Akerlof & Stiglitz) for analyses of markets with asymmetric information."
                    data-image="https://news.stanford.edu/__data/assets/image/0031/82849/Zz980407_spence.jpeg"
-                   data-videourl=""
+                   data-videourl="https://youtu.be/KUWyUH1G1PM"
                    data-interviewers="Leo Cao, Josh Tran"
-                   data-content="<div class='prose max-w-none text-stone-700'><p>Interview complete. Full video and supporting article will be published <strong>October 10, 2025</strong>. Stay tuned!</p></div>">
+                   data-content="<div class='space-y-3 prose max-w-none text-stone-700'><p>Watch the full interview and read our article on human capital, mobility, and policy.</p><a href='#' class='block text-center font-semibold text-red-800 underline underline-offset-4 spence-article-link'>Read the Article</a></div>">
                 <p class="font-bold text-gray-900">Michael Spence</p>
                 <p class="text-sm text-stone-700">Nobel Prize Economist</p>
-                <p class="text-sm font-semibold camel-txt mt-1">Video & Article Oct 10</p>
+                <p class="text-sm font-semibold text-green-700 mt-1">Watch & Read</p>
               </div>
 
               <!-- SKYE PERRYMAN -->
@@ -316,24 +316,20 @@
           </article>
     
           <!-- COLUMN 2: Business & Philosophy article -->
-          <article class="article-card cursor-pointer" data-article-id="ethics">
-            <p class="text-teal-700 font-semibold text-[11px] tracking-tight mb-1">BUSINESS ETHICS | Oct. 21, 2025</p>
+          <article class="article-card cursor-pointer" data-article-id="spence">
+            <p class="text-teal-700 font-semibold text-[11px] tracking-tight mb-1">ECONOMICS & POLICY | Oct. 10, 2025</p>
             <h2 class="text-[26px] leading-snug font-bold text-stone-900">
-              Beyond Profit: "The Ethical Institution"
+              Are There Limits? Human Capital, Mobility, and Economic Policy with Mike Spence
             </h2>
             <p class="mt-2 text-[15px] leading-6 text-stone-700">
-              Building on Paul Adler’s vision of collaborative institutions and Peter Drucker’s mission before 
-              profit philosophy, leaders are rediscovering that long-term efficiency comes from shared purpose.
+              Highlights from our conversation with Nobel Laureate Michael Spence on education as signal and skill, mobility, and balancing Keynesian and laissez‑faire approaches.
             </p>
             <p class="mt-2 text-xs text-stone-600">By Editorial Team</p>
-          
-            <!-- Supporting image -->
             <div class="mt-4 w-full h-52 md:h-64 lg:h-72 xl:h-80 overflow-hidden rounded">
               <img
-                src="https://www.greece-is.com/wp-content/uploads/2016/07/Plato-and-Aristotle-BIG.jpg"
-                alt="Philosophical discussion illustration"
-                class="w-full h-full object-cover transform scale-[1.15] object-top"
-                style="height: 105%; margin-top: -5%;"
+                src="https://news.stanford.edu/__data/assets/image/0031/82849/Zz980407_spence.jpeg"
+                alt="Michael Spence speaking"
+                class="w-full h-full object-cover object-center"
               />
             </div>
           </article>
@@ -342,6 +338,14 @@
           <!-- COLUMN 3: The Latest -->
           <aside class="space-y-4">
             <h3 class="text-[15px] font-bold text-stone-900">The Latest</h3>
+
+            <a class="block group article-card cursor-pointer" data-article-id="spence" role="button">
+              <h4 class="text-[17px] leading-snug text-stone-900 group-hover:underline">
+                Are There Limits? Mike Spence on Education, Mobility, and Policy
+              </h4>
+              <p class="text-[11px] text-stone-600 mt-1">The Socratic Exchange</p>
+              <div class="h-px bg-stone-200 mt-3"></div>
+            </a>
     
             <a class="block group article-card cursor-pointer" data-article-id="decision" role="button">
               <h4 class="text-[17px] leading-snug text-stone-900 group-hover:underline">
@@ -749,16 +753,44 @@
         `
       },
 
+      /* ✅ NEW: Michael Spence article */
+      spence: {
+        kicker: 'Economics & Policy',
+        title: 'Are There Limits? An Exploration of Human Capital, Mobility, and Economic Policy with Mike Spence',
+        byline: 'By <strong>The Socratic Exchange</strong>',
+        image: 'https://news.stanford.edu/__data/assets/image/0031/82849/Zz980407_spence.jpeg',
+        body: `
+          <p class="ny-dropcap">“I think you’re right to study mobility.”</p>
+          <br>
+          <p>In a recent discussion with Nobel Laureate and economist Mike Spence, we discussed education’s impact on human capital and signaling, mobility, and ethics regarding Laissez‑Faire and Keynesian policies.</p>
+          <br>
+          <p>Spence noted that human capital can certainly be acquired without a formal education at, say, an Ivy or T20, and that opportunity does not rise solely from an objective view of a person’s capabilities and skillset. However, in a world of relatively imperfect signaling — the way information is portrayed about a person or entity — education plays a significant role in how one is able to access opportunities. He states that, while it is important to realize that where knowledge or human capital is acquired is not of the utmost importance, the networks and opportunities provided by a university education can be invaluable assets when building the foundation of a career.</p>
+          <br>
+          <p>These returns on investing in higher education can also build illusory barriers that can explain the declines in social, economic, and geographical mobility — where hopeful students possess an all‑or‑nothing mindset, believing that a state‑level education is not enough to pass through the selectivity sieve. While it is worth acknowledging the benefits a T20 education can have on one’s career, Spence also notes that success ultimately relies on a person’s commitment, perseverance, and social skills.</p>
+          <br>
+          <p>Regarding Laissez‑Faire and Keynesian policy, Spence speaks to how it is important not to disregard either side, as it is ultimately a balancing act. Keynesian policy can sometimes be misleading — benefiting producers rather than consumers. On the other hand, policies that tend to be more Laissez‑Faire reliant can be dangerous and might need additional regulations from the public sector when the aforementioned self‑regulating policies may lead to market collapse or stagnation.</p>
+          <br>
+          <div class="my-6">
+            <a href="https://youtu.be/KUWyUH1G1PM" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-red-800 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-900">Watch the Interview</a>
+          </div>
+        `
+      },
 
       ethics: {
         kicker: 'Leadership & Ethics',
         title: 'Beyond Profit: "The Ethical Institution"',
-        byline: 'By <strong>The Socratic Exchange</strong>',
+        byline: 'By <strong>Leo Cao</strong>',
         image: 'https://www.greece-is.com/wp-content/uploads/2016/07/Plato-and-Aristotle-BIG.jpg',
         body: `
-          <p class="ny-dropcap">
-            Trust is an operating system. When it runs well, organizations move faster with fewer meetings and less politics.
-          </p>
+          <p class="ny-dropcap">How do we design a fair society? On paper, the answer seems simple—equality—but its implementation is a migraine.</p>
+          <br>
+          <p>Answers have been proposed from Hammurabi’s diorite-inscribed eye-for-an-eye code to Locke’s natural rights, which our Constitution was built upon. But the most thought-provoking solution I’ve encountered is Rawls’ <em>Veil of Ignorance</em>.</p>
+          <br>
+          <p>Imagine you’re a floating, soon-to-be-born consciousness with the power to organize society to your liking. What rules would you install, not knowing if you’ll be born into generational wealth or war? Rawls argues for <em>justice as fairness</em>: we should establish policies that give the most unfortunate people an equal shot at good living. But economically, the logistics are nuts. For example, would it be unjust to pay naturally-unproductive workers equal to their productive counterparts, or would cutting their wages be justice for their highly-productive coworkers?</p>
+          <br>
+          <p>Seeking perspective, I sat down with Paul Adler, an economist and USC professor, for my Socratic Exchange seminars. His 2001 paper, <em>The Knowledge Economy</em>, parallels Rawls: organizations depend on employee trust; we should structure economies to help all workers collaborate. That summer, we discussed Marx’s people-before-profit philosophy and concluded that just economies are ideally collaborative: business should give unproductive workers the chance to adapt.</p>
+          <br>
+          <p>Rawls’ theory is bigger than just money, but Adler’s generosity in talking with me expanded my economic and philosophic knowledge. That was big.</p>
         `
       },
       decision: {
@@ -832,13 +864,12 @@ overlay.addEventListener('click', (e) => {
       el.addEventListener('click', () => openReader(el.dataset.articleId));
     });
     closeBtn.addEventListener('click', closeReader);
-    // Close if clicking backdrop (not the article card) overlay.addEventListener('click', (e) => {   const readerCard = document.getElementById('reader-card');   if (!readerCard.contains(e.target)) {     closeReader();   } });
     document.addEventListener('keydown', (e) => { if (e.key==='Escape' && !overlay.classList.contains('hidden')) closeReader(); });
+
+    // open Spence from his interview panel link
     document.addEventListener('click', (e) => {
-      if (e.target.classList.contains('granovetter-article-link')) {
-        e.preventDefault();
-        openReader('granovetter');
-      }
+      if (e.target.classList.contains('granovetter-article-link')) { e.preventDefault(); openReader('granovetter'); }
+      if (e.target.classList.contains('spence-article-link'))      { e.preventDefault(); openReader('spence'); }
     });
   });
   </script>
