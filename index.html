@@ -741,19 +741,6 @@
         `
       },
 
-      document.addEventListener('DOMContentLoaded', () => {
-        const hash = window.location.hash.replace('#', '').trim();
-        if (!hash) return;
-      
-        // Only open if it's one of your article IDs
-        const valid = ['spence', 'granovetter', 'ethics', 'decision', 'design'];
-        if (valid.includes(hash)) {
-          // Delay ensures the reader overlay + JS is initialized
-          setTimeout(() => openReader(hash), 100);
-        }
-      });
-
-
       /* ✅ NEW: Michael Spence article */
       spence: {
         kicker: 'Economics & Policy',
