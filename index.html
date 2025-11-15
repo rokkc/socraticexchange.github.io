@@ -868,6 +868,22 @@ overlay.addEventListener('click', (e) => {
     closeBtn.addEventListener('click', closeReader);
     document.addEventListener('keydown', (e) => { if (e.key==='Escape' && !overlay.classList.contains('hidden')) closeReader(); });
 
+    // --- AUTO-OPEN ARTICLE IF URL HAS A HASH ---
+    document.addEventListener('DOMContentLoaded', () => {
+      const id = window.location.hash.replace('#', '').trim();
+      if (!id) return;
+    
+      // match your actual article IDs
+      const validArticles = ['spence', 'granovetter', 'ethics', 'decision', 'design'];
+    
+      if (validArticles.includes(id)) {
+        // Wait so the reader UI is fully initialized
+        setTimeout(() => {
+          openReader(id);
+        }, 150);
+      }
+    });
+    
     // open Spence from his interview panel link
     document.addEventListener('click', (e) => {
       if (e.target.classList.contains('granovetter-article-link')) { e.preventDefault(); openReader('granovetter'); }
