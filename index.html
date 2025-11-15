@@ -826,6 +826,14 @@
     }
   
     function openReader(id) {
+      // --- AUTO OPEN WHEN URL CONTAINS #spence, #granovetter, etc. ---
+      const hashID = window.location.hash.replace('#', '').trim();
+      const validIDs = ['spence', 'granovetter', 'ethics', 'decision', 'design'];
+      
+      if (validIDs.includes(hashID)) {
+        setTimeout(() => openReader(hashID), 100);
+      }
+
       const a = articleData[id];
       if (!a) return;
       kicker.textContent = a.kicker || '';
