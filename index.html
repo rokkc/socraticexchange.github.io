@@ -305,8 +305,8 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
     
           <!-- COLUMN 1: Michael Spence -->
-          <a href="#spence" class="block group">
-            <article class="article-card cursor-pointer" data-article-id="spence">
+          <a class="block group article-card" data-article-id="spence">
+            <article class="cursor-pointer">
               <p class="text-teal-700 font-semibold text-[11px] tracking-tight mb-1">ECONOMICS & POLICY | Oct. 10, 2025</p>
               <h2 class="text-[26px] leading-snug font-bold text-stone-900 group-hover:underline">
                 Are There Limits? A Nobel Prize Economist’s Opinion
@@ -324,8 +324,8 @@
           </a>
     
           <!-- COLUMN 2: Weak Ties feature -->
-          <a href="#granovetter" class="block group">
-            <article class="article-card cursor-pointer" data-article-id="granovetter">
+          <a class="block group article-card" data-article-id="granovetter">
+            <article class="cursor-pointer">
               <img src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/discussing-the-catch-louis-charles-moeller.jpg"
                    alt="Discussing the Catch by Louis Charles Moeller"
                    class="w-full h-56 md:h-60 object-cover rounded transition-transform group-hover:scale-105 duration-200"/>
@@ -344,8 +344,8 @@
           </a>
     
           <!-- COLUMN 3: Economic Ethics article -->
-          <a href="#ethics" class="block group">
-            <article class="article-card cursor-pointer" data-article-id="ethics">
+          <a class="block group article-card" data-article-id="ethics">
+            <article class="cursor-pointer">
               <p class="text-teal-700 font-semibold text-[11px] tracking-tight mb-1">ECONOMIC ETHICS | Oct. 28, 2025</p>
               <h2 class="text-[26px] leading-snug font-bold text-stone-900 group-hover:underline">
                 Beyond Profit: "The Ethical Institution"
@@ -811,15 +811,6 @@
     function lockBodyScroll(lock) {
       document.body.style.overflow = lock ? 'hidden' : '';
     }
-  
-    function openReader(id) {
-      // --- AUTO OPEN WHEN URL CONTAINS #spence, #granovetter, etc. ---
-      const hashID = window.location.hash.replace('#', '').trim();
-      const validIDs = ['spence', 'granovetter', 'ethics', 'decision', 'design'];
-      
-      if (validIDs.includes(hashID)) {
-        setTimeout(() => openReader(hashID), 100);
-      }
 
       const a = articleData[id];
       if (!a) return;
@@ -849,6 +840,15 @@ function closeReader() {
   }, 200); // match Tailwind duration-200
 }
 
+// AUTO-OPEN ARTICLE IF URL HAS A HASH (#spence etc.)
+const hash = window.location.hash.replace('#', '').trim();
+const valid = ['spence', 'granovetter', 'ethics', 'decision', 'design'];
+
+if (valid.includes(hash)) {
+  setTimeout(() => openReader(hash), 150);
+}
+
+    
 // Close when clicking outside the white article card
 overlay.addEventListener('click', (e) => {
   if (!card.contains(e.target)) {
@@ -863,22 +863,6 @@ overlay.addEventListener('click', (e) => {
     closeBtn.addEventListener('click', closeReader);
     document.addEventListener('keydown', (e) => { if (e.key==='Escape' && !overlay.classList.contains('hidden')) closeReader(); });
 
-    // --- AUTO-OPEN ARTICLE IF URL HAS A HASH ---
-    document.addEventListener('DOMContentLoaded', () => {
-      const id = window.location.hash.replace('#', '').trim();
-      if (!id) return;
-    
-      // match your actual article IDs
-      const validArticles = ['spence', 'granovetter', 'ethics', 'decision', 'design'];
-    
-      if (validArticles.includes(id)) {
-        // Wait so the reader UI is fully initialized
-        setTimeout(() => {
-          openReader(id);
-        }, 150);
-      }
-    });
-    
     // open Spence from his interview panel link
     document.addEventListener('click', (e) => {
       if (e.target.classList.contains('granovetter-article-link')) { e.preventDefault(); openReader('granovetter'); }
