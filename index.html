@@ -847,37 +847,15 @@ overlay.addEventListener('click', (e) => {
       el.addEventListener('click', () => openReader(el.dataset.articleId));
     });
     closeBtn.addEventListener('click', closeReader);
-    document.addEventListener('keydown', (e) => { 
-      if (e.key === 'Escape' && !overlay.classList.contains('hidden')) closeReader(); 
-    });
+    document.addEventListener('keydown', (e) => { if (e.key==='Escape' && !overlay.classList.contains('hidden')) closeReader(); });
 
-    // open articles from their inline links
+    // open Spence from his interview panel link
     document.addEventListener('click', (e) => {
-      if (e.target.classList.contains('granovetter-article-link')) { 
-        e.preventDefault(); 
-        openReader('granovetter'); 
-      }
-      if (e.target.classList.contains('spence-article-link')) {      
-        e.preventDefault(); 
-        openReader('spence'); 
-      }
-    });
-
-    // ✅ NEW: Open article automatically if URL has a hash like #spence, #granovetter, #ethics
-    const initialHash = window.location.hash.replace('#', '');
-    if (initialHash && articleData[initialHash]) {
-      openReader(initialHash);
-    }
-
-    // (optional but nice): respond to hash changes too
-    window.addEventListener('hashchange', () => {
-      const hash = window.location.hash.replace('#', '');
-      if (hash && articleData[hash]) {
-        openReader(hash);
-      }
+      if (e.target.classList.contains('granovetter-article-link')) { e.preventDefault(); openReader('granovetter'); }
+      if (e.target.classList.contains('spence-article-link'))      { e.preventDefault(); openReader('spence'); }
     });
   });
-
+  </script>
 
   <!-- ARTICLE READER OVERLAY -->
   <div id="reader-overlay" class="fixed inset-0 z-50 hidden" aria-hidden="true">
