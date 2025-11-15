@@ -292,7 +292,13 @@
         </div>
       </div>
     </section>
-    
+
+    <span id="spence"></span>
+    <span id="granovetter"></span>
+    <span id="ethics"></span>
+    <span id="decision"></span>
+    <span id="design"></span>
+
     <!-- ARTICLES (3 clean columns, fixed layout) -->
     <section id="articles" class="py-12 bg-white border-t border-stone-200">
       <div class="container mx-auto px-6">
@@ -734,6 +740,19 @@
           <p class="mt-6 text-sm text-stone-600">Leo Cao is a co-founder of <em>The Socratic Exchange</em>, a student-led seminar series exploring the intersection of business, ethics, and philosophy. He’s currently a senior at Evergreen Valley High School.</p>
         `
       },
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const hash = window.location.hash.replace('#', '').trim();
+        if (!hash) return;
+      
+        // Only open if it's one of your article IDs
+        const valid = ['spence', 'granovetter', 'ethics', 'decision', 'design'];
+        if (valid.includes(hash)) {
+          // Delay ensures the reader overlay + JS is initialized
+          setTimeout(() => openReader(hash), 100);
+        }
+      });
+
 
       /* ✅ NEW: Michael Spence article */
       spence: {
