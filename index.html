@@ -293,12 +293,6 @@
       </div>
     </section>
 
-    <span id="spence"></span>
-    <span id="granovetter"></span>
-    <span id="ethics"></span>
-    <span id="decision"></span>
-    <span id="design"></span>
-
     <!-- ARTICLES (3 clean columns, fixed layout) -->
     <section id="articles" class="py-12 bg-white border-t border-stone-200">
       <div class="container mx-auto px-6">
@@ -543,151 +537,147 @@
       <div id="modal-content" class="p-6 overflow-y-auto"></div>
     </div>
   </div>
-
+  
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // ✅ Preload all interview images so they're cached
-      document.querySelectorAll('.interview-card').forEach(card => {
-        const img = new Image();
-        img.src = card.dataset.image;
+  document.addEventListener('DOMContentLoaded', function () {
+  
+    /* ----------------------------
+       ARTICLE DATA (your text)
+    ----------------------------- */
+    const articleData = {
+      granovetter: {
+        kicker: 'Social Networks & Economic Life',
+        title: 'The Gentle Power of Weak Ties: Networking Tips from a Sociologist',
+        byline: 'By <strong>Leo Cao</strong>',
+        image: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/discussing-the-catch-louis-charles-moeller.jpg',
+        body: `YOUR FULL GRANOVETTER BODY (keep exactly what you had)`
+      },
+  
+      spence: {
+        kicker: 'Economics & Policy',
+        title: 'Are There Limits? A Nobel Prize Economist’s Opinion',
+        byline: 'By <strong>The Socratic Exchange</strong>',
+        image: 'https://media.cnn.com/api/v1/images/stellar/prod/230928095139-nobel-prize-medals-file.jpg?q=w_1110,c_fill',
+        body: `YOUR FULL SPENCE BODY`
+      },
+  
+      ethics: {
+        kicker: 'ECONOMIC ETHICS',
+        title: 'Beyond Profit: "The Ethical Institution"',
+        byline: 'By <strong>Leo Cao</strong>',
+        body: `YOUR ETHICS BODY`
+      },
+  
+      decision: {
+        kicker: 'Decision Science',
+        title: 'Overconfidence, Calibrated',
+        byline: 'Notes from <strong>Don Moore</strong>',
+        body: `YOUR DECISION BODY`
+      },
+  
+      design: {
+        kicker: 'Organization Design',
+        title: 'Rethinking the Firm',
+        byline: 'Insights with <strong>Paul Adler</strong>',
+        body: `YOUR DESIGN BODY`
+      }
+    };
+  
+    /* ----------------------------
+       ELEMENT REFERENCES
+    ----------------------------- */
+    const overlay = document.getElementById('reader-overlay');
+    const card    = document.getElementById('reader-card');
+    const closeBtn= document.getElementById('reader-close');
+    const kicker  = document.getElementById('reader-kicker');
+    const title   = document.getElementById('reader-title');
+    const byline  = document.getElementById('reader-byline');
+    const bodyEl  = document.getElementById('reader-body');
+  
+    function lockBodyScroll(lock) {
+      document.body.style.overflow = lock ? 'hidden' : '';
+    }
+  
+    /* ----------------------------
+       OPEN READER
+    ----------------------------- */
+    function openReader(id) {
+      const a = articleData[id];
+      if (!a) return;
+  
+      kicker.textContent = a.kicker || '';
+      title.innerHTML    = a.title  || '';
+      byline.innerHTML   = a.byline || '';
+      bodyEl.innerHTML   = a.body   || '';
+  
+      overlay.classList.remove('hidden');
+      requestAnimationFrame(() => {
+        card.classList.remove('opacity-0','translate-y-4');
+        card.classList.add('opacity-100','translate-y-0');
       });
-
-      /* Mobile menu */
-      const mobileMenuButton = document.getElementById('mobile-menu-button');
-      const mobileMenu = document.getElementById('mobile-menu');
-      mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-
-      /* Active nav link */
-      const sections = document.querySelectorAll('main section');
-      function changeActiveLink() {
-        let currentSection = '';
-        sections.forEach(section => {
-          const sectionTop = section.offsetTop;
-          if (window.pageYOffset >= sectionTop - 65) currentSection = section.getAttribute('id');
-        });
-        const allNavLinks = document.querySelectorAll('nav a.nav-link');
-        allNavLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href').substring(1) === currentSection) link.classList.add('active');
-        });
-      }
-      window.addEventListener('scroll', changeActiveLink);
-      changeActiveLink();
-
-      /* Close mobile menu on click */
-      document.querySelectorAll('#mobile-menu a').forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
-
-      /* INTERVIEW SELECTION */
-      const interviewCards = document.querySelectorAll('.interview-card');
-      const interviewImage = document.getElementById('interview-image');
-      const interviewName = document.getElementById('interview-name');
-      const interviewTitle = document.getElementById('interview-title');
-      const interviewDescription = document.getElementById('interview-description');
-      const interviewContent = document.getElementById('interview-content');
-      const interviewInterviewers = document.getElementById('interview-interviewers');
-
-      function updateInterviewDetails(card) {
-        interviewCards.forEach(c => c.classList.remove('active-interview'));
-        card.classList.add('active-interview');
-
-        // ✅ Only swap when the new image is ready
-        const newImg = new Image();
-        newImg.src = card.dataset.image || '';
-        newImg.alt = card.dataset.name || '';
-        newImg.onload = () => {
-          interviewImage.src = newImg.src;
-          interviewImage.alt = newImg.alt;
-        };
-
-        interviewName.textContent = card.dataset.name || '';
-        interviewTitle.textContent = card.dataset.title || '';
-        interviewDescription.textContent = card.dataset.description || '';
-        interviewContent.innerHTML = card.dataset.content || '';
-        interviewInterviewers.textContent = card.dataset.interviewers || '';
-
-        /* Add a Watch button if video URL present */
-        const url = (card.dataset.videourl || '').trim();
-        if (url.length > 0) {
-          const btn = document.createElement('a');
-          btn.href = url;
-          btn.target = "_blank";
-          btn.rel = "noopener noreferrer";
-          btn.className = "inline-block mt-3 bg-red-800 text-white px-4 py-2 rounded-lg hover:bg-red-900 font-semibold";
-          btn.textContent = "Watch Interview";
-          interviewContent.appendChild(btn);
-        }
-      }
-
-      interviewCards.forEach(card => card.addEventListener('click', () => updateInterviewDetails(card)));
-      if (interviewCards.length > 0) updateInterviewDetails(interviewCards[0]); // default to first (Oliver Hart)
-
-      /* GRANOVETTER TRANSCRIPT (Google Doc export -> txt) */
-      const granovetterCard = document.querySelector('.interview-card[data-name="Professor Mark Granovetter"]');
-      if (granovetterCard) {
-        fetch("transcripts/granovetterTranscript.txt")
-          .then(r => { if (!r.ok) throw new Error('Network response was not ok'); return r.text(); })
-          .then(text => {
-            const lines = text.split('\n');
-            const paras = [];
-            let speaker = null, buf = [];
-            function flush(){ if (buf.length){ paras.push({speaker, text: buf.join(' ')}); buf = []; } }
-            for (const raw of lines){
-              const line = raw.trim();
-              if (!line) { flush(); speaker=null; continue; }
-              const idx = line.indexOf(':');
-              if (idx>0 && idx<40){
-                flush(); speaker = line.slice(0,idx).trim();
-                const rest = line.slice(idx+1).trim(); if (rest) buf.push(rest);
-              } else { buf.push(line); }
-            }
-            flush();
-            const html = paras.map(p => p.speaker
-              ? `<p><strong>${p.speaker}:</strong> ${p.text}</p>`
-              : `<p>${p.text}</p>`).join('');
-            granovetterCard.dataset.transcript = `<div class='prose max-w-none text-stone-700 space-y-4'>${html}</div>`;
-          })
-          .catch(err => {
-            console.error('Transcript fetch failed:', err);
-            granovetterCard.dataset.transcript = "<div class='prose max-w-none text-stone-700 space-y-4'><p>We couldn’t load the transcript right now. Please try again later.</p></div>";
-          });
-      }
-
-      /* Transcript modal */
-      const transcriptModal = document.getElementById('transcript-modal');
-      const closeModalButton = document.getElementById('close-modal-button');
-      const modalContent = document.getElementById('modal-content');
-      function openModal(){
-        transcriptModal.classList.remove('hidden');
-        transcriptModal.classList.add('flex');
-        transcriptModal.classList.remove('opacity-0');
-        transcriptModal.classList.add('opacity-100');
-        closeModalButton.focus();
-      }
-      
-      function closeModal(){
-        // fade out
-        transcriptModal.classList.remove('opacity-100');
-        transcriptModal.classList.add('opacity-0');
-        setTimeout(() => {
-          transcriptModal.classList.add('hidden');
-          transcriptModal.classList.remove('flex');
-        }, 200); // match Tailwind duration
-      }
-      closeModalButton.addEventListener('click', closeModal);
-      transcriptModal.addEventListener('click', (e) => { if (e.target === transcriptModal) closeModal(); });
-      document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
-      interviewContent.addEventListener('click', function(event) {
-        if (event.target && event.target.id === 'open-transcript-btn') {
-          const activeCard = document.querySelector('.interview-card.active-interview');
-          if (activeCard && activeCard.dataset.transcript) {
-            modalContent.innerHTML = activeCard.dataset.transcript;
-            openModal();
-          }
-        }
-      });
+  
+      lockBodyScroll(true);
+      closeBtn.focus();
+    }
+  
+    /* ----------------------------
+       CLOSE READER
+    ----------------------------- */
+    function closeReader() {
+      card.classList.add('opacity-0','translate-y-4');
+      card.classList.remove('opacity-100','translate-y-0');
+  
+      setTimeout(() => {
+        overlay.classList.add('hidden');
+        lockBodyScroll(false);
+      }, 200);
+    }
+  
+    /* ----------------------------
+       CLICK TO OPEN FROM ARTICLE CARDS
+    ----------------------------- */
+    document.querySelectorAll('.article-card').forEach(el => {
+      el.addEventListener('click', () => openReader(el.dataset.articleId));
     });
+  
+    /* ----------------------------
+       CLOSE BEHAVIOR
+    ----------------------------- */
+    closeBtn.addEventListener('click', closeReader);
+    overlay.addEventListener('click', (e) => {
+      if (!card.contains(e.target)) closeReader();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeReader();
+    });
+  
+    /* ----------------------------
+       OPEN FROM INTERVIEW LINKS
+    ----------------------------- */
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('spence-article-link')) {
+        e.preventDefault();
+        openReader('spence');
+      }
+      if (e.target.classList.contains('granovetter-article-link')) {
+        e.preventDefault();
+        openReader('granovetter');
+      }
+    });
+  
+    /* ----------------------------
+       AUTO OPEN VIA URL HASH
+    ----------------------------- */
+    const hash = window.location.hash.replace('#','').trim();
+    const valid = Object.keys(articleData);
+  
+    if (valid.includes(hash)) {
+      setTimeout(() => openReader(hash), 150);
+    }
+  
+  });
   </script>
-  <script>
+
   document.addEventListener('DOMContentLoaded', function () {
     /* Your articles’ text lives here */
     const articleData = {
@@ -741,6 +731,8 @@
         `
       },
 
+      
+
       /* ✅ NEW: Michael Spence article */
       spence: {
         kicker: 'Economics & Policy',
@@ -764,6 +756,102 @@
           </div>
         `
       },
+
+        /* ----------------------------
+           ELEMENT REFERENCES
+        ----------------------------- */
+        const overlay = document.getElementById('reader-overlay');
+        const card    = document.getElementById('reader-card');
+        const closeBtn= document.getElementById('reader-close');
+        const kicker  = document.getElementById('reader-kicker');
+        const title   = document.getElementById('reader-title');
+        const byline  = document.getElementById('reader-byline');
+        const bodyEl  = document.getElementById('reader-body');
+      
+        function lockBodyScroll(lock) {
+          document.body.style.overflow = lock ? 'hidden' : '';
+        }
+      
+        /* ----------------------------
+           OPEN READER
+        ----------------------------- */
+        function openReader(id) {
+          const a = articleData[id];
+          if (!a) return;
+      
+          kicker.textContent = a.kicker || '';
+          title.innerHTML    = a.title  || '';
+          byline.innerHTML   = a.byline || '';
+          bodyEl.innerHTML   = a.body   || '';
+      
+          overlay.classList.remove('hidden');
+          requestAnimationFrame(() => {
+            card.classList.remove('opacity-0','translate-y-4');
+            card.classList.add('opacity-100','translate-y-0');
+          });
+      
+          lockBodyScroll(true);
+          closeBtn.focus();
+        }
+      
+        /* ----------------------------
+           CLOSE READER
+        ----------------------------- */
+        function closeReader() {
+          card.classList.add('opacity-0','translate-y-4');
+          card.classList.remove('opacity-100','translate-y-0');
+      
+          setTimeout(() => {
+            overlay.classList.add('hidden');
+            lockBodyScroll(false);
+          }, 200);
+        }
+      
+        /* ----------------------------
+           CLICK TO OPEN FROM ARTICLE CARDS
+        ----------------------------- */
+        document.querySelectorAll('.article-card').forEach(el => {
+          el.addEventListener('click', () => openReader(el.dataset.articleId));
+        });
+      
+        /* ----------------------------
+           CLOSING BEHAVIOR
+        ----------------------------- */
+        closeBtn.addEventListener('click', closeReader);
+        overlay.addEventListener('click', (e) => {
+          if (!card.contains(e.target)) closeReader();
+        });
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') closeReader();
+        });
+      
+        /* ----------------------------
+           INTERVIEW SECTION LINKS
+        ----------------------------- */
+        document.addEventListener('click', (e) => {
+          if (e.target.classList.contains('spence-article-link')) {
+            e.preventDefault();
+            openReader('spence');
+          }
+          if (e.target.classList.contains('granovetter-article-link')) {
+            e.preventDefault();
+            openReader('granovetter');
+          }
+        });
+      
+        /* ----------------------------
+           AUTO-OPEN IF URL HAS #HASH
+        ----------------------------- */
+        const hash = window.location.hash.replace('#','').trim();
+        const valid = ['spence','granovetter','ethics','decision','design'];
+      
+        if (valid.includes(hash)) {
+          setTimeout(() => openReader(hash), 150);
+        }
+      
+      });
+      </script>
+
       
       ethics: {
         kicker: 'ECONOMIC ETHICS',
