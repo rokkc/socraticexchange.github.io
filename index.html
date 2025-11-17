@@ -66,7 +66,7 @@
       <div class="flex items-center justify-between">
         <!-- Brand: logo + stacked thin wordmark (to the right of the logo) -->
         <a href="#home" class="flex items-center gap-4 flex-shrink-0" aria-label="The Socratic Exchange home">
-          <img src="assets/elephant.png" alt="The Socratic Exchange logo"
+          <img src="/assets/elephant.png" alt="The Socratic Exchange logo"
                class="h-14 md:h-16 w-auto object-contain shrink-0"/>
           <div class="leading-[0.95] wordmark text-red-800">
             <span class="block text-2xl md:text-3xl lg:text-4xl uppercase tracking-[0.1em]">Socratic</span>
@@ -406,7 +406,7 @@
         <!-- Row 1 -->
         <div class="grid md:grid-cols-2 gap-8 md:gap-10 text-center mb-12 max-w-3xl mx-auto">
           <div>
-            <img src="assets/1753380963344.jpg"
+            <img src="/assets/1753380963344.jpg"
                  alt="Leo Cao"
                  class="w-32 h-32 rounded-full object-cover mx-auto shadow-lg">
             <h4 class="mt-4 text-lg font-bold text-black">Leo Cao</h4>
@@ -430,7 +430,7 @@
         <!-- Row 2 -->
         <div class="grid gap-8 md:gap-10 md:grid-cols-3 justify-items-center text-center max-w-6xl mx-auto">
           <div>
-            <img src="assets/Screenshot 2025-08-31 225338.png"
+            <img src="/assets/Screenshot 2025-08-31 225338.png"
                  alt="Samya Arora"
                  class="w-32 h-32 rounded-full object-cover mx-auto shadow-lg">
             <h4 class="mt-4 text-lg font-bold text-black">Samya Arora</h4>
@@ -450,7 +450,7 @@
             </p>
           </div>
           <div>
-            <img src="assets/Screenshot 2025-09-02 145738.png"
+            <img src="/assets/Screenshot 2025-09-02 145738.png"
                  alt="Ambika Palleti"
                  class="w-32 h-32 rounded-full object-cover mx-auto shadow-lg">
             <h4 class="mt-4 text-lg font-bold text-black">Ambika Palleti</h4>
@@ -461,7 +461,7 @@
           </div>
           <div>
             <div class="w-32 h-32 rounded-full overflow-hidden mx-auto shadow-lg">
-              <img src="assets/IMG_0620.JPG"
+              <img src="/assets/IMG_0620.JPG"
                    alt="Jordan Huynh"
                    class="w-full h-full object-cover transform scale-[1.35] object-center">
             </div>
@@ -618,7 +618,7 @@
       /* GRANOVETTER TRANSCRIPT (Google Doc export -> txt) */
       const granovetterCard = document.querySelector('.interview-card[data-name="Professor Mark Granovetter"]');
       if (granovetterCard) {
-        fetch("transcripts/granovetterTranscript.txt")
+        fetch("/transcripts/granovetterTranscript.txt")
           .then(r => { if (!r.ok) throw new Error('Network response was not ok'); return r.text(); })
           .then(text => {
             const lines = text.split('\n');
