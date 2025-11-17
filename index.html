@@ -172,7 +172,7 @@
                         class="block text-center font-semibold bg-red-800 text-white p-3 rounded-lg hover:bg-red-900">
                        Watch Interview
                      </a>
-                     <a href="#" class="block text-center font-semibold text-red-800 underline underline-offset-4 spence-article-link">
+                     <a href="#spence" class="spence-article-link block text-center font-semibold text-red-800 underline underline-offset-4">
                        Read Article
                      </a>
                    </div>'>
@@ -218,7 +218,7 @@
                    data-interviewers="Leo Cao, Josh Tran"
                    data-content="<div class='space-y-3'>
                      <button id='open-transcript-btn' class='w-full text-center font-semibold bg-gray-200 text-gray-800 p-3 rounded-lg hover:bg-gray-300'>Read Transcript</button>
-                     <a href='#'     class='block text-center font-semibold text-red-800 underline underline-offset-4 granovetter-article-link'>   Read the Article </a>
+                     <a href="#granovetter" class="granovetter-article-link block text-center font-semibold text-red-800 underline underline-offset-4">
                    </div>">
                 <p class="font-bold text-gray-900">Professor Mark Granovetter</p>
                 <p class="text-sm text-stone-700">Stanford University</p>
@@ -340,7 +340,7 @@
           </a>
     
           <!-- COLUMN 2: Weak Ties feature -->
-          <a href="https://socraticexchange.org/granovetter" class="block group">
+          <a href="#granovetter" class="block group">
             <article class="article-card cursor-pointer" data-article-id="granovetter">
               <img src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/discussing-the-catch-louis-charles-moeller.jpg"
                    alt="Discussing the Catch by Louis Charles Moeller"
@@ -360,7 +360,7 @@
           </a>
     
           <!-- COLUMN 3: Economic Ethics article -->
-          <a href="https://socraticexchange.org/ethics" class="block group">
+          <a href="#ethics" class="block group">
             <article class="article-card cursor-pointer" data-article-id="ethics">
               <p class="text-teal-700 font-semibold text-[11px] tracking-tight mb-1">ECONOMIC ETHICS | Oct. 28, 2025</p>
               <h2 class="text-[26px] leading-snug font-bold text-stone-900 group-hover:underline">
@@ -870,42 +870,25 @@ overlay.addEventListener('click', (e) => {
     document.addEventListener('keydown', (e) => { 
       if (e.key==='Escape' && !overlay.classList.contains('hidden')) closeReader(); 
     });
-
-    // open Spence from his interview panel link
-    document.addEventListener('click', (e) => {
-      if (e.target.classList.contains('granovetter-article-link')) { 
-        e.preventDefault(); 
-        openReader('granovetter'); 
-      }
-      if (e.target.classList.contains('spence-article-link')) {      
-        e.preventDefault(); 
-        openReader('spence'); 
-      }
-    });
-
-    // NEW: support clean URLs like /granovetter or /ethics
-    const path = window.location.pathname.split('/').filter(Boolean);
-    const last = path[path.length - 1];
-    if (last && articleData[last]) {
-      setTimeout(() => openReader(last), 0);
-    }
-    
-    // ✅ Restore pretty URL article path if coming from 404 redirect
-    const saved = sessionStorage.getItem("originalPath");
-    if (saved) {
-      const segment = saved.replace('/', '');
-      sessionStorage.removeItem("originalPath");
-      if (articleData[segment]) {
-        setTimeout(() => openReader(segment), 0);
-      }
-    }
-
-
     if (last && articleData[last]) {
       setTimeout(() => openReader(last), 0);
     }
 
   });
+  // HASH-BASED ARTICLE OPENING
+  function checkHashForArticle() {
+    const id = window.location.hash.replace('#', '');
+    if (id && articleData[id]) {
+      openReader(id);
+    }
+  }
+  
+  // open on page load
+  checkHashForArticle();
+  
+  // open when hash changes
+  window.addEventListener('hashchange', checkHashForArticle);
+
 </script>
 
   <!-- ARTICLE READER OVERLAY -->
