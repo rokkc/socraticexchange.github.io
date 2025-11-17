@@ -109,14 +109,27 @@
 
   <main id="main-content">
     <!-- HERO -->
-    <section id="home" class="py-16 md:py-20">
-      <div class="container mx-auto px-6 text-left">
-        <h1 class="text-4xl md:text-5xl font-bold text-black max-w-2xl">The Socratic Exchange.</h1>
-        <p class="mt-4 text-lg md:text-xl text-stone-700 max-w-2xl">Unfiltered conversations with the minds shaping our world.</p>
-        <div class="mt-8">
-          <a href="#speakers" class="font-semibold text-red-800 hover:text-red-900 text-lg group">
-            Explore the interviews
-            <span class="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">→</span>
+
+    <section id="home"
+      class="relative py-28 md:py-36 flex items-center bg-center bg-cover overflow-hidden"
+      style="background-image: url('https://psu.pb.unizin.org/app/uploads/sites/83/2018/05/7.1.0.jpg');">
+    
+      <!-- Blurred, darkened overlay -->
+      <div class="absolute inset-0 backdrop-blur-md bg-black/40"></div>
+    
+      <!-- Foreground content -->
+      <div class="relative container mx-auto px-6 max-w-3xl text-left">
+        <h1 class="text-4xl md:text-5xl font-bold text-white drop-shadow-lg">
+          The Socratic Exchange
+        </h1>
+        <p class="mt-4 text-lg md:text-xl text-white/90 drop-shadow">
+          Unfiltered conversations with the minds shaping our world.
+        </p>
+    
+        <div class="mt-6">
+          <a href="#about" 
+             class="px-6 py-3 bg-white/20 backdrop-blur-xl text-white rounded-xl border border-white/30 hover:bg-white/30 transition">
+            Learn More
           </a>
         </div>
       </div>
