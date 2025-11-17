@@ -56,6 +56,16 @@
     /* HBR-like Articles hub */
     .article-card:hover .article-title{ text-decoration:underline; }
     .shadow-soft{ box-shadow:0 10px 25px rgba(0,0,0,.06); }
+    /* Page fade-in effect */
+    body {
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+    
+    body.page-loaded {
+      opacity: 1;
+    }
+
   </style>
 </head>
 <body class="bg-stone-100 text-gray-900">
@@ -934,6 +944,10 @@ overlay.addEventListener('click', (e) => {
       </div>
     </div>
   </div>
-
+<script>
+  window.addEventListener("load", () => {
+    document.body.classList.add("page-loaded");
+  });
+</script>
 </body>
 </html>
