@@ -1,12 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8" />
-  <script>
-    // Redirect to index.html while keeping pathname
-    const redirectUrl = window.location.origin + "/index.html" + window.location.search + window.location.hash;
-    window.location.replace(redirectUrl);
-  </script>
-</head>
-<body></body>
+  <head>
+    <meta charset="UTF-8" />
+
+    <script>
+      // Run AFTER page load so GitHub Pages can inject its 404 content
+      window.onload = function() {
+        const isGithub404 =
+          document.title === "404 Not Found" ||
+          document.querySelector('meta[name="robots"][content="noindex"]');
+
+        if (isGithub404) {
+          const redirectUrl =
+            window.location.origin +
+            "/index.html" +
+            window.location.search +
+            window.location.hash;
+
+          window.location.replace(redirectUrl);
+        }
+      };
+    </script>
+  </head>
+  <body></body>
 </html>
