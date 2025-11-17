@@ -870,24 +870,20 @@ overlay.addEventListener('click', (e) => {
     document.addEventListener('keydown', (e) => { 
       if (e.key==='Escape' && !overlay.classList.contains('hidden')) closeReader(); 
     });
-    if (last && articleData[last]) {
-      setTimeout(() => openReader(last), 0);
+    // HASH-BASED ARTICLE OPENING (now fully working)
+    function checkHashForArticle() {
+      const id = window.location.hash.replace('#', '');
+      if (id && articleData[id]) {
+        openReader(id);
+      }
     }
+    
+    // Run on first load
+    checkHashForArticle();
+    
+    // Run whenever hash changes
+    window.addEventListener('hashchange', checkHashForArticle);
 
-  });
-  // HASH-BASED ARTICLE OPENING
-  function checkHashForArticle() {
-    const id = window.location.hash.replace('#', '');
-    if (id && articleData[id]) {
-      openReader(id);
-    }
-  }
-  
-  // open on page load
-  checkHashForArticle();
-  
-  // open when hash changes
-  window.addEventListener('hashchange', checkHashForArticle);
 
 </script>
 
