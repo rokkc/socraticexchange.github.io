@@ -863,24 +863,23 @@ overlay.addEventListener('click', (e) => {
       }
     });
 
-    // ✅ NEW: auto-open article if URL hash matches an article id (e.g. #spence)
-    const initialHash = window.location.hash.replace('#', '');
-    if (initialHash && articleData[initialHash]) {
-      // small timeout just to let layout settle
-      setTimeout(() => openReader(initialHash), 0);
-    }
     // NEW: support clean URLs like /granovetter or /ethics
     const path = window.location.pathname.split('/').filter(Boolean);
     const last = path[path.length - 1];
-    const redirected = sessionStorage.getItem("SPA_REDIRECT_PATH");
-    if (redirected) {
-      const article = redirected.replace('/', '');
-      sessionStorage.removeItem("SPA_REDIRECT_PATH");
+    if (last && articleData[last]) {
+      setTimeout(() => openReader(last), 0);
+    }
     
-      if (articleData[article]) {
-        setTimeout(() => openReader(article), 50);
+    // ✅ Restore pretty URL article path if coming from 404 redirect
+    const saved = sessionStorage.getItem("originalPath");
+    if (saved) {
+      const segment = saved.replace('/', '');
+      sessionStorage.removeItem("originalPath");
+      if (articleData[segment]) {
+        setTimeout(() => openReader(segment), 0);
       }
     }
+
 
     if (last && articleData[last]) {
       setTimeout(() => openReader(last), 0);
