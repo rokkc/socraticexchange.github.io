@@ -872,6 +872,16 @@ overlay.addEventListener('click', (e) => {
     // NEW: support clean URLs like /granovetter or /ethics
     const path = window.location.pathname.split('/').filter(Boolean);
     const last = path[path.length - 1];
+    const redirected = sessionStorage.getItem("SPA_REDIRECT_PATH");
+    if (redirected) {
+      const article = redirected.replace('/', '');
+      sessionStorage.removeItem("SPA_REDIRECT_PATH");
+    
+      if (articleData[article]) {
+        setTimeout(() => openReader(article), 50);
+      }
+    }
+
     if (last && articleData[last]) {
       setTimeout(() => openReader(last), 0);
     }
