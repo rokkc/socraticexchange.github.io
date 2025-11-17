@@ -340,7 +340,7 @@
           </a>
     
           <!-- COLUMN 2: Weak Ties feature -->
-          <a href="https://socraticexchange.org/granovetter" class="block group">
+          <a href="#granovetter" class="block group">
             <article class="article-card cursor-pointer" data-article-id="granovetter">
               <img src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/discussing-the-catch-louis-charles-moeller.jpg"
                    alt="Discussing the Catch by Louis Charles Moeller"
@@ -360,7 +360,7 @@
           </a>
     
           <!-- COLUMN 3: Economic Ethics article -->
-          <a href="https://socraticexchange.org/ethics" class="block group">
+          <a href="#ethics" class="block group">
             <article class="article-card cursor-pointer" data-article-id="ethics">
               <p class="text-teal-700 font-semibold text-[11px] tracking-tight mb-1">ECONOMIC ETHICS | Oct. 28, 2025</p>
               <h2 class="text-[26px] leading-snug font-bold text-stone-900 group-hover:underline">
@@ -702,10 +702,11 @@
     });
   </script>
   <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    /* Your articles’ text lives here */
-    const articleData = {
-      granovetter: {
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      /* Your articles’ text lives here */
+      const articleData = {
+        granovetter: {
         kicker: 'Social Networks & Economic Life',
         title: 'The Gentle Power of Weak Ties: Networking Tips from a Sociologist',
         byline: 'By <strong>Leo Cao</strong>',
@@ -822,66 +823,20 @@
     const byline  = document.getElementById('reader-byline');
     const bodyEl  = document.getElementById('reader-body');
   
-    function lockBodyScroll(lock) {
-      document.body.style.overflow = lock ? 'hidden' : '';
-    }
-  
-    function openReader(id) {
-      const a = articleData[id];
-      if (!a) return;
-      kicker.textContent = a.kicker || '';
-      title.innerHTML    = a.title  || '';
-      byline.innerHTML   = a.byline || '';
-      bodyEl.innerHTML   = a.body   || '';
-  
-      overlay.classList.remove('hidden');
-      requestAnimationFrame(() => {
-        card.classList.remove('opacity-0','translate-y-4');
-        card.classList.add('opacity-100','translate-y-0');
-      });
-      lockBodyScroll(true);
-      closeBtn.focus();
-    }
-  
-function closeReader() {
-  // Animate fade/slide out
-  card.classList.add('opacity-0','translate-y-4');
-  card.classList.remove('opacity-100','translate-y-0');
+    function lockBodyScroll(lock) { ... }
+    function openReader(id) { ... }
+    function closeReader() { ... }
 
-  // After animation, fully hide
-  setTimeout(() => {
-    overlay.classList.add('hidden');
-    lockBodyScroll(false);
-  }, 200); // match Tailwind duration-200
-}
-
-// Close when clicking outside the white article card
-overlay.addEventListener('click', (e) => {
-  if (!card.contains(e.target)) {
-    closeReader();
-  }
-});
-
+    overlay.addEventListener('click', ...);
   
     document.querySelectorAll('.article-card').forEach(el => {
       el.addEventListener('click', () => openReader(el.dataset.articleId));
     });
     closeBtn.addEventListener('click', closeReader);
-    document.addEventListener('keydown', (e) => { 
-      if (e.key==='Escape' && !overlay.classList.contains('hidden')) closeReader(); 
-    });
+    document.addEventListener('keydown', (e) => { ... });
 
     // open Spence from his interview panel link
-    document.addEventListener('click', (e) => {
-      if (e.target.classList.contains('granovetter-article-link')) { 
-        e.preventDefault(); 
-        openReader('granovetter'); 
-      }
-      if (e.target.classList.contains('spence-article-link')) {      
-        e.preventDefault(); 
-        openReader('spence'); 
-      }
-    });
+    document.addEventListener('click', (e) => { ... });
 
     // NEW: support clean URLs like /granovetter or /ethics
     const path = window.location.pathname.split('/').filter(Boolean);
