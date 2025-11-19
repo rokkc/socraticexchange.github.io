@@ -826,7 +826,40 @@
     function lockBodyScroll(lock) { ... }
     function openReader(id) { ... }
     function closeReader() { ... }
+    
+    /* --- RESTORE ARTICLE OPENING + AUTO-OPEN HASH URLs --- */
+    
+    document.querySelectorAll('.article-card').forEach(el => {
+      el.addEventListener('click', () => openReader(el.dataset.articleId));
+    });
+    
+    closeBtn.addEventListener('click', closeReader);
+    
+    document.addEventListener('keydown', (e) => { 
+      if (e.key === 'Escape' && !overlay.classList.contains('hidden')) {
+        closeReader();
+      }
+    });
+    
+    /* Open articles from interview panel links */
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('granovetter-article-link')) { 
+        e.preventDefault(); 
+        openReader('granovetter'); 
+      }
+      if (e.target.classList.contains('spence-article-link')) {      
+        e.preventDefault(); 
+        openReader('spence'); 
+      }
+    });
+    
+    /* Auto-open article if URL hash matches (e.g. #spence) */
+    const initialHash = window.location.hash.replace('#', '');
+    if (initialHash && articleData[initialHash]) {
+      setTimeout(() => openReader(initialHash), 0);
+    }
 
+      
     overlay.addEventListener('click', ...);
   
     document.querySelectorAll('.article-card').forEach(el => {
