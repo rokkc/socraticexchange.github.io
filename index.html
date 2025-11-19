@@ -905,17 +905,12 @@
     }
 
       
-    overlay.addEventListener('click', ...);
-  
-    document.querySelectorAll('.article-card').forEach(el => {
-      el.addEventListener('click', () => openReader(el.dataset.articleId));
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) {
+        closeReader();
+      }
     });
-    closeBtn.addEventListener('click', closeReader);
-    document.addEventListener('keydown', (e) => { ... });
-
-    // open Spence from his interview panel link
-    document.addEventListener('click', (e) => { ... });
-
+      
     // NEW: support clean URLs like /granovetter or /ethics
     const path = window.location.pathname.split('/').filter(Boolean);
     const last = path[path.length - 1];
