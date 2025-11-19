@@ -823,9 +823,55 @@
     const byline  = document.getElementById('reader-byline');
     const bodyEl  = document.getElementById('reader-body');
   
-    function lockBodyScroll(lock) { ... }
-    function openReader(id) { ... }
-    function closeReader() { ... }
+    function lockBodyScroll(lock) {
+      if (lock) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "";
+      }
+    }
+    
+    function openReader(id) {
+      const data = articleData[id];
+      if (!data) return;
+    
+      // Fill article
+      kicker.innerHTML = data.kicker || "";
+      title.innerHTML = data.title || "";
+      byline.innerHTML = data.byline || "";
+      bodyEl.innerHTML = `
+        <img src="${data.image}" class="w-full rounded mb-6"/>
+        ${data.body}
+      `;
+    
+      // Activate overlay
+      overlay.classList.remove("hidden");
+    
+      requestAnimationFrame(() => {
+        overlay.classList.add("flex");
+        card.classList.remove("opacity-0", "translate-y-4");
+        card.classList.add("opacity-100", "translate-y-0");
+      });
+    
+      lockBodyScroll(true);
+    
+      // Update URL so # links work
+      history.replaceState(null, "", "#" + id);
+    }
+    
+    function closeReader() {
+      card.classList.add("opacity-0", "translate-y-4");
+    
+      setTimeout(() => {
+        overlay.classList.remove("flex");
+        overlay.classList.add("hidden");
+        lockBodyScroll(false);
+    
+        // Remove hash from URL
+        history.replaceState(null, "", " ");
+      }, 200);
+    }
+
     
     /* --- RESTORE ARTICLE OPENING + AUTO-OPEN HASH URLs --- */
     
