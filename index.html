@@ -1101,15 +1101,62 @@
   
 <script>
 const seminarData = {
-  eacg: {
-    question: "Is Economic Growth Compatible with Ethics?",
-    inPerson: `...`,
-    reddit: {
-      postId: "abc123",   // Reddit post ID
-      subreddit: "yoursubreddit"
-    }
+  dying: {
+    question: "Existentialist Philosophy: Putting economics aside, if you found out you were dying, what would you stop doing?",
+    inPerson: `<p class="ny-dropcap">This seminar explored mortality, meaning, and choice when time becomes scarce.</p>`,
+    reddit: { postId: "1nrhvx6" }
+  },
+
+  unethical: {
+    question: "Ethics: What is an immoral yet extremely common practice in the business world?",
+    inPerson: `<p class="ny-dropcap">We debated moral gray zones and why unethical behavior persists in competitive markets.</p>`,
+    reddit: { postId: "1nrhx91" }
+  },
+
+  lying: {
+    question: "Political Philosophy: Why don't we charge politicians for lying to the public?",
+    inPerson: `<p class="ny-dropcap">This discussion examined power, truth, and enforcement in democratic systems.</p>`,
+    reddit: { postId: "1ns8r6v" }
+  },
+
+  college: {
+    question: "Economics: In today's economy, in what cases is a college education worth the price?",
+    inPerson: `<p class="ny-dropcap">We discussed signaling, debt, and the changing ROI of higher education.</p>`,
+    reddit: { postId: "1nuwiof" }
   }
 };
+
+async function loadRedditComments(postId, after = null) {
+  const url = new URL(`https://www.reddit.com/comments/${postId}.json`);
+  url.searchParams.set("limit", 20);
+  if (after) url.searchParams.set("after", after);
+
+  const res = await fetch(url);
+  const json = await res.json();
+
+  const comments = json[1].data.children
+    .filter(c => c.kind === "t1")
+    .map(c => ({
+      author: c.data.author,
+      body: c.data.body,
+      score: c.data.score
+    }));
+
+  return { comments, next: json[1].data.after };
+}
+
+function renderComments(comments, container) {
+  comments.forEach(c => {
+    const el = document.createElement("div");
+    el.className = "bg-white rounded-lg p-4 shadow-soft";
+    el.innerHTML = `
+      <div class="text-xs text-stone-500">${c.author}</div>
+      <p class="mt-2 text-stone-700 whitespace-pre-line">${c.body}</p>
+    `;
+    container.appendChild(el);
+  });
+}
+
   
 async function loadRedditComments(postId, after = null) {
   const url = new URL(`https://www.reddit.com/comments/${postId}.json`);
