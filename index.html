@@ -388,6 +388,59 @@
       </div>
     </section>
 
+    <!-- PAST SEMINARS -->
+    <section id="past-seminars" class="py-20 bg-stone-50 border-t border-stone-200">
+      <div class="container mx-auto px-6">
+    
+        <div class="mb-10">
+          <h2 class="text-3xl md:text-4xl font-bold text-black">Past Seminars</h2>
+          <p class="mt-3 text-lg text-stone-700 max-w-2xl">
+            Explore previous Socratic Exchange seminars — ideas debated, arguments sharpened, minds changed.
+          </p>
+        </div>
+    
+        <!-- Horizontal scroll container -->
+        <div class="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory">
+    
+          <!-- SEMINAR CARD -->
+          <div
+            class="seminar-card snap-start min-w-[300px] max-w-[300px] bg-white rounded-xl shadow-soft hover:shadow-lg transition cursor-pointer"
+            data-seminar-id="eacg"
+          >
+            <div class="relative">
+              <img
+                src="/assets/Screenshot 2025-11-17 012315.png"
+                alt="EACG Seminar"
+                class="w-full h-44 object-cover rounded-t-xl"
+              />
+    
+              <!-- Stats overlay -->
+              <div class="absolute bottom-2 left-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
+                👁 <span data-views>1,284</span>
+              </div>
+              <div class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
+                👥 <span data-participants>42</span>
+              </div>
+            </div>
+    
+            <div class="p-4">
+              <p class="text-xs uppercase tracking-wide text-stone-500">
+                Philosophy & Economics
+              </p>
+              <h3 class="mt-1 text-lg font-bold text-black">
+                Is Economic Growth Compatible with Ethics?
+              </h3>
+              <p class="mt-2 text-sm text-stone-700">
+                A live and online dialogue on markets, morality, and modern capitalism.
+              </p>
+            </div>
+          </div>
+    
+          <!-- 👉 Duplicate this card to add new seminars -->
+    
+        </div>
+      </div>
+    </section>
 
 
     <!-- ABOUT -->
@@ -936,6 +989,57 @@
   });
 </script>
 
+  <!-- SEMINAR MODAL -->
+<div id="seminar-modal"
+     class="fixed inset-0 z-50 hidden bg-black/70 items-center justify-center px-4">
+
+  <div class="bg-stone-50 rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col">
+
+    <!-- Header -->
+    <div class="p-6 border-b border-stone-200">
+      <h3 id="seminar-question" class="text-2xl md:text-3xl font-bold text-black">
+        Seminar Question
+      </h3>
+    </div>
+
+    <!-- Tabs -->
+    <div class="flex border-b border-stone-200">
+      <button
+        class="seminar-tab px-6 py-3 font-semibold text-red-800 border-b-2 border-red-800"
+        data-tab="inperson">
+        In-Person Seminar
+      </button>
+      <button
+        class="seminar-tab px-6 py-3 font-semibold text-stone-600"
+        data-tab="online">
+        Online Seminar
+      </button>
+    </div>
+
+    <!-- Content -->
+    <div class="p-6 overflow-y-auto grow">
+
+      <!-- In-Person -->
+      <div id="seminar-inperson" class="seminar-panel prose max-w-none text-stone-700">
+        <!-- injected -->
+      </div>
+
+      <!-- Online -->
+      <div id="seminar-online" class="seminar-panel hidden space-y-4">
+        <!-- injected -->
+      </div>
+
+    </div>
+
+    <button
+      id="close-seminar-modal"
+      class="absolute top-4 right-4 text-3xl text-stone-400 hover:text-black">
+      ×
+    </button>
+
+  </div>
+</div>
+
   <!-- ARTICLE READER OVERLAY -->
   <div id="reader-overlay" class="fixed inset-0 z-50 hidden" aria-hidden="true">
     <!-- Dark backdrop -->
@@ -971,6 +1075,77 @@
       </div>
     </div>
   </div>
+  
+<script>
+const seminarData = {
+  eacg: {
+    question: "Is Economic Growth Compatible with Ethics?",
+    inPerson: `
+      <p class="ny-dropcap">We opened the seminar by asking whether markets are morally neutral tools or ethical systems in themselves.</p>
+      <p>Participants debated Adam Smith, Rawls, and Marx — with disagreement centering on whether efficiency inevitably crowds out virtue.</p>
+      <p>The strongest consensus: growth is powerful, but directionless growth is dangerous.</p>
+    `,
+    onlineComments: [
+      {
+        user: "moral_markets",
+        text: "The in-person discussion changed my view — growth isn’t immoral, but it’s never neutral."
+      },
+      {
+        user: "econ_realist",
+        text: "Ethics without growth is stagnation. Growth without ethics is collapse."
+      },
+      {
+        user: "platosghost",
+        text: "Best seminar so far. The Rawls section should’ve been longer."
+      }
+    ]
+  }
+};
+
+/* OPEN MODAL */
+document.querySelectorAll('.seminar-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const id = card.dataset.seminarId;
+    const data = seminarData[id];
+    if (!data) return;
+
+    document.getElementById('seminar-question').textContent = data.question;
+    document.getElementById('seminar-inperson').innerHTML = data.inPerson;
+
+    const online = document.getElementById('seminar-online');
+    online.innerHTML = data.onlineComments.map(c => `
+      <div class="bg-white rounded-lg p-4 shadow-soft">
+        <p class="text-sm font-semibold text-stone-800">@${c.user}</p>
+        <p class="mt-1 text-stone-700">${c.text}</p>
+      </div>
+    `).join('');
+
+    document.getElementById('seminar-modal').classList.remove('hidden');
+    document.getElementById('seminar-modal').classList.add('flex');
+  });
+});
+
+/* CLOSE MODAL */
+document.getElementById('close-seminar-modal').onclick = () => {
+  document.getElementById('seminar-modal').classList.add('hidden');
+  document.getElementById('seminar-modal').classList.remove('flex');
+};
+
+/* TAB SWITCHING */
+document.querySelectorAll('.seminar-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.seminar-tab').forEach(t => {
+      t.classList.remove('text-red-800', 'border-red-800', 'border-b-2');
+      t.classList.add('text-stone-600');
+    });
+    tab.classList.add('text-red-800', 'border-b-2', 'border-red-800');
+
+    document.querySelectorAll('.seminar-panel').forEach(p => p.classList.add('hidden'));
+    document.getElementById(`seminar-${tab.dataset.tab}`).classList.remove('hidden');
+  });
+});
+</script>
+
 <script>
   window.addEventListener("load", () => {
     document.body.classList.add("page-loaded");
