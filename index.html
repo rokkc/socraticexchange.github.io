@@ -1223,19 +1223,20 @@ document.querySelectorAll('.seminar-card').forEach(card => {
     const online = document.getElementById('seminar-online');
     online.innerHTML = "";
     
-// --- FEATURED RESPONSES (manual, curated) ---
+// --- FEATURED RESPONSES (manual, curated)
 if (data.featured && data.featured.length) {
   renderComments(
     data.featured.map(f => ({
       author: f.author,
       body: f.body,
-      score: null // no upvotes shown
+      score: null
     })),
     online
   );
 } else {
   online.innerHTML = '<p class="text-stone-500 text-sm">Loading discussion…</p>';
 }
+
 
     let after = null;
     
