@@ -404,30 +404,58 @@
                 alt="EACG Seminar"
                 class="w-full h-44 object-cover rounded-t-xl"
               />
-    
-              <!-- Stats overlay -->
-              <div class="absolute bottom-2 left-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
-                👁 <span data-views>1,284</span>
+                  <!-- SEMINAR 1 -->
+              <div class="seminar-card snap-start min-w-[300px] max-w-[300px] bg-white rounded-xl shadow-soft cursor-pointer"
+                   data-seminar-id="dying">
+                <div class="relative">
+                  <img src="/assets/Screenshot 2025-11-17 012315.png" class="w-full h-44 object-cover rounded-t-xl">
+                  <div class="absolute bottom-2 left-2 bg-black/70 text-white text-xs px-2 py-1 rounded">👁 36K</div>
+                  <div class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">👥 126</div>
+                </div>
+                <div class="p-4">
+                  <h3 class="text-lg font-bold">Existentialist Philosophy: If you were dying, what would you stop doing?</h3>
+                </div>
               </div>
-              <div class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
-                👥 <span data-participants>42</span>
+              
+              <!-- SEMINAR 2 -->
+              <div class="seminar-card snap-start min-w-[300px] max-w-[300px] bg-white rounded-xl shadow-soft cursor-pointer"
+                   data-seminar-id="unethical">
+                <div class="relative">
+                  <img src="/assets/Screenshot 2025-11-17 012315.png" class="w-full h-44 object-cover rounded-t-xl">
+                  <div class="absolute bottom-2 left-2 bg-black/70 text-white text-xs px-2 py-1 rounded">👁 6.6K</div>
+                  <div class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">👥 32</div>
+                </div>
+                <div class="p-4">
+                  <h3 class="text-lg font-bold">Ethics: What is an immoral but common business practice?</h3>
+                </div>
               </div>
-            </div>
-    
-            <div class="p-4">
-              <p class="text-xs uppercase tracking-wide text-stone-500">
-                Philosophy & Economics
-              </p>
-              <h3 class="mt-1 text-lg font-bold text-black">
-                Is Economic Growth Compatible with Ethics?
-              </h3>
-              <p class="mt-2 text-sm text-stone-700">
-                A live and online dialogue on markets, morality, and modern capitalism.
-              </p>
-            </div>
-          </div>
-    
-          <!-- 👉 Duplicate this card to add new seminars -->
+              
+              <!-- SEMINAR 3 -->
+              <div class="seminar-card snap-start min-w-[300px] max-w-[300px] bg-white rounded-xl shadow-soft cursor-pointer"
+                   data-seminar-id="lying">
+                <div class="relative">
+                  <img src="/assets/Screenshot 2025-11-17 012315.png" class="w-full h-44 object-cover rounded-t-xl">
+                  <div class="absolute bottom-2 left-2 bg-black/70 text-white text-xs px-2 py-1 rounded">👁 329K</div>
+                  <div class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">👥 137</div>
+                </div>
+                <div class="p-4">
+                  <h3 class="text-lg font-bold">Political Philosophy: Why don’t we charge politicians for lying?</h3>
+                </div>
+              </div>
+              
+              <!-- SEMINAR 4 -->
+              <div class="seminar-card snap-start min-w-[300px] max-w-[300px] bg-white rounded-xl shadow-soft cursor-pointer"
+                   data-seminar-id="college">
+                <div class="relative">
+                  <img src="/assets/Screenshot 2025-11-17 012315.png" class="w-full h-44 object-cover rounded-t-xl">
+                  <div class="absolute bottom-2 left-2 bg-black/70 text-white text-xs px-2 py-1 rounded">👁 2.2K</div>
+                  <div class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">👥 36</div>
+                </div>
+                <div class="p-4">
+                  <h3 class="text-lg font-bold">Economics: When is college worth the price?</h3>
+                </div>
+              </div>
+
     
         </div>
       </div>
@@ -1075,28 +1103,57 @@
 const seminarData = {
   eacg: {
     question: "Is Economic Growth Compatible with Ethics?",
-    inPerson: `
-      <p class="ny-dropcap">We opened the seminar by asking whether markets are morally neutral tools or ethical systems in themselves.</p>
-      <p>Participants debated Adam Smith, Rawls, and Marx — with disagreement centering on whether efficiency inevitably crowds out virtue.</p>
-      <p>The strongest consensus: growth is powerful, but directionless growth is dangerous.</p>
-    `,
-    onlineComments: [
-      {
-        user: "moral_markets",
-        text: "The in-person discussion changed my view — growth isn’t immoral, but it’s never neutral."
-      },
-      {
-        user: "econ_realist",
-        text: "Ethics without growth is stagnation. Growth without ethics is collapse."
-      },
-      {
-        user: "platosghost",
-        text: "Best seminar so far. The Rawls section should’ve been longer."
-      }
-    ]
+    inPerson: `...`,
+    reddit: {
+      postId: "abc123",   // Reddit post ID
+      subreddit: "yoursubreddit"
+    }
   }
 };
+  
+async function loadRedditComments(postId, after = null) {
+  const url = new URL(`https://www.reddit.com/comments/${postId}.json`);
+  url.searchParams.set("limit", 20);
+  if (after) url.searchParams.set("after", after);
 
+  const res = await fetch(url);
+  const json = await res.json();
+
+  const comments = json[1].data.children
+    .filter(c => c.kind === "t1")
+    .map(c => ({
+      id: c.data.id,
+      author: c.data.author,
+      body: c.data.body,
+      score: c.data.score
+    }));
+
+  return {
+    comments,
+    next: json[1].data.after
+  };
+}
+
+function renderComments(comments, container) {
+  comments.forEach(c => {
+    const el = document.createElement("div");
+    el.className = "bg-white rounded-lg p-4 shadow-soft";
+
+    el.innerHTML = `
+      <div class="flex items-center justify-between text-xs text-stone-500">
+        <span class="italic text-stone-500">${c.author}</span>
+        <span>⬆ ${c.score}</span>
+      </div>
+      <p class="mt-2 text-stone-700 whitespace-pre-line">
+        ${c.body}
+      </p>
+    `;
+
+    container.appendChild(el);
+  });
+}
+
+  
 /* OPEN MODAL */
 document.querySelectorAll('.seminar-card').forEach(card => {
   card.addEventListener('click', () => {
@@ -1106,14 +1163,36 @@ document.querySelectorAll('.seminar-card').forEach(card => {
 
     document.getElementById('seminar-question').textContent = data.question;
     document.getElementById('seminar-inperson').innerHTML = data.inPerson;
-
+    
     const online = document.getElementById('seminar-online');
-    online.innerHTML = data.onlineComments.map(c => `
-      <div class="bg-white rounded-lg p-4 shadow-soft">
-        <p class="text-sm font-semibold text-stone-800">@${c.user}</p>
-        <p class="mt-1 text-stone-700">${c.text}</p>
-      </div>
-    `).join('');
+    online.innerHTML = '<p class="text-stone-500 text-sm">Loading discussion…</p>';
+    
+    let after = null;
+    
+    const loadBtn = document.createElement('button');
+    loadBtn.className = "mt-6 text-red-800 font-semibold underline";
+    loadBtn.textContent = "Load more comments";
+    
+    const { reddit } = data;
+    
+    loadRedditComments(reddit.postId).then(res => {
+      online.innerHTML = '';
+      renderComments(res.comments, online);
+      after = res.next;
+      online.appendChild(loadBtn);
+    });
+    
+    loadBtn.onclick = async () => {
+      if (!after) {
+        loadBtn.textContent = "No more comments";
+        loadBtn.disabled = true;
+        return;
+      }
+      const res = await loadRedditComments(reddit.postId, after);
+      renderComments(res.comments, online);
+      after = res.next;
+    };
+
 
     document.getElementById('seminar-modal').classList.remove('hidden');
     document.getElementById('seminar-modal').classList.add('flex');
