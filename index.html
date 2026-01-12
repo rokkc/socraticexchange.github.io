@@ -1222,7 +1222,8 @@ document.querySelectorAll('.seminar-card').forEach(card => {
     const online = document.getElementById('seminar-online');
     online.innerHTML = "";
     
-    // --- FEATURED RESPONSES (manual, curated) ---if (data.featured && data.featured.length) {
+// --- FEATURED RESPONSES (manual, curated) ---
+if (data.featured && data.featured.length) {
   renderComments(
     data.featured.map(f => ({
       author: f.author,
@@ -1232,9 +1233,9 @@ document.querySelectorAll('.seminar-card').forEach(card => {
     online
   );
 } else {
-      online.innerHTML = '<p class="text-stone-500 text-sm">Loading discussion…</p>';
-    }
-    
+  online.innerHTML = '<p class="text-stone-500 text-sm">Loading discussion…</p>';
+}
+
     let after = null;
     
     const loadBtn = document.createElement('button');
