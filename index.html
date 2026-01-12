@@ -1176,8 +1176,9 @@ async function loadRedditComments(postId, after = null) {
       c.data.body !== "[deleted]" &&
       c.data.body !== "[removed]" &&
       c.data.author !== "[deleted]" &&
-      !containsProfanity(c.data.body) &&
-      c.data.body.length > 80
+      c.data.body.length > 40
+    )
+
     )
     .map(c => ({
       author: c.data.author,
