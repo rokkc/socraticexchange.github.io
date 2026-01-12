@@ -1183,7 +1183,7 @@ function renderComments(comments, container) {
     el.innerHTML = `
       <div class="flex items-center justify-between text-xs text-stone-500">
         <span class="italic text-stone-500">${c.author}</span>
-        <span>⬆ ${c.score}</span>
+        ${c.score ? `<span>⬆ ${c.score}</span>` : ``}
       </div>
       <p class="mt-2 text-stone-700 whitespace-pre-line">
         ${c.body}
