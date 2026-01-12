@@ -1246,11 +1246,11 @@ document.querySelectorAll('.seminar-card').forEach(card => {
     const { reddit } = data;
     
     loadRedditComments(reddit.postId).then(res => {
-      online.innerHTML = '';
-      renderComments(res.comments, online);
+      renderComments(res.comments, online); // 👈 append, don’t wipe
       after = res.next;
       online.appendChild(loadBtn);
     });
+
     
     loadBtn.onclick = async () => {
       if (!after) {
