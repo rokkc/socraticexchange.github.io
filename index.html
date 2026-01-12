@@ -1094,16 +1094,22 @@
   </div>
   
 <script>
-const seminarData = {
-  const bannedWords = [
-    "fuck", "shit", "bitch", "asshole", "cunt", "nigger", "faggot"
-  ];
-  
-  function containsProfanity(text) {
-    const lower = text.toLowerCase();
-    return bannedWords.some(word => lower.includes(word));
-  }
+document.addEventListener('DOMContentLoaded', () => {
 
+/* =======================
+   PROFANITY FILTER
+======================= */
+const bannedWords = [
+  "fuck", "shit", "bitch", "asshole", "cunt", "nigger", "faggot"
+];
+
+function containsProfanity(text) {
+  if (!text) return false;
+  const lower = text.toLowerCase();
+  return bannedWords.some(word => lower.includes(word));
+}
+
+const seminarData = {
   dying: {
     question: "Existentialist Philosophy: Putting economics aside, if you found out you were dying, what would you stop doing?",
     inPerson: `<p class="ny-dropcap">This seminar explored mortality, meaning, and choice when time becomes scarce.</p>`,
@@ -1139,6 +1145,7 @@ const seminarData = {
     reddit: { postId: "1nuwiof" }
   }
 };
+const seminarModal = document.getElementById('seminar-modal');
 
 async function loadRedditComments(postId, after = null) {
   const url = new URL(`https://www.reddit.com/comments/${postId}.json`);
@@ -1147,63 +1154,26 @@ async function loadRedditComments(postId, after = null) {
 
   const res = await fetch(url);
   const json = await res.json();
-  
+
   const comments = json[1].data.children
     .filter(c =>
       c.kind === "t1" &&
       c.data.body &&
       c.data.body !== "[deleted]" &&
       c.data.body !== "[removed]" &&
-      c.data.author !== "[deleted]"
+      c.data.author !== "[deleted]" &&
+      !containsProfanity(c.data.body) &&
+      c.data.body.length > 80
     )
-    .filter(c => c.data.body.length > 80)
-    .filter(c => !containsProfanity(c.data.body))
     .map(c => ({
       author: c.data.author,
       body: c.data.body,
       score: c.data.score
     }));
-
-
 
   return { comments, next: json[1].data.after };
 }
 
-function renderComments(comments, container) {
-  comments.forEach(c => {
-    const el = document.createElement("div");
-    el.className = "bg-white rounded-lg p-4 shadow-soft";
-    el.innerHTML = `
-      <div class="text-xs text-stone-500">${c.author}</div>
-      <p class="mt-2 text-stone-700 whitespace-pre-line">${c.body}</p>
-    `;
-    container.appendChild(el);
-  });
-}
-
-  
-async function loadRedditComments(postId, after = null) {
-  const url = new URL(`https://www.reddit.com/comments/${postId}.json`);
-  url.searchParams.set("limit", 20);
-  if (after) url.searchParams.set("after", after);
-
-  const res = await fetch(url);
-  const json = await res.json();
-
-  const comments = json[1].data.children
-    .filter(c => c.kind === "t1")
-    .map(c => ({
-      id: c.data.id,
-      author: c.data.author,
-      body: c.data.body,
-      score: c.data.score
-    }));
-
-  return {
-    comments,
-    next: json[1].data.after
-  };
-}
 
 function renderComments(comments, container) {
   comments.forEach(c => {
@@ -1319,12 +1289,13 @@ document.querySelectorAll('.seminar-tab').forEach(tab => {
   });
 });
   document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && !seminarModal.classList.contains('hidden')) {
-    seminarModal.classList.add('hidden');
-    seminarModal.classList.remove('flex');
-  }
-});
+    if (e.key === 'Escape' && !seminarModal.classList.contains('hidden')) {
+      seminarModal.classList.add('hidden');
+      seminarModal.classList.remove('flex');
+    }
+  });
 
+});
 </script>
 
 <script>
