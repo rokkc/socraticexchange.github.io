@@ -1096,7 +1096,18 @@ const seminarData = {
   dying: {
     question: "Existentialist Philosophy: Putting economics aside, if you found out you were dying, what would you stop doing?",
     inPerson: `<p class="ny-dropcap">This seminar explored mortality, meaning, and choice when time becomes scarce.</p>`,
+    featured: [
+      {
+        author: "Sannidhi Talgery",
+        body: "Knowing death was near would force me to re-evaluate how much of my daily labor is actually meaningful versus habitual. Too often, we trap ourselves into cycles of unvaluable economic toil rather than invaluable life experiences. If most our working lives are meaningless, then are we truly doing what is best for us, or are we doing what is best for society?"
+      },
+      {
+        author: "Moderator Reflection",
+        body: "The discussion revealed that economic optimization collapses when time becomes finite — values replace incentives."
+      }
+    ],
     reddit: { postId: "1nrhvx6" }
+    
   },
 
   unethical: {
@@ -1127,12 +1138,15 @@ async function loadRedditComments(postId, after = null) {
   const json = await res.json();
 
   const comments = json[1].data.children
-    .filter(c => c.kind === "t1")
-    .map(c => ({
-      author: c.data.author,
-      body: c.data.body,
-      score: c.data.score
-    }));
+    .filter(c =>
+      c.kind === "t1" &&
+      c.data.body &&
+      c.data.body !== "[deleted]" &&
+      c.data.body !== "[removed]" &&
+      c.data.author !== "[deleted]"
+    )
+    .filter(c => c.data.body.length > 80)
+
 
   return { comments, next: json[1].data.after };
 }
