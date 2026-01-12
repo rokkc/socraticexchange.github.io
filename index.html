@@ -1208,32 +1208,16 @@ document.querySelectorAll('.seminar-card').forEach(card => {
     const online = document.getElementById('seminar-online');
     online.innerHTML = "";
     
-    // --- FEATURED RESPONSES (manual, curated) ---
-    if (data.featured && data.featured.length) {
-      data.featured.forEach(f => {
-        const el = document.createElement("div");
-        el.className = "bg-stone-100 border border-stone-300 rounded-lg p-4";
-    
-        el.innerHTML = `
-          <div class="text-xs uppercase tracking-wide text-stone-500 mb-1">
-            Featured Response
-          </div>
-          <div class="text-sm italic text-stone-600 mb-2">
-            ${f.author}
-          </div>
-          <p class="text-stone-800">
-            ${f.body}
-          </p>
-        `;
-    
-        online.appendChild(el);
-      });
-    
-      online.insertAdjacentHTML(
-        "beforeend",
-        "<div class='my-6 border-t border-stone-300'></div>"
-      );
-    } else {
+    // --- FEATURED RESPONSES (manual, curated) ---if (data.featured && data.featured.length) {
+  renderComments(
+    data.featured.map(f => ({
+      author: f.author,
+      body: f.body,
+      score: null // no upvotes shown
+    })),
+    online
+  );
+} else {
       online.innerHTML = '<p class="text-stone-500 text-sm">Loading discussion…</p>';
     }
     
