@@ -1164,15 +1164,25 @@ const seminarModal = document.getElementById('seminar-modal');
 async function loadRedditComments(postId, after = null) {
   const url = new URL(`https://www.reddit.com/comments/${postId}.json`);
   url.searchParams.set("limit", 20);
+  url.searchParams.set("raw_json", 1);
   if (after) url.searchParams.set("after", after);
 
-  const res = await fetch(url);
+  const res = await fetch(url.toString(), {
+    headers: {
+      "User-Agent": "SocraticExchangeSite/1.0"
+    }
+  });
+
+  if (!res.ok) {
+    throw new Error(`Reddit request failed: ${res.status}`);
+  }
+
   const json = await res.json();
 
-  const comments = json[1].data.children
+  const comments = (json?.[1]?.data?.children || [])
     .filter(c =>
       c.kind === "t1" &&
-      c.data.body &&
+      c.data?.body &&
       c.data.body !== "[deleted]" &&
       c.data.body !== "[removed]" &&
       c.data.author !== "[deleted]" &&
@@ -1184,8 +1194,10 @@ async function loadRedditComments(postId, after = null) {
       score: c.data.score
     }));
 
-  return { comments, next: json[1].data.after };
+  return { comments, next: json?.[1]?.data?.after || null };
 }
+
+
 
 
 
@@ -1196,10 +1208,7 @@ function renderComments(comments, container) {
 
     el.innerHTML = `
       <div class="flex items-center justify-between text-xs text-stone-500">
-        <div class="flex items-center gap-2">
-          <span class="italic text-stone-500">${c.author}</span>
-          ${c.featured ? `<span class="px-2 py-[2px] rounded-full bg-red-100 text-red-800 font-semibold text-[10px]">FEATURED</span>` : ``}
-        </div>
+        <span class="italic text-stone-500">${c.author}</span>
         ${typeof c.score === "number" ? `<span>⬆ ${c.score}</span>` : ``}
       </div>
       <p class="mt-2 text-stone-700 whitespace-pre-line">
@@ -1226,20 +1235,19 @@ document.querySelectorAll('.seminar-card').forEach(card => {
 const online = document.getElementById('seminar-online');
 online.innerHTML = "";
 
-// 1) Render featured comments first (same feed)
+// Featured first (same feed, no tag)
 if (data.featured && data.featured.length) {
   renderComments(
     data.featured.map(f => ({
       author: f.author,
       body: f.body,
-      score: null,
-      featured: true
+      score: null
     })),
     online
   );
 }
 
-// 2) Add a small inline loading row (not a separate “section”)
+// Loading row
 const loading = document.createElement("div");
 loading.className = "text-stone-500 text-sm italic";
 loading.textContent = "Loading more discussion…";
@@ -1253,18 +1261,45 @@ loadBtn.textContent = "Load more comments";
 
 const { reddit } = data;
 
-// 3) Append reddit comments underneath (same feed)
-loadRedditComments(reddit.postId).then(res => {
-  loading.remove();
-  renderComments(
-    res.comments.map(r => ({ ...r, featured: false })),
-    online
-  );
-  after = res.next;
-  online.appendChild(loadBtn);
-});
+(async () => {
+  try {
+    const res = await loadRedditComments(reddit.postId);
+    loading.remove();
+
+    renderComments(res.comments, online);
+    after = res.next;
+
+    // only show button if there's more
+    if (after) online.appendChild(loadBtn);
+  } catch (err) {
+    console.error("Reddit load failed:", err);
+    loading.className = "text-red-700 text-sm italic";
+    loading.textContent = "Couldn’t load Reddit comments (blocked or rate-limited).";
+  }
+})();
 
 loadBtn.onclick = async () => {
+  try {
+    if (!after) {
+      loadBtn.textContent = "No more comments";
+      loadBtn.disabled = true;
+      return;
+    }
+    const res = await loadRedditComments(reddit.postId, after);
+    renderComments(res.comments, online);
+    after = res.next;
+
+    if (!after) {
+      loadBtn.textContent = "No more comments";
+      loadBtn.disabled = true;
+    }
+  } catch (err) {
+    console.error("Load more failed:", err);
+    loadBtn.textContent = "Error loading more";
+    loadBtn.disabled = true;
+  }
+};
+
   if (!after) {
     loadBtn.textContent = "No more comments";
     loadBtn.disabled = true;
