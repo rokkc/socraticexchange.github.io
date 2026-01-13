@@ -1424,7 +1424,13 @@ const seminarData = {
       closeSeminarModal();
     }
   });
-
+  // ✅ ADD THIS RIGHT BELOW
+  seminarModal.addEventListener('click', (e) => {
+    // Only close if clicking the dark backdrop, not the modal content
+    if (e.target === seminarModal) {
+      closeSeminarModal();
+    }
+  });
 });
 </script>
 
