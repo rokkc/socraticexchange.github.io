@@ -1196,8 +1196,11 @@ function renderComments(comments, container) {
 
     el.innerHTML = `
       <div class="flex items-center justify-between text-xs text-stone-500">
-        <span class="italic text-stone-500">${c.author}</span>
-        ${c.score ? `<span>⬆ ${c.score}</span>` : ``}
+        <div class="flex items-center gap-2">
+          <span class="italic text-stone-500">${c.author}</span>
+          ${c.featured ? `<span class="px-2 py-[2px] rounded-full bg-red-100 text-red-800 font-semibold text-[10px]">FEATURED</span>` : ``}
+        </div>
+        ${typeof c.score === "number" ? `<span>⬆ ${c.score}</span>` : ``}
       </div>
       <p class="mt-2 text-stone-700 whitespace-pre-line">
         ${c.body}
@@ -1207,6 +1210,7 @@ function renderComments(comments, container) {
     container.appendChild(el);
   });
 }
+
 
   
 /* OPEN MODAL */
@@ -1219,53 +1223,60 @@ document.querySelectorAll('.seminar-card').forEach(card => {
     document.getElementById('seminar-question').textContent = data.question;
     document.getElementById('seminar-inperson').innerHTML = data.inPerson;
     
-    const online = document.getElementById('seminar-online');
-    online.innerHTML = "";
-    
-    /* ---------- FEATURED RESPONSES (always first) ---------- */
-    if (data.featured && data.featured.length) {
-      const featuredHeader = document.createElement("h4");
-      featuredHeader.className = "text-lg font-bold text-black mt-2";
-      featuredHeader.textContent = "Featured Responses";
-      online.appendChild(featuredHeader);
-    
-      renderComments(
-        data.featured.map(f => ({
-          author: f.author,
-          body: f.body,
-          score: null
-        })),
-        online
-      );
-    }
-    
-    /* ---------- REDDIT DISCUSSION ---------- */
-    const redditHeader = document.createElement("h4");
-    redditHeader.className = "text-lg font-bold text-black mt-8";
-    redditHeader.textContent = "Community Discussion";
-    online.appendChild(redditHeader);
-    
-    const loading = document.createElement("p");
-    loading.className = "text-stone-500 text-sm";
-    loading.textContent = "Loading discussion…";
-    online.appendChild(loading);
+const online = document.getElementById('seminar-online');
+online.innerHTML = "";
 
+// 1) Render featured comments first (same feed)
+if (data.featured && data.featured.length) {
+  renderComments(
+    data.featured.map(f => ({
+      author: f.author,
+      body: f.body,
+      score: null,
+      featured: true
+    })),
+    online
+  );
+}
 
-    let after = null;
-    
-    const loadBtn = document.createElement('button');
-    loadBtn.className = "mt-6 text-red-800 font-semibold underline";
-    loadBtn.textContent = "Load more comments";
-    
-    const { reddit } = data;
-    
-    loadRedditComments(reddit.postId).then(res => {
-      loading.remove(); // remove “Loading discussion…”
-      renderComments(res.comments, online);
-      after = res.next;
-      online.appendChild(loadBtn);
-    });
+// 2) Add a small inline loading row (not a separate “section”)
+const loading = document.createElement("div");
+loading.className = "text-stone-500 text-sm italic";
+loading.textContent = "Loading more discussion…";
+online.appendChild(loading);
 
+let after = null;
+
+const loadBtn = document.createElement('button');
+loadBtn.className = "mt-6 text-red-800 font-semibold underline";
+loadBtn.textContent = "Load more comments";
+
+const { reddit } = data;
+
+// 3) Append reddit comments underneath (same feed)
+loadRedditComments(reddit.postId).then(res => {
+  loading.remove();
+  renderComments(
+    res.comments.map(r => ({ ...r, featured: false })),
+    online
+  );
+  after = res.next;
+  online.appendChild(loadBtn);
+});
+
+loadBtn.onclick = async () => {
+  if (!after) {
+    loadBtn.textContent = "No more comments";
+    loadBtn.disabled = true;
+    return;
+  }
+  const res = await loadRedditComments(reddit.postId, after);
+  renderComments(
+    res.comments.map(r => ({ ...r, featured: false })),
+    online
+  );
+  after = res.next;
+};
 
     
     loadBtn.onclick = async () => {
