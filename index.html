@@ -1294,20 +1294,23 @@ document.addEventListener('DOMContentLoaded', () => {
       const loadBtn = document.createElement('button');
       loadBtn.className = "mt-6 text-red-800 font-semibold underline";
       loadBtn.textContent = "Load more comments";
-
-      // initial reddit load
+      // ✅ OPEN MODAL IMMEDIATELY (so seminars always open)
+      openSeminarModal();
+      
+      // initial reddit load (now happens after modal is open)
       try {
         const res = await loadRedditComments(data.reddit.postId);
         loading.remove();
         renderComments(res.comments, onlineEl);
         after = res.next;
-
+      
         if (after) onlineEl.appendChild(loadBtn);
       } catch (err) {
         console.error("Reddit load failed:", err);
         loading.className = "text-red-700 text-sm italic";
         loading.textContent = "Couldn’t load comments. Check console for the exact error.";
       }
+
 
       loadBtn.onclick = async () => {
         try {
@@ -1330,8 +1333,6 @@ document.addEventListener('DOMContentLoaded', () => {
           loadBtn.disabled = true;
         }
       };
-
-      openSeminarModal();
     });
   });
 
