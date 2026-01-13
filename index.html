@@ -1229,10 +1229,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (data.featured?.length) {
         renderComments(
-          data.featured.map(f => ({ author: f.author, body: f.body, score: null })),
+          data.featured.map(f => ({
+            author: f.author,
+            body: f.body,
+            score: f.score ?? null
+          })),
           onlineEl
         );
-      }
+
 
       const loading = document.createElement("div");
       loading.className = "text-stone-500 text-sm italic";
