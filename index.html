@@ -1169,14 +1169,25 @@ document.addEventListener('DOMContentLoaded', () => {
   
     const listing = data?.[1]?.data;
     const children = listing?.children || [];
-  
+      
     const comments = children
-      .filter(x => x.kind === "t1" && x.data && !x.data.stickied)
+      .filter(x => {
+        if (x.kind !== "t1" || !x.data || x.data.stickied) return false;
+    
+        // ❌ remove deleted / removed comments
+        if (!x.data.author || x.data.author === "[deleted]") return false;
+        if (!x.data.body) return false;
+        if (x.data.body === "[deleted]" || x.data.body === "[removed]") return false;
+        if (x.data.body.trim().length < 20) return false;
+    
+        return true;
+      })
       .map(x => ({
-        author: x.data.author || "[deleted]",
-        body: x.data.body || "",
+        author: x.data.author,
+        body: x.data.body,
         score: typeof x.data.score === "number" ? x.data.score : null
       }));
+
   
     return { comments, next: listing?.after || null };
   }
