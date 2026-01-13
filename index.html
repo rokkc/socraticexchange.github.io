@@ -1128,45 +1128,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const inPersonEl = document.getElementById('seminar-inperson');
   const questionEl = document.getElementById('seminar-question');
 
-function redditJsonp(url) {
-  return new Promise((resolve, reject) => {
-    const cb = "reddit_cb_" + Math.random().toString(36).slice(2);
-    const script = document.createElement("script");
-
-    const timeout = setTimeout(() => {
-      cleanup();
-      reject(new Error("JSONP timeout"));
-    }, 8000);
-
-    function cleanup() {
-      clearTimeout(timeout);
-      try { delete window[cb]; } catch (_) { window[cb] = undefined; }
-      script.remove();
-    }
-
-    window[cb] = (data) => {
-      cleanup();
-      resolve(data);
-    };
-
-    script.onerror = () => {
-      cleanup();
-      reject(new Error("JSONP load error"));
-    };
-
-    // reddit supports `?jsonp=callbackName`
-    const sep = url.includes("?") ? "&" : "?";
-    script.src = url + sep + "jsonp=" + cb;
-
-    document.head.appendChild(script);
-  });
-}
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-
-  // ... your seminarData, element lookups, etc. ...
-
   function redditJsonp(url) {
     return new Promise((resolve, reject) => {
       const cb = "reddit_cb_" + Math.random().toString(36).slice(2);
@@ -1199,18 +1160,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ✅ ADD THIS FUNCTION
   async function loadRedditComments(postId, after = null) {
     const base =
       `https://www.reddit.com/comments/${postId}.json?raw_json=1&limit=50&sort=top` +
       (after ? `&after=${encodeURIComponent(after)}` : ``);
-
-    // Use JSONP (avoids any CORS headaches)
+  
     const data = await redditJsonp(base);
-
+  
     const listing = data?.[1]?.data;
     const children = listing?.children || [];
-
+  
     const comments = children
       .filter(x => x.kind === "t1" && x.data && !x.data.stickied)
       .map(x => ({
@@ -1218,21 +1177,14 @@ document.addEventListener('DOMContentLoaded', () => {
         body: x.data.body || "",
         score: typeof x.data.score === "number" ? x.data.score : null
       }));
-
+  
     return { comments, next: listing?.after || null };
   }
-
-  // ... the rest of your seminar modal code that calls loadRedditComments ...
-
-});
-</script>
-
 
   function renderComments(comments, container) {
     comments.forEach(c => {
       const el = document.createElement("div");
       el.className = "bg-white rounded-lg p-4 shadow-soft";
-
       el.innerHTML = `
         <div class="flex items-center justify-between text-xs text-stone-500">
           <span class="italic text-stone-500">${c.author}</span>
@@ -1254,7 +1206,6 @@ document.addEventListener('DOMContentLoaded', () => {
     seminarModal.classList.remove('flex');
   }
 
-  // OPEN MODAL
   document.querySelectorAll('.seminar-card').forEach(card => {
     card.addEventListener('click', async () => {
       const id = card.dataset.seminarId;
@@ -1264,7 +1215,7 @@ document.addEventListener('DOMContentLoaded', () => {
       questionEl.textContent = data.question;
       inPersonEl.innerHTML = data.inPerson;
 
-      // reset tabs to In-Person each time
+      // reset tabs
       document.querySelectorAll('.seminar-tab').forEach(t => {
         t.classList.remove('text-red-800', 'border-red-800', 'border-b-2');
         t.classList.add('text-stone-600');
@@ -1274,7 +1225,6 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('.seminar-panel').forEach(p => p.classList.add('hidden'));
       document.getElementById('seminar-inperson').classList.remove('hidden');
 
-      // build online feed
       onlineEl.innerHTML = "";
 
       if (data.featured?.length) {
@@ -1294,23 +1244,21 @@ document.addEventListener('DOMContentLoaded', () => {
       const loadBtn = document.createElement('button');
       loadBtn.className = "mt-6 text-red-800 font-semibold underline";
       loadBtn.textContent = "Load more comments";
-      // ✅ OPEN MODAL IMMEDIATELY (so seminars always open)
+
+      // ✅ open immediately
       openSeminarModal();
-      
-      // initial reddit load (now happens after modal is open)
+
       try {
         const res = await loadRedditComments(data.reddit.postId);
         loading.remove();
         renderComments(res.comments, onlineEl);
         after = res.next;
-      
         if (after) onlineEl.appendChild(loadBtn);
       } catch (err) {
         console.error("Reddit load failed:", err);
         loading.className = "text-red-700 text-sm italic";
         loading.textContent = "Couldn’t load comments. Check console for the exact error.";
       }
-
 
       loadBtn.onclick = async () => {
         try {
@@ -1322,7 +1270,6 @@ document.addEventListener('DOMContentLoaded', () => {
           const res = await loadRedditComments(data.reddit.postId, after);
           renderComments(res.comments, onlineEl);
           after = res.next;
-
           if (!after) {
             loadBtn.textContent = "No more comments";
             loadBtn.disabled = true;
@@ -1336,10 +1283,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // CLOSE MODAL
   document.getElementById('close-seminar-modal').addEventListener('click', closeSeminarModal);
 
-  // TAB SWITCHING
   document.querySelectorAll('.seminar-tab').forEach(tab => {
     tab.addEventListener('click', () => {
       document.querySelectorAll('.seminar-tab').forEach(t => {
@@ -1353,7 +1298,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ESC to close
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && !seminarModal.classList.contains('hidden')) {
       closeSeminarModal();
