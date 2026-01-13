@@ -1169,6 +1169,14 @@ async function loadRedditComments(postId, after = null) {
   const res = await fetch(url);
   const json = await res.json();
 
+async function loadRedditComments(postId, after = null) {
+  const url = new URL(`https://www.reddit.com/comments/${postId}.json`);
+  url.searchParams.set("limit", 20);
+  if (after) url.searchParams.set("after", after);
+
+  const res = await fetch(url);
+  const json = await res.json();
+
   const comments = json[1].data.children
     .filter(c =>
       c.kind === "t1" &&
@@ -1178,13 +1186,15 @@ async function loadRedditComments(postId, after = null) {
       c.data.author !== "[deleted]" &&
       c.data.body.length > 40
     )
-
-    )
     .map(c => ({
       author: c.data.author,
       body: c.data.body,
       score: c.data.score
     }));
+
+  return { comments, next: json[1].data.after };
+}
+
 
   return { comments, next: json[1].data.after };
 }
