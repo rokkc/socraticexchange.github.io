@@ -1169,14 +1169,6 @@ async function loadRedditComments(postId, after = null) {
   const res = await fetch(url);
   const json = await res.json();
 
-async function loadRedditComments(postId, after = null) {
-  const url = new URL(`https://www.reddit.com/comments/${postId}.json`);
-  url.searchParams.set("limit", 20);
-  if (after) url.searchParams.set("after", after);
-
-  const res = await fetch(url);
-  const json = await res.json();
-
   const comments = json[1].data.children
     .filter(c =>
       c.kind === "t1" &&
@@ -1195,9 +1187,6 @@ async function loadRedditComments(postId, after = null) {
   return { comments, next: json[1].data.after };
 }
 
-
-  return { comments, next: json[1].data.after };
-}
 
 
 function renderComments(comments, container) {
@@ -1233,19 +1222,33 @@ document.querySelectorAll('.seminar-card').forEach(card => {
     const online = document.getElementById('seminar-online');
     online.innerHTML = "";
     
-// --- FEATURED RESPONSES (manual, curated)
-if (data.featured && data.featured.length) {
-  renderComments(
-    data.featured.map(f => ({
-      author: f.author,
-      body: f.body,
-      score: null
-    })),
-    online
-  );
-} else {
-  online.innerHTML = '<p class="text-stone-500 text-sm">Loading discussion…</p>';
-}
+    /* ---------- FEATURED RESPONSES (always first) ---------- */
+    if (data.featured && data.featured.length) {
+      const featuredHeader = document.createElement("h4");
+      featuredHeader.className = "text-lg font-bold text-black mt-2";
+      featuredHeader.textContent = "Featured Responses";
+      online.appendChild(featuredHeader);
+    
+      renderComments(
+        data.featured.map(f => ({
+          author: f.author,
+          body: f.body,
+          score: null
+        })),
+        online
+      );
+    }
+    
+    /* ---------- REDDIT DISCUSSION ---------- */
+    const redditHeader = document.createElement("h4");
+    redditHeader.className = "text-lg font-bold text-black mt-8";
+    redditHeader.textContent = "Community Discussion";
+    online.appendChild(redditHeader);
+    
+    const loading = document.createElement("p");
+    loading.className = "text-stone-500 text-sm";
+    loading.textContent = "Loading discussion…";
+    online.appendChild(loading);
 
 
     let after = null;
@@ -1257,10 +1260,12 @@ if (data.featured && data.featured.length) {
     const { reddit } = data;
     
     loadRedditComments(reddit.postId).then(res => {
-      renderComments(res.comments, online); // 👈 append, don’t wipe
+      loading.remove(); // remove “Loading discussion…”
+      renderComments(res.comments, online);
       after = res.next;
       online.appendChild(loadBtn);
     });
+
 
     
     loadBtn.onclick = async () => {
