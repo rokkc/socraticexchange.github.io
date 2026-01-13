@@ -988,10 +988,12 @@
 
       
     overlay.addEventListener("click", (e) => {
-      if (e.target === overlay) {
+      // if you clicked anywhere NOT inside the article card, close
+      if (!card.contains(e.target)) {
         closeReader();
       }
     });
+
       
     // NEW: support clean URLs like /granovetter or /ethics
     const path = window.location.pathname.split('/').filter(Boolean);
