@@ -1096,269 +1096,203 @@
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 
-/* =======================
-   PROFANITY FILTER
-======================= */
-const bannedWords = [
-  "fuck", "shit", "bitch", "asshole", "cunt", "nigger", "faggot"
-];
-
-function containsProfanity(text) {
-  if (!text) return false;
-  const lower = text.toLowerCase();
-  return bannedWords.some(word => lower.includes(word));
-}
-
-const seminarData = {
-  dying: {
-    question: "Existentialist Philosophy: Putting economics aside, if you found out you were dying, what would you stop doing?",
-    inPerson: `<p class="ny-dropcap">This seminar explored mortality, meaning, and choice when time becomes scarce.</p>`,
-    featured: [
-      {
-        author: "sannidhiT",
-        body: "Knowing death was near would force me to re-evaluate how much of my daily labor is actually meaningful versus habitual. Too often, we trap ourselves into cycles of unvaluable economic toil rather than invaluable life experiences. If most our working lives are meaningless, then are we truly doing what is best for us, or are we doing what is best for society?"
-      },
-    ],
-    reddit: { postId: "1nrhvx6" }
-    
-  },
-
-  unethical: {
-    question: "Ethics: What is an immoral yet extremely common practice in the business world?",
-    inPerson: `<p class="ny-dropcap">We debated moral gray zones and why unethical behavior persists in competitive markets.</p>`,
-    featured: [
-      {
-        author: "leca11",
-        body: "Lying to customers and employees. Economists even have a name for it: information asymmetry. When we rely on authority for truth and they don't deliver, it's usually for their own gain. Look at who got rich in 2008. Look at who didn't."
-      },
-    ],
-    reddit: { postId: "1nrhx91" }
-  },
-
-  lying: {
-    question: "Political Philosophy: Why don't we charge politicians for lying to the public?",
-    inPerson: `<p class="ny-dropcap">This discussion examined power, truth, and enforcement in democratic systems.</p>`,
-    featured: [
-      {
-        author: "ozasgiri",
-        body: "IMO this is too nuanced for a single response, but I'll give it a shot. On the pro side for lying, I'd say to look at the cold war: we don't want our politicians spilling secrets that could threaten our national security. But at the same time, our civilians get hurt like they did in MK ULTRA. CIA and federal government need to find a better middleground."
-      },
-    ],
-    reddit: { postId: "1ns8r6v" }
-  },
-
-  college: {
-    question: "Economics: In today's economy, in what cases is a college education worth the price?",
-    inPerson: `<p class="ny-dropcap">We discussed signaling, debt, and the changing ROI of higher education.</p>`,
-    featured: [
-      {
-        author: "ashleyngu",
-        body: "Economically, look at ROI. But otherwise I'd say it's context dependent. If you're looking to get money, then any high-paying degree might be worth it but if you're looking to go into a teaching jog like in English, then don't bother unless you're looking to become a researcher in academia."
-      },
-    ],
-    reddit: { postId: "1nuwiof" }
-  }
-};
-const seminarModal = document.getElementById('seminar-modal');
-
-async function loadRedditComments(postId, after = null) {
-  const url = new URL(`https://www.reddit.com/comments/${postId}.json`);
-  url.searchParams.set("limit", 20);
-  url.searchParams.set("raw_json", 1);
-  if (after) url.searchParams.set("after", after);
-
-  const res = await fetch(url.toString(), {
-    headers: {
-      "User-Agent": "SocraticExchangeSite/1.0"
+  const seminarData = {
+    dying: {
+      question: "Existentialist Philosophy: Putting economics aside, if you found out you were dying, what would you stop doing?",
+      inPerson: `<p class="ny-dropcap">This seminar explored mortality, meaning, and choice when time becomes scarce.</p>`,
+      featured: [{ author: "sannidhiT", body: "Knowing death was near would force me to re-evaluate how much of my daily labor is actually meaningful versus habitual. Too often, we trap ourselves into cycles of unvaluable economic toil rather than invaluable life experiences. If most our working lives are meaningless, then are we truly doing what is best for us, or are we doing what is best for society?" }],
+      reddit: { postId: "1nrhvx6" }
+    },
+    unethical: {
+      question: "Ethics: What is an immoral yet extremely common practice in the business world?",
+      inPerson: `<p class="ny-dropcap">We debated moral gray zones and why unethical behavior persists in competitive markets.</p>`,
+      featured: [{ author: "leca11", body: "Lying to customers and employees. Economists even have a name for it: information asymmetry. When we rely on authority for truth and they don't deliver, it's usually for their own gain. Look at who got rich in 2008. Look at who didn't." }],
+      reddit: { postId: "1nrhx91" }
+    },
+    lying: {
+      question: "Political Philosophy: Why don't we charge politicians for lying to the public?",
+      inPerson: `<p class="ny-dropcap">This discussion examined power, truth, and enforcement in democratic systems.</p>`,
+      featured: [{ author: "ozasgiri", body: "IMO this is too nuanced for a single response, but I'll give it a shot. On the pro side for lying, I'd say to look at the cold war: we don't want our politicians spilling secrets that could threaten our national security. But at the same time, our civilians get hurt like they did in MK ULTRA. CIA and federal government need to find a better middleground." }],
+      reddit: { postId: "1ns8r6v" }
+    },
+    college: {
+      question: "Economics: In today's economy, in what cases is a college education worth the price?",
+      inPerson: `<p class="ny-dropcap">We discussed signaling, debt, and the changing ROI of higher education.</p>`,
+      featured: [{ author: "ashleyngu", body: "Economically, look at ROI. But otherwise I'd say it's context dependent. If you're looking to get money, then any high-paying degree might be worth it but if you're looking to go into a teaching jog like in English, then don't bother unless you're looking to become a researcher in academia." }],
+      reddit: { postId: "1nuwiof" }
     }
-  });
+  };
 
-  if (!res.ok) {
-    throw new Error(`Reddit request failed: ${res.status}`);
-  }
+  const seminarModal = document.getElementById('seminar-modal');
+  const onlineEl = document.getElementById('seminar-online');
+  const inPersonEl = document.getElementById('seminar-inperson');
+  const questionEl = document.getElementById('seminar-question');
 
-  const json = await res.json();
+  async function loadRedditComments(postId, after = null) {
+    const url = new URL(`https://www.reddit.com/comments/${postId}.json`);
+    url.searchParams.set("limit", 20);
+    url.searchParams.set("raw_json", 1);
+    if (after) url.searchParams.set("after", after);
 
-  const comments = (json?.[1]?.data?.children || [])
-    .filter(c =>
-      c.kind === "t1" &&
-      c.data?.body &&
-      c.data.body !== "[deleted]" &&
-      c.data.body !== "[removed]" &&
-      c.data.author !== "[deleted]" &&
-      c.data.body.length > 40
-    )
-    .map(c => ({
-      author: c.data.author,
-      body: c.data.body,
-      score: c.data.score
-    }));
-
-  return { comments, next: json?.[1]?.data?.after || null };
-}
-
-
-
-
-
-function renderComments(comments, container) {
-  comments.forEach(c => {
-    const el = document.createElement("div");
-    el.className = "bg-white rounded-lg p-4 shadow-soft";
-
-    el.innerHTML = `
-      <div class="flex items-center justify-between text-xs text-stone-500">
-        <span class="italic text-stone-500">${c.author}</span>
-        ${typeof c.score === "number" ? `<span>⬆ ${c.score}</span>` : ``}
-      </div>
-      <p class="mt-2 text-stone-700 whitespace-pre-line">
-        ${c.body}
-      </p>
-    `;
-
-    container.appendChild(el);
-  });
-}
-
-
-  
-/* OPEN MODAL */
-document.querySelectorAll('.seminar-card').forEach(card => {
-  card.addEventListener('click', () => {
-    const id = card.dataset.seminarId;
-    const data = seminarData[id];
-    if (!data) return;
-
-    document.getElementById('seminar-question').textContent = data.question;
-    document.getElementById('seminar-inperson').innerHTML = data.inPerson;
-    
-const online = document.getElementById('seminar-online');
-online.innerHTML = "";
-
-// Featured first (same feed, no tag)
-if (data.featured && data.featured.length) {
-  renderComments(
-    data.featured.map(f => ({
-      author: f.author,
-      body: f.body,
-      score: null
-    })),
-    online
-  );
-}
-
-// Loading row
-const loading = document.createElement("div");
-loading.className = "text-stone-500 text-sm italic";
-loading.textContent = "Loading more discussion…";
-online.appendChild(loading);
-
-let after = null;
-
-const loadBtn = document.createElement('button');
-loadBtn.className = "mt-6 text-red-800 font-semibold underline";
-loadBtn.textContent = "Load more comments";
-
-const { reddit } = data;
-
-(async () => {
-  try {
-    const res = await loadRedditComments(reddit.postId);
-    loading.remove();
-
-    renderComments(res.comments, online);
-    after = res.next;
-
-    // only show button if there's more
-    if (after) online.appendChild(loadBtn);
-  } catch (err) {
-    console.error("Reddit load failed:", err);
-    loading.className = "text-red-700 text-sm italic";
-    loading.textContent = "Couldn’t load Reddit comments (blocked or rate-limited).";
-  }
-})();
-
-loadBtn.onclick = async () => {
-  try {
-    if (!after) {
-      loadBtn.textContent = "No more comments";
-      loadBtn.disabled = true;
-      return;
-    }
-    const res = await loadRedditComments(reddit.postId, after);
-    renderComments(res.comments, online);
-    after = res.next;
-
-    if (!after) {
-      loadBtn.textContent = "No more comments";
-      loadBtn.disabled = true;
-    }
-  } catch (err) {
-    console.error("Load more failed:", err);
-    loadBtn.textContent = "Error loading more";
-    loadBtn.disabled = true;
-  }
-};
-
-  if (!after) {
-    loadBtn.textContent = "No more comments";
-    loadBtn.disabled = true;
-    return;
-  }
-  const res = await loadRedditComments(reddit.postId, after);
-  renderComments(
-    res.comments.map(r => ({ ...r, featured: false })),
-    online
-  );
-  after = res.next;
-};
-
-    
-    loadBtn.onclick = async () => {
-      if (!after) {
-        loadBtn.textContent = "No more comments";
-        loadBtn.disabled = true;
-        return;
-      }
-      const res = await loadRedditComments(reddit.postId, after);
-      renderComments(res.comments, online);
-      after = res.next;
-    };
-
-
-    document.getElementById('seminar-modal').classList.remove('hidden');
-    document.getElementById('seminar-modal').classList.add('flex');
-  });
-});
-
-/* CLOSE MODAL */
-document.getElementById('close-seminar-modal').onclick = () => {
-  document.getElementById('seminar-modal').classList.add('hidden');
-  document.getElementById('seminar-modal').classList.remove('flex');
-};
-
-/* TAB SWITCHING */
-document.querySelectorAll('.seminar-tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('.seminar-tab').forEach(t => {
-      t.classList.remove('text-red-800', 'border-red-800', 'border-b-2');
-      t.classList.add('text-stone-600');
+    const res = await fetch(url.toString(), {
+      headers: { "User-Agent": "SocraticExchangeSite/1.0" }
     });
-    tab.classList.add('text-red-800', 'border-b-2', 'border-red-800');
 
-    document.querySelectorAll('.seminar-panel').forEach(p => p.classList.add('hidden'));
-    document.getElementById(`seminar-${tab.dataset.tab}`).classList.remove('hidden');
+    if (!res.ok) throw new Error(`Reddit request failed: ${res.status}`);
+
+    const json = await res.json();
+    const comments = (json?.[1]?.data?.children || [])
+      .filter(c =>
+        c.kind === "t1" &&
+        c.data?.body &&
+        c.data.body !== "[deleted]" &&
+        c.data.body !== "[removed]" &&
+        c.data.author !== "[deleted]" &&
+        c.data.body.length > 40
+      )
+      .map(c => ({
+        author: c.data.author,
+        body: c.data.body,
+        score: c.data.score
+      }));
+
+    return { comments, next: json?.[1]?.data?.after || null };
+  }
+
+  function renderComments(comments, container) {
+    comments.forEach(c => {
+      const el = document.createElement("div");
+      el.className = "bg-white rounded-lg p-4 shadow-soft";
+
+      el.innerHTML = `
+        <div class="flex items-center justify-between text-xs text-stone-500">
+          <span class="italic text-stone-500">${c.author}</span>
+          ${typeof c.score === "number" ? `<span>⬆ ${c.score}</span>` : ``}
+        </div>
+        <p class="mt-2 text-stone-700 whitespace-pre-line">${c.body}</p>
+      `;
+      container.appendChild(el);
+    });
+  }
+
+  function openSeminarModal() {
+    seminarModal.classList.remove('hidden');
+    seminarModal.classList.add('flex');
+  }
+
+  function closeSeminarModal() {
+    seminarModal.classList.add('hidden');
+    seminarModal.classList.remove('flex');
+  }
+
+  // OPEN MODAL
+  document.querySelectorAll('.seminar-card').forEach(card => {
+    card.addEventListener('click', async () => {
+      const id = card.dataset.seminarId;
+      const data = seminarData[id];
+      if (!data) return;
+
+      questionEl.textContent = data.question;
+      inPersonEl.innerHTML = data.inPerson;
+
+      // reset tabs to In-Person each time
+      document.querySelectorAll('.seminar-tab').forEach(t => {
+        t.classList.remove('text-red-800', 'border-red-800', 'border-b-2');
+        t.classList.add('text-stone-600');
+      });
+      const firstTab = document.querySelector('.seminar-tab[data-tab="inperson"]');
+      firstTab.classList.add('text-red-800', 'border-b-2', 'border-red-800');
+      document.querySelectorAll('.seminar-panel').forEach(p => p.classList.add('hidden'));
+      document.getElementById('seminar-inperson').classList.remove('hidden');
+
+      // build online feed
+      onlineEl.innerHTML = "";
+
+      if (data.featured?.length) {
+        renderComments(
+          data.featured.map(f => ({ author: f.author, body: f.body, score: null })),
+          onlineEl
+        );
+      }
+
+      const loading = document.createElement("div");
+      loading.className = "text-stone-500 text-sm italic";
+      loading.textContent = "Loading more discussion…";
+      onlineEl.appendChild(loading);
+
+      let after = null;
+
+      const loadBtn = document.createElement('button');
+      loadBtn.className = "mt-6 text-red-800 font-semibold underline";
+      loadBtn.textContent = "Load more comments";
+
+      // initial reddit load
+      try {
+        const res = await loadRedditComments(data.reddit.postId);
+        loading.remove();
+        renderComments(res.comments, onlineEl);
+        after = res.next;
+
+        if (after) onlineEl.appendChild(loadBtn);
+      } catch (err) {
+        console.error("Reddit load failed:", err);
+        loading.className = "text-red-700 text-sm italic";
+        loading.textContent = "Couldn’t load Reddit comments (blocked or rate-limited).";
+      }
+
+      loadBtn.onclick = async () => {
+        try {
+          if (!after) {
+            loadBtn.textContent = "No more comments";
+            loadBtn.disabled = true;
+            return;
+          }
+          const res = await loadRedditComments(data.reddit.postId, after);
+          renderComments(res.comments, onlineEl);
+          after = res.next;
+
+          if (!after) {
+            loadBtn.textContent = "No more comments";
+            loadBtn.disabled = true;
+          }
+        } catch (err) {
+          console.error("Load more failed:", err);
+          loadBtn.textContent = "Error loading more";
+          loadBtn.disabled = true;
+        }
+      };
+
+      openSeminarModal();
+    });
   });
-});
+
+  // CLOSE MODAL
+  document.getElementById('close-seminar-modal').addEventListener('click', closeSeminarModal);
+
+  // TAB SWITCHING
+  document.querySelectorAll('.seminar-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.seminar-tab').forEach(t => {
+        t.classList.remove('text-red-800', 'border-red-800', 'border-b-2');
+        t.classList.add('text-stone-600');
+      });
+      tab.classList.add('text-red-800', 'border-b-2', 'border-red-800');
+
+      document.querySelectorAll('.seminar-panel').forEach(p => p.classList.add('hidden'));
+      document.getElementById(`seminar-${tab.dataset.tab}`).classList.remove('hidden');
+    });
+  });
+
+  // ESC to close
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && !seminarModal.classList.contains('hidden')) {
-      seminarModal.classList.add('hidden');
-      seminarModal.classList.remove('flex');
+      closeSeminarModal();
     }
   });
 
 });
 </script>
+
 
 <script>
   window.addEventListener("load", () => {
