@@ -986,12 +986,13 @@
       setTimeout(() => openReader(initialHash), 0);
     }
 
-      
-    overlay.addEventListener("click", (e) => {
-      if (!card.contains(e.target)) {
-        closeReader();
-      }
+    const backdrop = document.getElementById("reader-backdrop");
+    
+    // ✅ Click outside the article (dark area) closes it
+    backdrop.addEventListener("click", () => {
+      closeReader();
     });
+
 
 
       
