@@ -939,21 +939,12 @@
       // Update URL so # links work
       history.replaceState(null, "", "#" + id);
     }
-    
+        
     function closeReader() {
-      // 🔒 stop clicks immediately
-      overlay.style.pointerEvents = "none";
-    
-      // animate card out
-      card.classList.add("opacity-0", "translate-y-4");
-    
-      setTimeout(() => {
-        overlay.classList.remove("flex");
-        overlay.classList.add("hidden");
-        overlay.style.pointerEvents = ""; // restore
-        lockBodyScroll(false);
-        history.replaceState(null, "", " ");
-      }, 200);
+      overlay.classList.remove("flex");
+      overlay.classList.add("hidden");
+      lockBodyScroll(false);
+      history.replaceState(null, "", " ");
     }
     
 
