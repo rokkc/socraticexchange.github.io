@@ -1385,16 +1385,13 @@ const seminarData = {
       onlineEl.innerHTML = "";
       
       if (data.featured?.length) {
-        renderComments(
-          data.featured.map(f => ({
-            author: f.author,
-            body: f.body,
-            score: f.score ?? null
-          })),
-          onlineEl
-        );
-      } // 👈 ✅ THIS LINE WAS MISSING
-      ;
+        const featured = data.featured.map(f => ({
+          author: f.author,
+          body: f.body,
+          score: f.score ?? null
+        }));
+        renderComments(featured, onlineEl);
+      }
 
 
       const loading = document.createElement("div");
