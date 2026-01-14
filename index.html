@@ -1311,7 +1311,7 @@ const seminarData = {
 
   async function loadRedditComments(postId, after = null) {
     const base =
-      `https://www.reddit.com/comments/${postId}.json?raw_json=1&limit=50&sort=top` +
+      `https://www.reddit.com/comments/${postId}.json?limit=50&sort=top` +
       (after ? `&after=${encodeURIComponent(after)}` : ``);
   
     const data = await redditJsonp(base);
