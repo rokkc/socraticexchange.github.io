@@ -1308,16 +1308,13 @@ const seminarData = {
       document.head.appendChild(script);
     });
   }
-
+  
   async function loadRedditComments(postId, after = null) {
     const url =
       `https://www.reddit.com/comments/${postId}.json?limit=50&sort=top` +
       (after ? `&after=${encodeURIComponent(after)}` : ``);
   
-    const res = await fetch(url);
-    if (!res.ok) throw new Error("Reddit fetch failed");
-  
-    const data = await res.json();
+    const data = await redditJsonp(url);
   
     const listing = data?.[1]?.data;
     const children = listing?.children || [];
