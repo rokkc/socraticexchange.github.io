@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Socratic Exchange</title>
+  <link rel="icon" type="image/png" href="/assets/elephant.png">
+  <link rel="apple-touch-icon" href="/assets/elephant.png">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <!-- EB Garamond for body; Cormorant Garamond (lighter) for the stacked wordmark -->
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root{
+      --brand-red:#991b1b;
+      --camel:#c19a6b;
+    }
+    body{font-family:'EB Garamond',serif;}
+    .prose{font-family:'EB Garamond',serif;}
+    .nav-link.active{color:var(--brand-red);font-weight:600;}
+    .nav-link:hover{color:var(--camel);}
+    .interview-card.active-interview{background:#fee2e2;border-left-color:var(--brand-red);} 
+    .camel-txt{color:var(--camel);} 
+    .camel-bg{background:var(--camel);} 
+    #close-modal-button{font-size:2rem;line-height:1}
+
+    /* Wordmark (thin & stacked) */
+    .wordmark{
+      font-family:'Cormorant Garamond',serif;
+      font-weight:550; /* thin/sexy */
+      letter-spacing:.08em;
+    }
+
+    /* New-Yorker style article page */
+    .ny-article{
+      max-width:70ch;
+    }
+    .ny-article h1{letter-spacing:.2px}
+    .ny-dropcap:first-letter{
+      float:left;
+      font-size:4.25rem;
+      line-height:.8;
+      padding:.2rem .5rem .1rem 0;
+      font-weight:700;
+      color:#1f2937;
+    }
+    .ny-kicker{letter-spacing:.08em;text-transform:uppercase}
+    .ny-rule{height:1px;background:rgba(0,0,0,.1)}
+    .ny-byline{font-style:italic}
+    .link-like{color:var(--brand-red); text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:2px}
+
+    /* HBR-like Articles hub */
+    .article-card:hover .article-title{ text-decoration:underline; }
+    .shadow-soft{ box-shadow:0 10px 25px rgba(0,0,0,.06); }
+    /* Page fade-in effect */
+    body {
+      opacity: 0;
+      transition: opacity 1.6s ease;
+    }
+    
+    body.page-loaded {
+      opacity: 1;
+    }
+
+  </style>
+</head>
+<body class="bg-stone-100 text-gray-900">
+
+  <!-- HEADER -->
+  <header class="bg-stone-50/80 backdrop-blur-md sticky top-0 z-40 border-b border-stone-200">
+    <nav class="container mx-auto px-6 py-4">
+      <div class="flex items-center justify-between">
+        <!-- Brand: logo + stacked thin wordmark (to the right of the logo) -->
+        <a href="#home" class="flex items-center gap-4 flex-shrink-0" aria-label="The Socratic Exchange home">
+          <img src="/assets/elephant.png" alt="The Socratic Exchange logo"
+               class="h-14 md:h-16 w-auto object-contain shrink-0"/>
+          <div class="leading-[0.95] wordmark text-red-800">
+            <span class="block text-2xl md:text-3xl lg:text-4xl uppercase tracking-[0.1em]">Socratic</span>
+            <span class="block text-2xl md:text-3xl lg:text-4xl uppercase tracking-[0.1em]">Exchange</span>
+          </div>
+        </a>
+
+        <!-- DESKTOP -->
+        <div class="hidden lg:flex items-center space-x-8">
+          <a href="#speakers" class="nav-link text-stone-700 transition-colors">Guest Speakers</a>
+          <a href="#articles" class="nav-link text-stone-700 transition-colors">Articles</a>
+          <a href="#about" class="nav-link text-stone-700 transition-colors">About Us</a>
+          <a href="#about" class="nav-link text-stone-700 transition-colors">Our Team</a>
+          <a href="#community" class="nav-link text-stone-700 transition-colors">Community</a>
+          <a href="mailto:contact@socraticexchange.com"
+             class="bg-red-800 text-white font-semibold px-5 py-2 rounded-lg hover:bg-red-900 transition-transform transform hover:scale-105">
+            Contact Us
+          </a>
+        </div>
+
+
+        <button id="mobile-menu-button" class="lg:hidden" aria-label="Open menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+      </div>
+
+      <!-- MOBILE -->
+      <div id="mobile-menu" class="hidden lg:hidden mt-4 space-y-2">
+        <a href="#speakers" class="block nav-link text-stone-700 transition-colors py-2">Guest Speakers</a>
+        <a href="#articles" class="block nav-link text-stone-700 transition-colors py-2">Articles</a>
+        <a href="#about" class="block nav-link text-stone-700 transition-colors py-2">About Us</a>
+        <a href="#about" class="block nav-link text-stone-700 transition-colors py-2">Our Team</a>
+        <a href="#community" class="block nav-link text-stone-700 transition-colors py-2">Community</a>
+        <a href="mailto:contact@socraticexchange.com"
+           class="block bg-red-800 text-white font-semibold px-5 py-2 rounded-lg hover:bg-red-900 text-center mt-2">Contact Us</a>
+      </div>
+
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <!-- HERO -->
+    <section id="home"
+      class="relative py-24 md:py-32 bg-center bg-cover overflow-hidden"
+      style="background-image: url('/assets/Screenshot 2025-11-17 012315.png');">
+    
+      <!-- background tint + lighter blur -->
+      <div class="absolute inset-0 bg-black/20 backdrop-blur-[1px]"></div>
+    
+      <!-- left text card -->
+      <div class="relative container mx-auto px-6">
+        <div class="bg-white/85 backdrop-blur-sm p-6 md:p-8 max-w-lg rounded shadow-lg">
+          <h1 class="text-3xl md:text-4xl font-bold text-black leading-tight">
+            The Socratic Exchange.
+          </h1>
+          <p class="mt-3 text-base md:text-lg text-black/80">
+            Philosophy-economic seminars with our world's leading minds.
+          </p>
+        </div>
+      </div>
+    
+    </section>
+
+    <!-- SPEAKERS -->
+    <section id="speakers" class="py-20 bg-stone-50">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-black">Featured Guest Speakers</h2>
+          <p class="mt-4 text-lg text-stone-700 max-w-2xl mx-auto">Hear directly from leaders and innovators who are defining their industries.</p>
+        </div>
+
+        <div class="lg:grid lg:grid-cols-3 lg:gap-8">
+          <!-- LEFT: Library -->
+          <div class="lg:col-span-1">
+            <h3 class="text-xl font-semibold text-gray-900 mb-4 px-4">Interview Library</h3>
+            <div class="space-y-2 max-h-[32rem] overflow-y-auto pr-2">
+              
+              <div class="interview-card cursor-pointer p-4 rounded-lg border-l-4 border-transparent transition-colors hover:bg-stone-200"
+                   data-name="Michael Spence"
+                   data-title="Nobel Prize Economist, NYU Stern and Stanford GSB"
+                   data-description="Canadian-American economist and 2001 Nobel laureate (with Akerlof & Stiglitz) for analyses of markets with asymmetric information."
+                   data-image="https://news.stanford.edu/__data/assets/image/0031/82849/Zz980407_spence.jpeg"
+                   data-videourl=""
+                   data-interviewers="Leo Cao"
+                   data-transcript='<div class="prose max-w-none text-stone-700 space-y-4"><p>Transcript coming soon.</p></div>'
+                   data-content='<div class="space-y-3">
+                     <a href="#" class="block text-center font-semibold bg-red-800 text-white p-3 rounded-lg hover:bg-red-900 spence-article-link">
+                       Read Article
+                     </a>
+                     <a href="https://youtu.be/KUWyUH1G1PM" target="_blank" rel="noopener noreferrer"
+                        class="block text-center font-semibold text-red-800 underline underline-offset-4">
+                       Watch Interview
+                     </a>
+                   </div>'>
+                <p class="font-bold text-gray-900">Michael Spence</p>
+                <p class="text-sm text-stone-700">Nobel Prize Economist</p>
+                <p class="text-sm font-semibold text-green-700 mt-1">Watch &amp; Read</p>
+              </div>
+
+
+              <!-- GRANOVETTER -->
+              <div class="interview-card cursor-pointer p-4 rounded-lg border-l-4 border-transparent transition-colors hover:bg-stone-200"
+                   data-name="Professor Mark Granovetter"
+                   data-title="Professor of Sociology, Stanford University"
+                   data-description="World-renowned sociologist behind “The Strength of Weak Ties.” Read our New-Yorker-style article from the conversation."
+                   data-image="https://humsci.stanford.edu/sites/default/files/styles/embed_350w_xlarge_2x/public/Mark%20Granovetter%20Photo%20courtesy%20of%20BBVA%20Foundation_0.webp?itok=AIio7wDZ"
+                   data-interviewers="Leo Cao, Josh Tran"
+                   data-content="<div class='space-y-3'>
+                     <a href='#' class='block text-center font-semibold bg-red-800 text-white p-3 rounded-lg hover:bg-red-900 granovetter-article-link'>
+                       Read the Article
+                     </a>
+                     <button id='open-transcript-btn' class='w-full text-center font-semibold bg-gray-200 text-gray-800 p-3 rounded-lg hover:bg-gray-300'>
+                       Read Transcript
+                     </button>
+                   </div>">
+                <p class="font-bold text-gray-900">Professor Mark Granovetter</p>
+                <p class="text-sm text-stone-700">Stanford University</p>
+                <p class="text-sm font-semibold text-green-700 mt-1">Article &amp; Transcript Available</p>
+              </div>
+
+
+              <!-- DON MOORE (interview done; video live) -->
+              <div class="interview-card cursor-pointer p-4 rounded-lg border-l-4 border-transparent transition-colors hover:bg-stone-200"
+                   data-name="Professor Don Moore"
+                   data-title="Business Professor, UC Berkeley Haas"
+                   data-description="A lively conversation on overconfidence, decision-making, and negotiation — and how they shape strategy and leadership."
+                   data-image="https://haas.berkeley.edu/wp-content/uploads/Professor-Don-Moore_Berkeley-Haas-600x600.jpg"
+                   data-videourl="https://youtu.be/gJPF1zvok2I"
+                   data-interviewers="Leo Cao, Josh Tran"
+                   data-content="<div class='prose max-w-none text-stone-700'><p>Watch the full interview or skim highlights on practical judgment.</p></div>">
+                <p class="font-bold text-gray-900">Professor Don Moore</p>
+                <p class="text-sm text-stone-700">UC Berkeley Haas</p>
+                <p class="text-sm font-semibold text-green-700 mt-1">Watch Now</p>
+              </div>
+
+              <!-- PAUL ADLER (interview done; video live) -->
+              <div class="interview-card cursor-pointer p-4 rounded-lg border-l-4 border-transparent transition-colors hover:bg-stone-200"
+                   data-name="Professor Paul Adler"
+                   data-title="Economic and Management Professor, USC Marshall"
+                   data-description="An engaging discussion on ethics, organizational design, and re-imagining capitalism for long-term value."
+                   data-image="https://uscmarshallweb.s3-us-west-2.amazonaws.com/assets/uploads/s1/per_por/paul_adler_hcahmuwup6.jpg"
+                   data-videourl="https://youtu.be/GJTL_7UnUO4"
+                   data-interviewers="Leo Cao, Josh Tran, Samya Arora"
+                   data-content="<div class='prose max-w-none text-stone-700'><p>Watch the full conversation on ethics, organizational design, and re-imagining capitalism for long-term value.</p></div>">
+                <p class="font-bold text-gray-900">Professor Paul Adler</p>
+                <p class="text-sm text-stone-700">USC Marshall</p>
+                <p class="text-sm font-semibold text-green-700 mt-1">Watch Now</p>
+              </div>
+
+              <!-- CARLOS ESCAPA (interview done; video live) -->
+              <div class="interview-card cursor-pointer p-4 rounded-lg border-l-4 border-transparent transition-colors hover:bg-stone-200"
+                   data-name="Carlos Escapa"
+                   data-title="Tech CEO, Amazon"
+                   data-description="A fast-paced conversation on internationalizing FAANG, founding AI startups, and ethical strategy in practice."
+                   data-image="https://exec-ed.berkeley.edu/wp-content/uploads/2025/05/Carlos-Escapa.png"
+                   data-videourl="https://www.youtube.com/watch?v=dL7SZY4dyhs"
+                   data-interviewers="Leo Cao, Josh Tran"
+                   data-content="<div class='prose max-w-none text-stone-700'><p>Watch the full interview on leadership, innovation, and scaling responsibly.</p></div>">
+                <p class="font-bold text-gray-900">Carlos Escapa</p>
+                <p class="text-sm text-stone-700">UC Berkeley / Industry</p>
+                <p class="text-sm font-semibold text-green-700 mt-1">Watch Now</p>
+              </div>
+              <!-- OLIVER HART -->
+              <div class="interview-card cursor-pointer p-4 rounded-lg border-l-4 border-transparent transition-colors hover:bg-stone-200"
+                   data-name="Sir Oliver Hart"
+                   data-title="Nobel Prize Economist, Harvard University"
+                   data-description="British-American economist and 2016 Nobel laureate (with Holmström) for contributions to contract theory. Currently the Lewis P. and Linda L. Geyser University Professor at Harvard."
+                   data-image="https://news.harvard.edu/wp-content/uploads/2016/10/101016_hart_podium.jpg"
+                   data-videourl=""
+                   data-interviewers="Leo Cao, Josh Tran"
+                   data-content="<div class='prose max-w-none text-stone-700'><p><strong>Status:</strong> Conversation planned for <em>November</em>. Subscribe for updates.</p></div>">
+                <p class="font-bold text-gray-900">Sir Oliver Hart</p>
+                <p class="text-sm text-stone-700">Nobel Prize Economist</p>
+                <p class="text-sm font-semibold camel-txt mt-1">Coming Soon</p>
+              </div>
+
+              <!-- SKYE PERRYMAN -->
+              <div class="interview-card cursor-pointer p-4 rounded-lg border-l-4 border-transparent transition-colors hover:bg-stone-200"
+                   data-name="Skye Perryman"
+                   data-title="CEO, Democracy Forward"
+                   data-description="TIME100 honoree leading impact litigation that safeguards democratic institutions and civil rights."
+                   data-image="https://i.insider.com/62e83286b6ad030018362ad7?width=800&format=jpeg&auto=webp"
+                   data-videourl=""
+                   data-interviewers="Leo Cao, Josh Tran"
+                   data-content="<div class='prose max-w-none text-stone-700'><p>Conversation planned. Subscribe for updates.</p></div>">
+                <p class="font-bold text-gray-900">Skye Perryman</p>
+                <p class="text-sm text-stone-700">TIME100 Honoree</p>
+                <p class="text-sm font-semibold camel-txt mt-1">Coming Soon</p>
+              </div>
+
+              <!-- EUGENE CARUSO -->
+              <div class="interview-card cursor-pointer p-4 rounded-lg border-l-4 border-transparent transition-colors hover:bg-stone-200"
+                   data-name="Professor Eugene M. Caruso"
+                   data-title="Management Professor, UCLA Anderson"
+                   data-description="Behavioral decision-making scholar; co-director of the Inclusive Ethics Initiative. “Think like behavioral scientists, rigorously learn from data.”"
+                   data-image="https://www.anderson.ucla.edu/sites/default/files/styles/biography_card/public/image/2024-11/eugene-caruso-2024-square.jpg?itok=6zlhkEN6"
+                   data-videourl=""
+                   data-interviewers="Samya Arora"
+                   data-content="<div class='prose max-w-none text-stone-700'><p>Conversation planned. Focus: ethics, bias, and smarter organizational decisions.</p></div>">
+                <p class="font-bold text-gray-900">Professor Eugene M. Caruso</p>
+                <p class="text-sm text-stone-700">UCLA Anderson</p>
+                <p class="text-sm font-semibold camel-txt mt-1">Coming Soon</p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- RIGHT: Active details -->
+          <div class="lg:col-span-2 mt-12 lg:mt-0">
+            <div class="bg-stone-100 rounded-2xl shadow-lg p-8">
+              <div class="grid md:grid-cols-3 gap-8 items-start">
+                <div class="md:col-span-1">
+                  <img id="interview-image" src="https://placehold.co/400x400/d6d3d1/1c1917?text=Select" alt="Select an interview" class="w-full aspect-square object-cover rounded-lg shadow-md">
+                </div>
+                <div class="md:col-span-2">
+                  <h3 id="interview-name" class="text-3xl font-bold text-black">Select an Interview</h3>
+                  <p id="interview-title" class="mt-2 text-lg font-medium text-stone-800">Choose from the list to see the details.</p>
+                  <p id="interview-description" class="mt-4 text-stone-700"></p>
+
+                  <div class="mt-4 pt-4 border-t border-stone-200">
+                    <h4 class="text-md font-semibold text-black">Meeting Details</h4>
+                    <p class="mt-2 text-sm text-stone-700">
+                      <strong>Interviewers:</strong> <span id="interview-interviewers"></span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-8 pt-6 border-t border-stone-200">
+                <h4 class="text-xl font-bold text-black mb-4">Interview Materials</h4>
+                <div id="interview-content" class="bg-stone-50 p-6 rounded-lg shadow-inner min-h-[80px]"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ARTICLES (3 clean columns, fixed layout) -->
+    <section id="articles" class="py-12 bg-white border-t border-stone-200">
+      <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    
+          <!-- COLUMN 1: Michael Spence -->
+          <a href="#spence" class="block group">
+            <article class="article-card cursor-pointer" data-article-id="spence">
+              <p class="text-teal-700 font-semibold text-[11px] tracking-tight mb-1">ECONOMICS & POLICY | Oct. 10, 2025</p>
+              <h2 class="text-[26px] leading-snug font-bold text-stone-900 group-hover:underline">
+                Are There Limits? A Nobel Prize Economist’s Opinion
+              </h2>
+              <p class="mt-2 text-[15px] leading-6 text-stone-700">
+                Highlights from our conversation with Nobel Laureate Michael Spence on education as signal and skill, mobility, and balancing Keynesian and laissez-faire approaches.
+              </p>
+              <p class="mt-2 text-xs text-stone-600">By Leo Cao, Sannidhi Talgery</p>
+              <div class="mt-4 w-full h-52 md:h-64 lg:h-72 xl:h-80 overflow-hidden rounded">
+                <img src="https://media.cnn.com/api/v1/images/stellar/prod/230928095139-nobel-prize-medals-file.jpg?q=w_1110,c_fill"
+                     alt="Michael Spence speaking"
+                     class="w-full h-full object-cover object-center transition-transform group-hover:scale-105 duration-200"/>
+              </div>
+            </article>
+          </a>
+    
+          <!-- COLUMN 2: Weak Ties feature -->
+          <a href="#granovetter" class="block group">
+            <article class="article-card cursor-pointer" data-article-id="granovetter">
+              <img src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/discussing-the-catch-louis-charles-moeller.jpg"
+                   alt="Discussing the Catch by Louis Charles Moeller"
+                   class="w-full h-56 md:h-60 object-cover rounded transition-transform group-hover:scale-105 duration-200"/>
+              <p class="mt-4 text-teal-700 font-semibold text-[11px] tracking-tight">SOCIOLOGY | Jul. 21, 2025</p>
+              <h3 class="mt-1 text-[20px] leading-snug md:text-[22px] font-bold text-stone-900 group-hover:underline">
+                The Gentle Power of Weak Ties: Networking Tips from a Sociologist
+              </h3>
+              <p class="mt-2 text-[13px] italic text-stone-600">
+                “You never know which one it’s going to be.” — Mark Granovetter
+              </p>
+              <p class="mt-3 text-[15px] leading-6 text-stone-700">
+                Stanford’s Mark Granovetter explains why your looser connections often open the biggest doors — and how to build them with authenticity in a hyper-digital era.
+              </p>
+              <p class="mt-3 text-[12px] text-stone-600">By <strong>Leo Cao</strong></p>
+            </article>
+          </a>
+    
+          <!-- COLUMN 3: Economic Ethics article -->
+          <a href="#ethics" class="block group">
+            <article class="article-card cursor-pointer" data-article-id="ethics">
+              <p class="text-teal-700 font-semibold text-[11px] tracking-tight mb-1">ECONOMIC ETHICS | Oct. 28, 2025</p>
+              <h2 class="text-[26px] leading-snug font-bold text-stone-900 group-hover:underline">
+                Beyond Profit: "The Ethical Institution"
+              </h2>
+              <p class="mt-2 text-[15px] leading-6 text-stone-700">
+                Building on Paul Adler’s vision of collaborative institutions and Peter Drucker’s mission-before-profit philosophy,
+                leaders are rediscovering that long-term efficiency comes from shared purpose.
+              </p>
+              <p class="mt-2 text-xs text-stone-600">By Leo Cao</p>
+              <div class="mt-4 w-full h-52 md:h-64 lg:h-72 xl:h-80 overflow-hidden rounded">
+                <img src="https://www.greece-is.com/wp-content/uploads/2016/07/Plato-and-Aristotle-BIG.jpg"
+                     alt="Classical philosophers discussing ethics"
+                     class="w-full h-full object-cover object-center transition-transform group-hover:scale-105 duration-200"/>
+              </div>
+            </article>
+          </a>
+    
+        </div>
+      </div>
+    </section>
+
+    <!-- RECENT SEMINARS -->
+    <section id="recent-seminars" class="py-20 bg-stone-50 border-t border-stone-200">
+      <div class="container mx-auto px-6">
+    
+        <div class="mb-10">
+          <h2 class="text-3xl md:text-4xl font-bold text-black">Recent Seminars</h2>
+          <p class="mt-3 text-lg text-stone-700 max-w-2xl">
+            Explore our most recent Socratic Exchange seminars For seminars from 2024-2025, contact our dedicated staff.
+          </p>
+        </div>
+    
+        <!-- Horizontal scroll container -->
+        <div class="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory">
+          <!-- SEMINAR 3 -->
+          <div class="seminar-card snap-start shrink-0 w-[300px] bg-white rounded-xl shadow-soft cursor-pointer"
+               data-seminar-id="lying">
+            <div class="relative">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/David_-_The_Death_of_Socrates.jpg"
+                   class="w-full h-44 object-cover rounded-t-xl">
+              <div class="absolute bottom-2 left-2 bg-black/70 text-white text-xs px-2 py-1 rounded">👁 329K</div>
+              <div class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">👥 137</div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-lg font-bold">Political Philosophy: Why don’t we charge politicians for lying?</h3>
+            </div>
+          </div>
+          <!-- SEMINAR 2 -->
+          <div class="seminar-card snap-start shrink-0 w-[300px] bg-white rounded-xl shadow-soft cursor-pointer"
+               data-seminar-id="unethical">
+            <div class="relative">
+              <img src="https://cdn.shopify.com/s/files/1/1111/2206/files/original_grande.jpg?v=1582575807"
+                   class="w-full h-44 object-cover rounded-t-xl">
+              <div class="absolute bottom-2 left-2 bg-black/70 text-white text-xs px-2 py-1 rounded">👁 6.6K</div>
+              <div class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">👥 32</div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-lg font-bold">Ethics: What is an immoral but common business practice?</h3>
+            </div>
+          </div>
+          
+          
+          <!-- SEMINAR 4 -->
+          <div class="seminar-card snap-start shrink-0 w-[300px] bg-white rounded-xl shadow-soft cursor-pointer"
+               data-seminar-id="college">
+            <div class="relative">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Morgan_Hall_of_Williams_College_in_the_fall_%2827_October_2010%29.jpg/1280px-Morgan_Hall_of_Williams_College_in_the_fall_%2827_October_2010%29.jpg"
+                   class="w-full h-44 object-cover rounded-t-xl">
+              <div class="absolute bottom-2 left-2 bg-black/70 text-white text-xs px-2 py-1 rounded">👁 2.2K</div>
+              <div class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">👥 36</div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-lg font-bold">Economics: When is college worth the price?</h3>
+            </div>
+          </div>
+          <!-- SEMINAR 1 -->
+          <div class="seminar-card snap-start shrink-0 w-[300px] bg-white rounded-xl shadow-soft cursor-pointer"
+               data-seminar-id="dying">
+            <div class="relative">
+              <img src="https://www.aristeia-press.com/wp-content/uploads/2018/06/autores-existencialistas-lista-1030x687.jpg"
+                   class="w-full h-44 object-cover rounded-t-xl">
+              <div class="absolute bottom-2 left-2 bg-black/70 text-white text-xs px-2 py-1 rounded">👁 36K</div>
+              <div class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">👥 126</div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-lg font-bold">Existentialism: If you were dying, what would you stop doing?</h3>
+            </div>
+          </div>
+          <!-- NEW SEMINAR: Economic Philosophy -->
+          <div class="seminar-card snap-start shrink-0 w-[300px] bg-white rounded-xl shadow-soft cursor-pointer"
+               data-seminar-id="parentobligation">
+            <div class="relative">
+              <img src="https://images.saatchiart.com/saatchi/178339/art/2535155/1605096-HSC00001-7.jpg"
+                   class="w-full h-44 object-cover rounded-t-xl">
+              <div class="absolute bottom-2 left-2 bg-black/70 text-white text-xs px-2 py-1 rounded">👁 5.5K</div>
+              <div class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">👥 29</div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-lg font-bold">Economic Philosophy: Do parents have an ethical financial obligation to their children past the age of 18?</h3>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      
+    </section>
+          
+
+    <!-- ABOUT -->
+    <section id="about" class="py-20">
+      <div class="container mx-auto px-6">
+    
+        <!-- About Us FIRST -->
+        <div id="about-us" class="grid md:grid-cols-2 gap-10 items-start max-w-5xl mx-auto mb-20">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-bold text-black">About Us</h2>
+            <p class="mt-4 text-lg text-stone-700">
+              Welcome to our website! I’m Leo Cao (the jolly fellow in the grey slacks), and I founded The Socratic Exchange for a simple, somewhat necessary reason: I go to a school where humanities programs are frequently cut to fund STEM. I was supposed to become another engineer. But as a diehard philosophy-lover, I still found myself hoarding philosophy books and fighting for ancient ideas in spite of our district's measly budget. So, I built the thing I wished existed: a seminar where young people could have serious dialogues about philosophy and economics without sounding ridiculous.
+            </p>
+            <p class="mt-3 text-lg text-stone-700">
+              What began as me rambling about moral markets to anyone polite enough to listen has become a global seminar table that even Nobel laureates, TIME100 CEOs, and professors from Stanford to Harvard sit down to talk. I named it after Socrates' intellectual dialogues, but really, it reflects my refusal to let curiosity die in the mind.
+            </p>
+            <p class="mt-3 text-lg text-stone-700">
+              If you’re here, pull up a chair. The conversation is only interesting if you join.
+            </p>
+          </div>
+          <div>
+            <img src="/assets/DSC03935.jpg"
+                 alt="The team behind The Socratic Exchange"
+                 class="rounded-lg shadow-lg w-full">
+          </div>
+        </div>
+    
+        <!-- Our Team SECOND -->
+<div id="our-team" class="text-center mb-12">
+  <h2 class="text-3xl md:text-4xl font-bold text-black">Our Team</h2>
+  <p class="mt-4 text-lg text-stone-700 max-w-3xl mx-auto">
+    Meet our dedicated team of philosophers, economists, and entrepreneurs
+  </p>
+</div>
+
+<!-- Row 0: Anders Lee (pyramid peak) -->
+<div class="flex justify-center mb-12">
+  <div class="text-center">
+   <img src="/assets/Screenshot 2026-04-20 at 4.58.51 PM.jpg"
+     alt="Anders Lee"
+     class="w-32 h-32 rounded-full object-cover mx-auto shadow-lg">
+    <h4 class="mt-4 text-lg font-bold text-black">Anders Lee</h4>
+    <p class="text-red-800 font-semibold text-sm">PRESIDENT</p>
+    <p class="mt-1 text-stone-700 text-[0.975rem]">
+      Leads the vision and direction of The Socratic Exchange.
+    </p>
+  </div>
+</div>
+
+<!-- Row 1: Leo and Josh -->
+<div class="grid md:grid-cols-2 gap-8 md:gap-10 text-center mb-12 max-w-3xl mx-auto">
+  <div>
+    <img src="/assets/1753380963344.jpg"
+         alt="Leo Cao"
+         class="w-32 h-32 rounded-full object-cover mx-auto shadow-lg">
+    <h4 class="mt-4 text-lg font-bold text-black">Leo Cao</h4>
+    <p class="text-red-800 font-semibold text-sm">BOARD MEMBER</p>
+    <p class="mt-1 text-stone-700 text-[0.975rem]">
+      Leads strategy and editorial direction for The Socratic Exchange.
+    </p>
+  </div>
+  <div>
+    <img src="/assets/DSC01020.jpg"
+         alt="Josh Tran"
+         class="w-32 h-32 rounded-full object-cover mx-auto shadow-lg">
+    <h4 class="mt-4 text-lg font-bold text-black">Josh Tran</h4>
+    <p class="text-red-800 font-semibold text-sm">BOARD MEMBER</p>
+    <p class="mt-1 text-stone-700 text-[0.975rem]">
+      Oversees partnerships and operations to amplify our conversations.
+    </p>
+  </div>
+</div>
+
+<!-- Row 2: Samya, Ambika, Jordan -->
+<div class="grid gap-8 md:gap-10 md:grid-cols-3 justify-items-center text-center max-w-6xl mx-auto">
+  <div>
+    <img src="/assets/Screenshot 2025-08-31 225338.png"
+         alt="Samya Arora"
+         class="w-32 h-32 rounded-full object-cover mx-auto shadow-lg">
+    <h4 class="mt-4 text-lg font-bold text-black">Samya Arora</h4>
+    <p class="text-red-800 font-semibold text-sm">DIRECTOR</p>
+    <p class="mt-1 text-stone-700 text-[0.975rem]">
+      Coordinates production and written content.
+    </p>
+  </div>
+  <div>
+    <img src="/assets/Screenshot 2025-09-02 145738.png"
+         alt="Ambika Palleti"
+         class="w-32 h-32 rounded-full object-cover mx-auto shadow-lg">
+    <h4 class="mt-4 text-lg font-bold text-black">Ambika Palleti</h4>
+    <p class="text-red-800 font-semibold text-sm">LEAD VIDEO EDITOR</p>
+    <p class="mt-1 text-stone-700 text-[0.975rem]">
+      Shapes each interview's visual narrative from raw footage to final cut.
+    </p>
+  </div>
+  <div>
+    <div class="w-32 h-32 rounded-full overflow-hidden mx-auto shadow-lg">
+      <img src="/assets/IMG_0620.JPG"
+           alt="Jordan Huynh"
+           class="w-full h-full object-cover transform scale-[1.35] object-center">
+    </div>
+    <h4 class="mt-4 text-lg font-bold text-black">Jordan Huynh</h4>
+    <p class="text-red-800 font-semibold text-sm">LEAD GRAPHIC DESIGNER</p>
+    <p class="mt-1 text-stone-700 text-[0.975rem]">
+      Designs the visual identity and brand assets of The Socratic Exchange.
+    </p>
+  </div>
+</div>
+    
+      </div>
+    </section>
+
+
+    <!-- COMMUNITY -->
+    <section id="community" class="py-20 bg-stone-100">
+      <div class="container mx-auto px-6">
+        <div class="bg-red-800 rounded-2xl text-white p-12 text-center shadow-2xl">
+          <h2 class="text-3xl md:text-4xl font-bold">Join the Conversation</h2>
+          <p class="mt-4 text-lg text-red-100 max-w-3xl mx-auto">Connect with a curated community of business owners, founders, and students. Share ideas, ask questions, and grow together.</p>
+          <div class="mt-8">
+            <a href="http://satusai.net" target="_blank" rel="noopener noreferrer" class="bg-stone-50 camel-txt font-bold px-10 py-4 rounded-lg hover:bg-stone-200 transition-transform transform hover:scale-105 inline-block">Join the Conversation on Satus</a>
+          </div>
+          <p class="mt-4 text-sm text-red-200">Satus is our partner AI-powered platform for professional discussion. You will be redirected to SatusAI.net.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-black text-white">
+    <div class="container mx-auto px-6 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-xl font-bold">The Socratic Exchange</h3>
+          <p class="mt-2 text-stone-400">Conversations that matter.</p>
+        </div>
+        <div>
+          <h4 class="font-semibold">Navigate</h4>
+          <ul class="mt-4 space-y-2">
+            <li><a href="#speakers" class="text-stone-400 hover:text-white">Speakers</a></li>
+            <li><a href="#articles" class="text-stone-400 hover:text-white">Articles</a></li>
+            <li><a href="#about" class="text-stone-400 hover:text-white">About</a></li>
+            <li><a href="#about" class="text-stone-400 hover:text-white">Our Team</a></li>
+            <li><a href="#community" class="text-stone-400 hover:text-white">Community</a></li>
+          </ul>
+
+        </div>
+        <div>
+          <h4 class="font-semibold">Contact</h4>
+          <ul class="mt-4 space-y-2">
+            <li><a href="mailto:contact@socraticexchange.com" class="text-stone-400 hover:text-white">Email Us</a></li>
+            <li><a href="#" class="text-stone-400 hover:text-white">LinkedIn</a></li>
+            <li><a href="#" class="text-stone-400 hover:text-white">Twitter</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-12 border-t border-stone-800 pt-6 text-center text-stone-500">
+        <p>© 2025 The Socratic Exchange. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- TRANSCRIPT MODAL -->
+<div id="transcript-modal"      class="fixed inset-0 bg-black bg-opacity-75 hidden items-center justify-center p-4 z-50 opacity-0 transition-opacity duration-200"      aria-modal="true" role="dialog">
+    <div class="bg-stone-50 rounded-lg shadow-xl w-full max-w-3xl max-h-[90vh] flex flex-col">
+      <div class="flex justify-between items-center p-4 border-b border-stone-200">
+        <h3 class="text-2xl font-bold text-black">Interview Transcript</h3>
+        <button id="close-modal-button" class="text-stone-500 hover:text-black" aria-label="Close">×</button>
+      </div>
+      <div id="modal-content" class="p-6 overflow-y-auto"></div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // ✅ Preload all interview images so they're cached
+      document.querySelectorAll('.interview-card').forEach(card => {
+        const img = new Image();
+        img.src = card.dataset.image;
+      });
+
+      /* Mobile menu */
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+      /* Active nav link */
+      const sections = document.querySelectorAll('main section');
+      function changeActiveLink() {
+        let currentSection = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          if (window.pageYOffset >= sectionTop - 65) currentSection = section.getAttribute('id');
+        });
+        const allNavLinks = document.querySelectorAll('nav a.nav-link');
+        allNavLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href').substring(1) === currentSection) link.classList.add('active');
+        });
+      }
+      window.addEventListener('scroll', changeActiveLink);
+      changeActiveLink();
+
+      /* Close mobile menu on click */
+      document.querySelectorAll('#mobile-menu a').forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+      /* INTERVIEW SELECTION */
+      const interviewCards = document.querySelectorAll('.interview-card');
+      const interviewImage = document.getElementById('interview-image');
+      const interviewName = document.getElementById('interview-name');
+      const interviewTitle = document.getElementById('interview-title');
+      const interviewDescription = document.getElementById('interview-description');
+      const interviewContent = document.getElementById('interview-content');
+      const interviewInterviewers = document.getElementById('interview-interviewers');
+
+      function updateInterviewDetails(card) {
+        interviewCards.forEach(c => c.classList.remove('active-interview'));
+        card.classList.add('active-interview');
+
+        // ✅ Only swap when the new image is ready
+        const newImg = new Image();
+        newImg.src = card.dataset.image || '';
+        newImg.alt = card.dataset.name || '';
+        newImg.onload = () => {
+          interviewImage.src = newImg.src;
+          interviewImage.alt = newImg.alt;
+        };
+
+        interviewName.textContent = card.dataset.name || '';
+        interviewTitle.textContent = card.dataset.title || '';
+        interviewDescription.textContent = card.dataset.description || '';
+        interviewContent.innerHTML = card.dataset.content || '';
+        interviewInterviewers.textContent = card.dataset.interviewers || '';
+
+        /* Add a Watch button if video URL present */
+        const url = (card.dataset.videourl || '').trim();
+        if (url.length > 0) {
+          const btn = document.createElement('a');
+          btn.href = url;
+          btn.target = "_blank";
+          btn.rel = "noopener noreferrer";
+          btn.className = "inline-block mt-3 bg-red-800 text-white px-4 py-2 rounded-lg hover:bg-red-900 font-semibold";
+          btn.textContent = "Watch Interview";
+          interviewContent.appendChild(btn);
+        }
+      }
+
+      interviewCards.forEach(card => card.addEventListener('click', () => updateInterviewDetails(card)));
+      if (interviewCards.length > 0) updateInterviewDetails(interviewCards[0]); // default to first (Oliver Hart)
+
+      /* GRANOVETTER TRANSCRIPT (Google Doc export -> txt) */
+      const granovetterCard = document.querySelector('.interview-card[data-name="Professor Mark Granovetter"]');
+      if (granovetterCard) {
+        fetch("/transcripts/granovetterTranscript.txt")
+          .then(r => { if (!r.ok) throw new Error('Network response was not ok'); return r.text(); })
+          .then(text => {
+            const lines = text.split('\n');
+            const paras = [];
+            let speaker = null, buf = [];
+            function flush(){ if (buf.length){ paras.push({speaker, text: buf.join(' ')}); buf = []; } }
+            for (const raw of lines){
+              const line = raw.trim();
+              if (!line) { flush(); speaker=null; continue; }
+              const idx = line.indexOf(':');
+              if (idx>0 && idx<40){
+                flush(); speaker = line.slice(0,idx).trim();
+                const rest = line.slice(idx+1).trim(); if (rest) buf.push(rest);
+              } else { buf.push(line); }
+            }
+            flush();
+            const html = paras.map(p => p.speaker
+              ? `<p><strong>${p.speaker}:</strong> ${p.text}</p>`
+              : `<p>${p.text}</p>`).join('');
+            granovetterCard.dataset.transcript = `<div class='prose max-w-none text-stone-700 space-y-4'>${html}</div>`;
+          })
+          .catch(err => {
+            console.error('Transcript fetch failed:', err);
+            granovetterCard.dataset.transcript = "<div class='prose max-w-none text-stone-700 space-y-4'><p>We couldn’t load the transcript right now. Please try again later.</p></div>";
+          });
+      }
+
+      /* Transcript modal */
+      const transcriptModal = document.getElementById('transcript-modal');
+      const closeModalButton = document.getElementById('close-modal-button');
+      const modalContent = document.getElementById('modal-content');
+      function openModal(){
+        transcriptModal.classList.remove('hidden');
+        transcriptModal.classList.add('flex');
+        transcriptModal.classList.remove('opacity-0');
+        transcriptModal.classList.add('opacity-100');
+        closeModalButton.focus();
+      }
+      
+      function closeModal(){
+        // fade out
+        transcriptModal.classList.remove('opacity-100');
+        transcriptModal.classList.add('opacity-0');
+        setTimeout(() => {
+          transcriptModal.classList.add('hidden');
+          transcriptModal.classList.remove('flex');
+        }, 200); // match Tailwind duration
+      }
+      closeModalButton.addEventListener('click', closeModal);
+      transcriptModal.addEventListener('click', (e) => { if (e.target === transcriptModal) closeModal(); });
+      document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
+      interviewContent.addEventListener('click', function(event) {
+        if (event.target && event.target.id === 'open-transcript-btn') {
+          const activeCard = document.querySelector('.interview-card.active-interview');
+          if (activeCard && activeCard.dataset.transcript) {
+            modalContent.innerHTML = activeCard.dataset.transcript;
+            openModal();
+          }
+        }
+      });
+    });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      /* Your articles’ text lives here */
+      const articleData = {
+        granovetter: {
+        kicker: 'Social Networks & Economic Life',
+        title: 'The Gentle Power of Weak Ties: Networking Tips from a Sociologist',
+        byline: 'By <strong>Leo Cao</strong>',
+        image: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/discussing-the-catch-louis-charles-moeller.jpg',
+        body: `
+          <p class="ny-dropcap">“You never know which one it’s going to be.”</p>
+          <p class="italic">— Mark Granovetter, on the weak tie that might change your life</p>
+          <br>
+          <p>In 1973, Stanford sociologist Mark Granovetter published a paper with a title that sounds deceptively simple: <em>The Strength of Weak Ties</em>. Fifty years and over 76,000 citations later, that phrase has become something of a sacred koan in the social sciences. It’s been repeated in classrooms, startup accelerators, and policy think tanks alike. But what does it really mean?</p>
+          <br>
+          <p>This July, we sat down with Dr. Granovetter. He spoke with us, two high schoolers from San Jose, with respect: not as if we were simply students, but as curious interlocutors deserving of answers.</p>
+          <br>
+          <h2 class="text-2xl md:text-3xl font-bold"><strong>Weak Ties in a Digitized World</strong></h2><br>
+          <p>Granovetter’s central claim, now canonized, is that “weak ties” (acquaintances) often act as crucial bridges to opportunity. Unlike strong ties (close friends, family), weak ties occupy different social circles. They know things we don’t. They introduce us to people we wouldn’t otherwise meet. And they often become the invisible scaffolding behind major life shifts, especially new jobs.</p>
+          <br>
+          <p>At the time, the theory disrupted how economists and sociologists understood networks and labor markets. But it’s the digital age that has truly confirmed its brilliance. “Weak ties have actually become more important,” Granovetter told us, “because it’s so easy to make them.” Social platforms like LinkedIn and Instagram, he noted, haven’t made his theory obsolete. The opposite is true; the digital age proves his theory as paramount in networking.</p>
+          <br>
+          <p>Where previous generations relied on Rolodexes and face-to-face meetings, today’s youth carry hundreds of potential “bridges” in their pockets. The challenge now isn’t access, but intention: how to cultivate authenticity in an age of manufactured connection.</p>
+          <br>
+          <h2 class="text-2xl md:text-3xl font-bold"><strong>On Networking: Be Human First</strong></h2><br>
+          <p>When we asked for networking advice, we half expected a silver bullet. Instead, Granovetter paused. “I don’t think I ever actually tried to network,” he said. “Figure out who you’re really compatible with… not contacts in the sense of people you can use, but people you actually connect with.”</p>
+          <br>
+          <p>This is not the voice of someone optimizing for a better LinkedIn funnel. Granovetter’s wisdom came from decades of sociological study. And still, he found that trust was the most powerful currency in any social system.</p>
+          <br>
+          <p>He warned us, gently, of the “grotesqueness” of transactional networking events. The kind where business cards are handed out like Halloween candy, where eyes dart over your shoulder in search of someone more useful. “Some people are pretty good at pretending,” he said. “Others… you just want to run in the other direction.” That is to say, the strongest networks are organic.</p>
+          <br>
+          <h2 class="text-2xl md:text-3xl font-bold"><strong>AI, Algorithms, and the Vanishing Human Touch</strong></h2><br>
+          <p>In one of the more sobering moments of our conversation, we asked Granovetter about trust in the digital age. In his view, economic life is always embedded in social life. But what happens when algorithms replace handshakes, and reviews are written by chatbots? Are we losing something essential?</p>
+          <br>
+          <p>He didn’t rush to condemn technology, but he did point to a growing loneliness: a world where older adults find comfort in AI companions and digital reviews shape buying behavior more than human recommendations. “It’s a little weird, a little sad,” he said. “But if that’s the best they can do, it’s better than nothing.”</p>
+          <br>
+          <p>Connection used to be earned through shared experience. Now it’s often outsourced to code. The question we left with wasn’t just how to build better businesses, but how to build better relationships inside them.</p>
+          <br>
+          <h2 class="text-2xl md:text-3xl font-bold"><strong>Granovetter's Academic Philosophy</strong></h2><br>
+          <p>Perhaps the most unexpected takeaway was about writing. When we told Dr. Granovetter that his academic prose was, compared to most academic writing, unusually readable, he laughed and credited his background in history. Historians, he said, are trained to write for people, not just professors. “Most academic writing is terrible,” he admitted. “But you're supposed to write in a way that people can understand. Just obvious.”</p>
+          <br>
+          <p>It wasn’t lost on us that the sociologist who changed how the world thinks about relationships also wanted his writing to feel like a conversation. There’s an ethical conviction in that. Accessibility, after all, is a form of respect.</p>
+          <br>
+          <h2 class="text-2xl md:text-3xl font-bold"><strong>From Princeton to Palo Alto, and to Us</strong></h2><br>
+          <p>Mark Granovetter didn’t have to meet with us. He’s retired. He’s already reshaped economic sociology. He’s done the lectures, written the book (<em>The Sociology of Economic Life</em>), and mentored a generation of scholars. And yet, on a quiet summer day, he gave two rising high school seniors over an hour of his time, patiently explaining academic politics and the tragic absence of royalties for sociologists.</p>
+          <br>
+          <p>At the end of the interview, Granovetter commented on the intellectual drive of The Socratic Exchange and its members: “I could tell from the way Leo spoke to me that he was unusually intellectually curious. Really unusually so, especially for someone his age,” Granovetter said. “That’s why I wanted to talk.”</p>
+          <br>
+          <p>In a world obsessed with scaling, Mark Granovetter reminded us to stay grounded in a life rooted in genuine curiosity and human decency. Because while your next opportunity may come from a weak tie, your legacy comes from how you treat the people who expect nothing from you.</p>
+          <br>
+          <p class="mt-6 text-sm text-stone-600">Leo Cao is a co-founder of <em>The Socratic Exchange</em>, a student-led seminar series exploring the intersection of business, ethics, and philosophy. He’s currently a senior at Evergreen Valley High School.</p>
+        `
+      },
+      
+      /* ✅ NEW: Michael Spence article */
+      spence: {
+        kicker: 'Economics & Philosophy',
+        title: 'Are There Limits? A Nobel Prize Economist\'s Opinion',
+        byline: 'By <strong>Leo Cao</strong>',
+        image: 'https://media.cnn.com/api/v1/images/stellar/prod/230928095139-nobel-prize-medals-file.jpg?q=w_1110,c_fill',
+        body: `
+          <p class="ny-dropcap">Jack from The Shining is on your doorstep with a fire-axe in his hand — and before you get the chance to escape slasher-style, he asks: "Wheeere's Johnny!?" (That's your BFF.) Do you lie, or tell the truth? Kant's axe allegory argues we should never lie — even if it means letting Johnny's head get lobbed off.</p>
+          <br>
+          <p>Is Kant right? I'm not sure, but his rationale makes sense: if everyone lied for "good causes," societal order would evaporate. And Kant's deontological conclusion leaks directly into economics through what my government teacher calls information asymmetry — when one party in a transaction creates an imbalance of information, often by lying. Banking misinformation amplified the 2008 crash. Tax fraud eroded Ancient Rome's economy. The theory parallels Kant's: lying dismantles societies, including economic ones.</p>
+          <br>
+          <p>Fascinated by these veritological questions — the "study of truth," for the uninitiated — I sat down with Michael Spence, Stanford's SEED Chairman and Nobel laureate, for my Socratic Exchange seminars. After a few axe-adjacent questions, we got into his Nobel Prize-winning work on signaling, the limits of education, and where economic policy actually breaks down.</p>
+          <br>
+          <blockquote class="italic">"I think you're right to study mobility."<br><span class="text-sm font-semibold not-italic">— Michael Spence, Nobel Laureate in Economics</span></blockquote>
+          <br>
+          <p>Spence's Nobel work partially solves the asymmetry problem: by making lying expensive, truth increases. Insider trading fines prevented the next Enron. The FDA's costly clinical trials exposed future sulfanilamide poisonings. But when I pushed him on the limits of this framework — particularly in education — his answer was more nuanced than I expected.</p>
+          <br>
+          <p>Human capital, he told me, can absolutely be acquired outside of a Harvard or Stanford. Opportunity doesn't rise solely from an objective read of a person's capabilities. But in a world of imperfect signaling — that is, imperfect information about who you are and what you can do — a university education functions less as learning and more as a costly signal. It's expensive. It's hard to fake. And that's the point.</p>
+          <br>
+          <p>The dark side of this is that it builds illusory barriers. Hopeful students adopt an all-or-nothing mindset: either a T20 or nothing. This mentality, Spence argues, partially explains the declines in social, economic, and geographic mobility we're seeing today. The signal has become the thing — and it's crowding out everything else. Success, he was careful to note, ultimately relies on commitment, perseverance, and social skills. The diploma is just a door.</p>
+          <br>
+          <p>We then turned to a question that splits entire economics departments: Laissez-Faire versus Keynesian policy. His answer was refreshingly undogmatic. Neither extreme holds. Keynesian intervention can be misleading, often benefiting producers rather than consumers. Pure Laissez-Faire, on the other hand, can be dangerous — markets can and do collapse, and sometimes the public sector needs to step in before stagnation becomes catastrophe. The honest answer is that it's a balancing act, and anyone who tells you otherwise is selling something.</p>
+          <br>
+          <p>Which brings us back to Kant and the axe. Spence's entire career has been about engineering situations where truth-telling is rational, not just moral. Whether it's markets, education, or policy, the underlying message is the same: systems that reward honesty tend to survive. Ones that don't, tend not to. Kant knew it philosophically. Spence proved it mathematically. The rest of us are just trying to keep up.</p>
+          <br>
+          <div class="my-6">
+            <a href="https://youtu.be/KUWyUH1G1PM" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-red-800 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-900">Watch the Interview</a>
+          </div>
+        `
+      },
+      
+      ethics: {
+        kicker: 'ECONOMIC ETHICS',
+        title: 'Beyond Profit: "The Ethical Institution"',
+        byline: 'By <strong>Leo Cao</strong>',
+        image: 'https://www.greece-is.com/wp-content/uploads/2016/07/Plato-and-Aristotle-BIG.jpg',
+        body: `
+          <p class="ny-dropcap">How do we design a fair society? On paper, the answer seems simple—equality—but its implementation is a migraine.</p>
+          <br>
+          <p>Answers have been proposed from Hammurabi’s diorite-inscribed eye-for-an-eye code to Locke’s natural rights, which our Constitution was built upon. But the most thought-provoking solution I’ve encountered is Rawls’ <em>Veil of Ignorance</em>. Imagine you’re a floating, soon-to-be-born consciousness with the power to organize society to your liking. What rules would you install, not knowing if you’ll be born into generational wealth or war?</p>
+          <br>
+          <p>Rawls argues for justice as fairness: we should establish policies that give the most unfortunate people an equal shot at good living. But economically, the logistics are nuts. For example, would it be unjust to pay naturally-unproductive workers equal to their productive counterparts, or would cutting their wages be justice for their highly-productive coworkers?</p>
+          <br>
+          <p>Seeking perspective, I sat down with Paul Adler, an economist and USC professor, for my Socratic Exchange seminars. His 2001 paper, <em>The Knowledge Economy</em>, parallels Rawls: organizations depend on employee trust; we should structure economies to help all workers collaborate. That summer, we discussed Marx’s people-before-profit philosophy and concluded that just economies are ideally collaborative: business should give unproductive workers the chance to adapt.</p>
+          <br>
+          <p>Rawls’ theory is bigger than just money, but Adler’s generosity in talking with me expanded my economic and philosophic knowledge. That was big. Speaking for The Socratic Exchange as a whole, we want to continue learning from professors like Adler and philosophers like Rawls to discover ways to make our economy fairer for everyone—especially the unlucky ones.</p>
+        `
+      },
+      decision: {
+        kicker: 'Decision Science',
+        title: 'Overconfidence, Calibrated',
+        byline: 'Notes from <strong>Don Moore</strong>',
+        body: `
+          <p class="ny-dropcap">We’re not bad at guessing—we’re bad at admitting what we don’t know.</p>
+        `
+      },
+      design: {
+        kicker: 'Organization Design',
+        title: 'Rethinking the Firm',
+        byline: 'Insights with <strong>Paul Adler</strong>',
+        body: `
+          <p class="ny-dropcap">What if the systems we build could align ethics with performance by design?</p>
+        `
+      }
+    };
+  
+    const overlay = document.getElementById('reader-overlay');
+    const card    = document.getElementById('reader-card');
+    const closeBtn= document.getElementById('reader-close');
+    const kicker  = document.getElementById('reader-kicker');
+    const title   = document.getElementById('reader-title');
+    const byline  = document.getElementById('reader-byline');
+    const bodyEl  = document.getElementById('reader-body');
+  
+    function lockBodyScroll(lock) {
+      if (lock) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "";
+      }
+    }
+    
+    function openReader(id) {
+      const data = articleData[id];
+      if (!data) return;
+    
+      // Fill article
+      kicker.innerHTML = data.kicker || "";
+      title.innerHTML = data.title || "";
+      byline.innerHTML = data.byline || "";
+      bodyEl.innerHTML = `
+        <img src="${data.image}" class="w-full rounded mb-6"/>
+        ${data.body}
+      `;
+    
+      // Activate overlay
+      overlay.classList.remove("hidden");
+    
+      requestAnimationFrame(() => {
+        overlay.classList.add("flex");
+        card.classList.remove("opacity-0", "translate-y-4");
+        card.classList.add("opacity-100", "translate-y-0");
+      });
+    
+      lockBodyScroll(true);
+    
+      // Update URL so # links work
+      history.replaceState(null, "", "#" + id);
+    }
+        
+    function closeReader() {
+      overlay.classList.remove("flex");
+      overlay.classList.add("hidden");
+      lockBodyScroll(false);
+      history.replaceState(null, "", " ");
+    }
+    
+
+    
+    /* --- RESTORE ARTICLE OPENING + AUTO-OPEN HASH URLs --- */
+    
+    document.querySelectorAll('.article-card').forEach(el => {
+      el.addEventListener('click', () => openReader(el.dataset.articleId));
+    });
+    
+    closeBtn.addEventListener('click', closeReader);
+    
+    document.addEventListener('keydown', (e) => { 
+      if (e.key === 'Escape' && !overlay.classList.contains('hidden')) {
+        closeReader();
+      }
+    });
+    
+    /* Open articles from interview panel links */
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('granovetter-article-link')) { 
+        e.preventDefault(); 
+        openReader('granovetter'); 
+      }
+      if (e.target.classList.contains('spence-article-link')) {      
+        e.preventDefault(); 
+        openReader('spence'); 
+      }
+    });
+    
+    /* Auto-open article if URL hash matches (e.g. #spence) */
+    const initialHash = window.location.hash.replace('#', '');
+    if (initialHash && articleData[initialHash]) {
+      setTimeout(() => openReader(initialHash), 0);
+    }
+
+    const backdrop = document.getElementById("reader-backdrop");
+    
+    // ✅ Click outside the article (dark area) closes it
+    backdrop.addEventListener("click", () => {
+      closeReader();
+    });
+
+
+
+      
+    // NEW: support clean URLs like /granovetter or /ethics
+    const path = window.location.pathname.split('/').filter(Boolean);
+    const last = path[path.length - 1];
+    if (last && articleData[last]) {
+      setTimeout(() => openReader(last), 0);
+    }
+    
+    // ✅ Restore pretty URL article path if coming from 404 redirect
+    const saved = sessionStorage.getItem("originalPath");
+    if (saved) {
+      const segment = saved.replace('/', '');
+      sessionStorage.removeItem("originalPath");
+      if (articleData[segment]) {
+        setTimeout(() => openReader(segment), 0);
+      }
+    }
+
+
+    if (last && articleData[last]) {
+      setTimeout(() => openReader(last), 0);
+    }
+
+  });
+</script>
+
+  <!-- SEMINAR MODAL -->
+<div id="seminar-modal"
+     class="fixed inset-0 z-50 hidden bg-black/70 items-center justify-center px-4">
+
+  <div class="bg-stone-50 rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col">
+
+    <!-- Header -->
+    <div class="p-6 border-b border-stone-200">
+      <h3 id="seminar-question" class="text-2xl md:text-3xl font-bold text-black">
+        Seminar Question
+      </h3>
+    </div>
+
+    <!-- Tabs -->
+    <div class="flex border-b border-stone-200">
+      <button
+        class="seminar-tab px-6 py-3 font-semibold text-red-800 border-b-2 border-red-800"
+        data-tab="inperson">
+        In-Person Seminar
+      </button>
+      <button
+        class="seminar-tab px-6 py-3 font-semibold text-stone-600"
+        data-tab="online">
+        Online Seminar
+      </button>
+    </div>
+
+    <!-- Content -->
+    <div class="p-6 overflow-y-auto grow">
+
+      <!-- In-Person -->
+      <div id="seminar-inperson" class="seminar-panel prose max-w-none text-stone-700">
+        <!-- injected -->
+      </div>
+
+      <!-- Online -->
+      <div id="seminar-online" class="seminar-panel hidden space-y-4">
+        <!-- injected -->
+      </div>
+
+    </div>
+
+    <button
+      id="close-seminar-modal"
+      class="fixed top-6 right-6 z-[60] w-10 h-10
+             flex items-center justify-center
+             rounded-full bg-black/70 text-white text-2xl
+             hover:bg-black transition"
+      aria-label="Close seminar">
+      ×
+    </button>
+    
+  </div>
+</div>
+
+  <!-- ARTICLE READER OVERLAY -->
+  <div id="reader-overlay" class="fixed inset-0 z-50 hidden" aria-hidden="true">
+    <!-- Dark backdrop -->
+    <div id="reader-backdrop" class="absolute inset-0 bg-black/70"></div>
+  
+    <!-- The pop-up -->
+    <div class="relative mx-auto h-full w-full max-w-4xl px-4 sm:px-6">
+      <div class="h-6 sm:h-8"></div>
+      <div id="reader-card"
+           class="bg-stone-50 rounded-2xl shadow-2xl h-[calc(100%-2rem)] sm:h-[calc(100%-3rem)]
+                  flex flex-col border border-stone-200
+                  translate-y-4 opacity-0 transition-all duration-200">
+        <!-- Top bar -->
+        <div class="sticky top-0 z-10 bg-stone-50/95 backdrop-blur border-b border-stone-200 rounded-t-2xl">
+          <div class="flex items-center justify-between px-4 sm:px-6 py-3">
+            <div>
+              <p id="reader-kicker" class="ny-kicker text-[11px] tracking-wide text-stone-600"></p>
+              <h1 id="reader-title" class="text-2xl sm:text-3xl font-bold text-black"></h1>
+              <p id="reader-byline" class="ny-byline text-stone-700 text-sm"></p>
+            </div>
+            <button id="reader-close"
+                    class="ml-4 w-10 h-10 rounded-full hover:bg-stone-200 focus:outline-none focus:ring-2 focus:ring-red-800"
+                    aria-label="Close article">
+              <span class="text-2xl">&times;</span>
+            </button>
+          </div>
+        </div>
+  
+        <!-- Article content -->
+        <div id="reader-body"
+             class="ny-article mx-auto w-full max-w-3xl px-4 sm:px-6 py-6 overflow-y-auto grow prose prose-stone leading-8 text-[1.075rem] md:text-[1.125rem]">
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+const seminarData = {
+  dying: {
+    question: "Existentialist Philosophy: Putting economics aside, if you found out you were dying, what would you stop doing?",
+    inPerson: `
+      <p><strong>Notes:</strong></p>
+      <p>
+        This seminar examined how awareness of mortality reshapes human priorities, drawing on existentialist thought (Camus, Heidegger) and Stoic ethics, as well as Socratic questioning about meaning, labor, and authenticity. Discussion centered on whether modern economic participation reflects genuine choice or quiet resignation, and whether confronting finitude clarifies or destabilizes moral responsibility.
+      </p>
+
+      <p><strong>Member Count:</strong> 27</p>
+
+      <p><strong>Positions discussed:</strong></p>
+      <ul>
+        <li>A Camusian view that meaning arises through conscious rebellion against absurd routines rather than escape from them (Josh)</li>
+        <li>The argument that economic obligations often crowd out authentic choice, making “voluntary” participation morally ambiguous (Ashley)</li>
+        <li>A Stoic perspective emphasizing agency over external constraints, even within rigid institutional structures (Sannidhi)</li>
+      </ul>
+
+      <p><strong>Consensus:</strong></p>
+      <p>
+        No consensus was reached. Participants broadly agreed, however, that confronting mortality exposes tensions between economic necessity and authentic living, raising unresolved questions about how much autonomy individuals meaningfully possess within modern systems.
+      </p>
+    `,
+    featured: [
+      {
+        author: "sannidhiT",
+        body: "I'd re-evaluate how much of my daily labor is actually meaningful versus habitual--when we trap ourselves into cycles of economic toil we burn off a bit of our life. If most our working lives are meaningless, then are we truly doing what is best for us, or are we doing what is best for our employers?",
+        score: 167
+      }
+    ],
+    reddit: { postId: "1nrhvx6" }
+  },
+
+  unethical: {
+    question: "Ethics: What is an immoral yet extremely common practice in the business world?",
+    inPerson: `
+      <p><strong>Notes:</strong></p>
+      <p>
+        This seminar explored everyday moral failures in business through Kantian ethics, consequentialism, and economic theories of information asymmetry. Rather than focusing on spectacular corporate scandals, participants examined normalized practices—misleading disclosures and incentive misalignment that persist precisely because they are institutionally rewarded.
+      </p>
+
+      <p><strong>Member Count:</strong> 31</p>
+
+      <p><strong>Positions discussed:</strong></p>
+      <ul>
+        <li>A Kantian critique that common business practices often treat stakeholders as means rather than ends (Prithvi)</li>
+        <li>A utilitarian defense arguing that limited deception may be justified by aggregate efficiency gains (Leo)</li>
+        <li>A structural argument that unethical behavior is less a matter of individual vice and more a product of incentive design (Ozas)</li>
+      </ul>
+
+      <p><strong>Consensus:</strong></p>
+      <p>
+        While we disagreed on moral permissibility, there was broad agreement that ethical failure in business is often systemic rather than individual, suggesting that reform requires institutional redesign rather than solely moral exhortation.
+      </p>
+    `,
+    featured: [
+      {
+        author: "leca11",
+        body: "When we rely on authority for truth and they don't deliver, it's usually for their own gain. Look at who got rich in 2008. Look at who didn't.",
+        score: 32
+      }
+    ],
+    reddit: { postId: "1nrhx91" }
+  },
+
+  lying: {
+    question: "Political Philosophy: Why don't we charge politicians for lying to the public?",
+    inPerson: `
+      <p><strong>Notes:</strong></p>
+      <p>
+        This seminar examined political deception through Socratic inquiry, Rawlsian public reason, and democratic theory, questioning whether truthfulness in politics should be enforced legally or culturally. Participants interrogated the assumption that lying is a discrete moral violation, instead framing it as a spectrum shaped by institutional norms.
+      </p>
+
+      <p><strong>Member Count:</strong> 24</p>
+
+      <p><strong>Positions discussed:</strong></p>
+      <ul>
+        <li>The argument that legal penalties for political lying would improve accountability but risk partisan enforcement</li>
+        <li>The view that democratic legitimacy depends on voter literacy rather than coercive truth enforcement</li>
+        <li>A realist position suggesting strategic deception may be unavoidable in matters of national security</li>
+      </ul>
+
+      <p><strong>Consensus:</strong></p>
+      <p>
+        Our group did not reach consensus on enforceability but converged on the insight that political lying is best understood as a structural problem of democratic incentives rather than solely a moral failing of individuals.
+      </p>
+    `,
+    featured: [
+      {
+        author: "ozasgiri",
+        body: "On the pro side for lying, I'd say to look at the cold war: we don't want our politicians spilling secrets that could threaten our national security. But at the same time, our civilians get hurt like they did in MK ULTRA. CIA and federal government need to find a better middleground.",
+        score: 71
+      }
+    ],
+    reddit: { postId: "1ns8r6v" }
+  },
+  parentobligation: {
+    question: "Economic Philosophy: Do parents have an ethical financial obligation to their children past the age of 18? Why or why not?",
+    inPerson: `
+      <p><strong>Notes:</strong></p>
+      <p>
+        In this seminar, we examined whether parents retain an ethical financial obligation to their children beyond the age of 18. The conversation drew on concepts from Rawlsian perspectives on social cooperation. Participants reflected on the distinction between legal responsibilities and moral duties in complex family economies.
+      </p>
+  
+      <p><strong>Member Count:</strong> 22</p>
+  
+      <p><strong>Positions discussed:</strong></p>
+      <ul>
+        <li>Some argued that ongoing financial support is a moral duty when adult children still lack basic economic stability, especially in contexts of unequal opportunity.</li>
+        <li>Others maintained that moral obligation ends at legal adulthood, asserting that prolonged dependency can undermine autonomy and economic agency.</li>
+        <li>A third view proposed a conditional obligation: support tied to educational investment or structured mentorship rather than open-ended assistance.</li>
+      </ul>
+  
+      <p><strong>Consensus:</strong></p>
+      <p>
+        Our members did agree that ethical obligations exist along a spectrum contingent on context, resources, and individual life goals, with emphasis on balancing autonomy and care within economic systems.
+      </p>
+    `,
+    reddit: { postId: "1qbbtaw" }
+  },
+
+  college: {
+    question: "Economics: In today's economy, in what cases is a college education worth the price?",
+    inPerson: `
+      <p><strong>Notes:</strong></p>
+      <p>
+        This seminar analyzed higher education through Michael Spence's signaling theory and sociological critiques of credentialism. Participants debated whether college functions primarily as a skills-building institution or as a costly signal in competitive labor markets, and how rising tuition reshapes access and opportunity.
+      </p>
+
+      <p><strong>Member Count:</strong> 33</p>
+
+      <p><strong>Positions discussed:</strong></p>
+      <ul>
+        <li>The argument that college is economically justified when it delivers measurable skill acquisition and network access</li>
+        <li>A signaling-based critique suggesting that degrees increasingly function as status filters rather than educational investments</li>
+        <li>A contextual position emphasizing variance by field, institution, and socioeconomic background</li>
+      </ul>
+
+      <p><strong>Consensus:</strong></p>
+      <p>
+        We broadly agreed that the value of college is highly context-dependent, with diminishing returns in some fields but persistent signaling power in others, leaving unresolved questions about equity and long-term labor market efficiency.
+      </p>
+    `,
+    featured: [
+      {
+        author: "ashleyngu",
+        body: "Economically, look at ROI. But otherwise I'd say it's context dependent. If you're looking to get money, then any high-paying degree might be worth it but if you're looking to go into a teaching jog like in English, then don't bother unless you're looking to become a researcher in academia.",
+        score: 5
+      }
+    ],
+    reddit: { postId: "1nuwiof" }
+  }
+};
+
+
+  const seminarModal = document.getElementById('seminar-modal');
+  const onlineEl = document.getElementById('seminar-online');
+  const inPersonEl = document.getElementById('seminar-inperson');
+  const questionEl = document.getElementById('seminar-question');
+
+  function redditJsonp(url) {
+    return new Promise((resolve, reject) => {
+      const cb = "reddit_cb_" + Math.random().toString(36).slice(2);
+      const script = document.createElement("script");
+
+      const timeout = setTimeout(() => {
+        cleanup();
+        reject(new Error("JSONP timeout"));
+      }, 8000);
+
+      function cleanup() {
+        clearTimeout(timeout);
+        try { delete window[cb]; } catch (_) { window[cb] = undefined; }
+        script.remove();
+      }
+
+      window[cb] = (data) => {
+        cleanup();
+        resolve(data);
+      };
+
+      script.onerror = () => {
+        cleanup();
+        reject(new Error("JSONP load error"));
+      };
+
+      const sep = url.includes("?") ? "&" : "?";
+      script.src = url + sep + "jsonp=" + cb;
+      document.head.appendChild(script);
+    });
+  }
+  
+  async function loadRedditComments(postId, after = null) {
+    const url =
+      `https://www.reddit.com/comments/${postId}.json?limit=50&sort=top` +
+      (after ? `&after=${encodeURIComponent(after)}` : ``);
+  
+    const data = await redditJsonp(url);
+  
+    const listing = data?.[1]?.data;
+    const children = listing?.children || [];
+  
+    const comments = children
+      .filter(x => {
+        if (x.kind !== "t1" || !x.data || x.data.stickied) return false;
+        if (!x.data.author || x.data.author === "[deleted]") return false;
+        if (!x.data.body) return false;
+        if (["[deleted]", "[removed]"].includes(x.data.body)) return false;
+        if (x.data.body.trim().length < 20) return false;
+        return true;
+      })
+      .map(x => ({
+        author: x.data.author,
+        body: x.data.body,
+        score: typeof x.data.score === "number" ? x.data.score : null
+      }));
+  
+    return { comments, next: listing?.after || null };
+  }
+
+
+  function renderComments(comments, container) {
+    comments.forEach(c => {
+      const el = document.createElement("div");
+      el.className = "bg-white rounded-lg p-4 shadow-soft";
+      el.innerHTML = `
+        <div class="flex items-center justify-between text-xs text-stone-500">
+          <span class="italic text-stone-500">${c.author}</span>
+          ${typeof c.score === "number" ? `<span>⬆ ${c.score}</span>` : ``}
+        </div>
+        <p class="mt-2 text-stone-700 whitespace-pre-line">${c.body}</p>
+      `;
+      container.appendChild(el);
+    });
+  }
+
+  function openSeminarModal() {
+    seminarModal.classList.remove('hidden');
+    seminarModal.classList.add('flex');
+  }
+
+  function closeSeminarModal() {
+    seminarModal.classList.add('hidden');
+    seminarModal.classList.remove('flex');
+  }
+
+  document.querySelectorAll('.seminar-card').forEach(card => {
+    card.addEventListener('click', async () => {
+      const id = card.dataset.seminarId;
+      const data = seminarData[id];
+      if (!data) return;
+
+      questionEl.textContent = data.question;
+      inPersonEl.innerHTML = data.inPerson;
+
+      // reset tabs
+      document.querySelectorAll('.seminar-tab').forEach(t => {
+        t.classList.remove('text-red-800', 'border-red-800', 'border-b-2');
+        t.classList.add('text-stone-600');
+      });
+      const firstTab = document.querySelector('.seminar-tab[data-tab="inperson"]');
+      firstTab.classList.add('text-red-800', 'border-b-2', 'border-red-800');
+      document.querySelectorAll('.seminar-panel').forEach(p => p.classList.add('hidden'));
+      document.getElementById('seminar-inperson').classList.remove('hidden');
+
+      onlineEl.innerHTML = "";
+      
+      if (data.featured?.length) {
+        const featured = data.featured.map(f => ({
+          author: f.author,
+          body: f.body,
+          score: f.score ?? null
+        }));
+        renderComments(featured, onlineEl);
+      }
+
+
+      const loading = document.createElement("div");
+      loading.className = "text-stone-500 text-sm italic";
+      loading.textContent = "Loading more discussion…";
+      onlineEl.appendChild(loading);
+
+      let after = null;
+
+      const loadBtn = document.createElement('button');
+      loadBtn.className = "mt-6 text-red-800 font-semibold underline";
+      loadBtn.textContent = "Load more comments";
+
+      // ✅ open immediately
+      openSeminarModal();
+
+      try {
+        const res = await loadRedditComments(data.reddit.postId);
+        loading.remove();
+        renderComments(res.comments, onlineEl);
+        after = res.next;
+        if (after) onlineEl.appendChild(loadBtn);
+      } catch (err) {
+        console.error("Reddit load failed:", err);
+        loading.className = "text-red-700 text-sm italic";
+        loading.textContent = "Couldn’t load comments. Check console for the exact error.";
+      }
+
+      loadBtn.onclick = async () => {
+        try {
+          if (!after) {
+            loadBtn.textContent = "No more comments";
+            loadBtn.disabled = true;
+            return;
+          }
+          const res = await loadRedditComments(data.reddit.postId, after);
+          renderComments(res.comments, onlineEl);
+          after = res.next;
+          if (!after) {
+            loadBtn.textContent = "No more comments";
+            loadBtn.disabled = true;
+          }
+        } catch (err) {
+          console.error("Load more failed:", err);
+          loadBtn.textContent = "Error loading more";
+          loadBtn.disabled = true;
+        }
+      };
+    });
+  });
+
+  document.getElementById('close-seminar-modal').addEventListener('click', closeSeminarModal);
+
+  document.querySelectorAll('.seminar-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.seminar-tab').forEach(t => {
+        t.classList.remove('text-red-800', 'border-red-800', 'border-b-2');
+        t.classList.add('text-stone-600');
+      });
+      tab.classList.add('text-red-800', 'border-b-2', 'border-red-800');
+
+      document.querySelectorAll('.seminar-panel').forEach(p => p.classList.add('hidden'));
+      document.getElementById(`seminar-${tab.dataset.tab}`).classList.remove('hidden');
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !seminarModal.classList.contains('hidden')) {
+      closeSeminarModal();
+    }
+  });
+  // ✅ ADD THIS RIGHT BELOW
+  seminarModal.addEventListener('click', (e) => {
+    // Only close if clicking the dark backdrop, not the modal content
+    if (e.target === seminarModal) {
+      closeSeminarModal();
+    }
+  });
+});
+</script>
+
+
+<script>
+  window.addEventListener("load", () => {
+    document.body.classList.add("page-loaded");
+  });
+</script>
+</body>
+</html>
